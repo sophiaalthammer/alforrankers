@@ -1,0 +1,39 @@
+collection_batch_size: 512
+query_batch_size: 512
+onnx_use_inference: False
+dataloader_num_workers: 1
+
+token_block_size: 9_000_000
+token_dtype: "float16"
+
+expirement_base_path: "/../" # path to experiments
+
+faiss_hnsw_efConstruction: 128
+faiss_hnsw_efSearch: 128
+faiss_hnsw_graph_neighbors: 128
+faiss_index_type: ivf
+faiss_ivf_list_count: 8000
+faiss_ivf_search_probe_count: 500
+faiss_use_gpu: False
+token_dim: 768
+
+# IMPORTANT TO SET THIS PATH
+cluster_queries_tsv: /data/queries.train.tsv # path to queries which are embedded and then clustered
+
+use_swa_model_ensemble: false
+faiss_index_ondisk_sharding: true
+
+storage_token_block_size: 50_000_000
+storage_token_dtype: float16
+
+storage_cls_block_size: 5_000_000
+storage_cls_dtype: float16
+
+storage_token_ids_block_size: 50_000_000
+storage_token_ids_dtype: uint32
+
+#
+# faiss global settings
+#
+faiss_dtype: float16
+

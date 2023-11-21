@@ -1,0 +1,55 @@
+batch_size_train: 4
+batch_size_eval: 64
+dataloader_num_workers: 0
+validate_every_n_batches: 4000
+
+#submodel_train_cache_path: "C:\\Users\\sebas\\code\\ir-project-matchmaker\\matchmaker-experiments\\bert2k_cache_train_bs8"
+#submodel_validation_cache_path: "C:\\Users\\sebas\\code\\ir-project-matchmaker\\matchmaker-experiments\\bert2k_cache_val"
+#
+#submodel_train_cache_readonly: True
+#submodel_validation_cache_readonly: true
+
+#bert_pretrained_model: microsoft/BiomedNLP-PubMedBERT-base-uncased-abstract
+#bert_pretrained_model: allenai/scibert_scivocab_uncased
+#warmstart_model_path: "C:\\Users\\sebas\\data\\www20\\bps_ck-big_sample4_ndcg2loss.pytorch-state-dict"
+
+
+model: ColBERTer
+#model: bert_dot
+
+colberter_compression_dim: -1
+colberter_use_contextualized_stopwords: False
+colberter_aggregate_unique_ids: True
+colberter_retrieval_compression_dim: -1
+
+colberter_use_int8_quantization: False
+
+bert_trainable: True
+
+dynamic_sampler: False
+in_batch_negatives: False
+
+
+#bert_pretrained_model: "google/canine-s" 
+
+
+dynamic_teacher: False
+dynamic_teacher_in_batch_scoring: False
+dynamic_teacher_per_term_scores: False
+dynamic_teacher_path: "C:\\Users\\sebas\\code\\ir-project-matchmaker\\matchmaker-experiments\\2021-09-15_1254_colbert_dim768_bs32_PL_3bert"
+
+train_pairwise_distillation: True
+train_pairwise_distillation_on_passages: False
+max_doc_length: 200
+loss: RankNetTeacher #MSETeacherPointwisePassages #"margin-mse"
+
+colbert_compression_dim: 64
+
+#minimize_sparsity: True
+#sparsity_loss_lambda_factor: 0.1
+#sparsity_log_path: "sparsity-info.tsv"
+#
+
+
+rcr_main_compress_dim: 192 # or -1 for no compression
+rcr_residual_compress_dim: 8 # or -1 for no compression

@@ -1,0 +1,10 @@
+model: ColBERT 
+
+in_batch_negatives: False
+
+#bert_pretrained_model: "distilbert-base-uncased"
+#warmstart_model_path: "/newstorage5/salthamm/msmarco/models/2020-09-15_1727_colbert_distilbase_teacherensemble_marginloss/best-model.pytorch-state-dict"
+#expirement_base_path: "/newstorage5/salthamm/autolabel-experiments/robust04/train/colbert_fix_subset_50"
+
+colbert_compression_dim: -1
+query_augment_mask_number: -1

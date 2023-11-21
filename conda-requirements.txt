@@ -1,0 +1,3 @@
+faiss-gpu==1.7.0   # remove -gpu for cpu only version
+pytorch==1.9.1
+#cudnn==7.6.5

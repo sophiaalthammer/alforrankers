@@ -1,0 +1,1498 @@
+CUDA_VISIBLE_DEVICES=3 python matchmaker/train.py --config-file matchmaker/configs/defaults.yaml matchmaker/configs/datasets/dl-msmarco-passage-dot-rank.yaml matchmaker/configs/models/bert_dot_dynamic.yaml --run-name dyn2k_take1_distil_dot_bs32_trainT2_trainColBertT2_lambda0_25 --config-overwrites "in_batch_neg_lambda: 0.25"
+
+--config-overwrites "warmstart_model_path: ../experiments/msmarco-passage-experiments-neweval/2020-12-25_0903_distilbert_dot_bs32_trainT2_nogradclip/best-model.pytorch-state-dict"
+
+CUDA_VISIBLE_DEVICES=3 python matchmaker/collection_indexer.py --config-file matchmaker/configs/vector_service/dl-msmarco.yaml --run-name dyn7kclusters_take1_distil_dot_bs32_trainColbertT2only --config-overwrites "trained_model: ../experiments/msmarco-passage-experiments-neweval/2020-12-26_1034_dyn7kclusters_take1_distil_dot_bs32_trainColbertT2only/"
+CUDA_VISIBLE_DEVICES=2 python matchmaker/collection_indexer.py --config-file matchmaker/configs/vector_service/dl-msmarco.yaml --run-name uniformdyn2k_take1_distil_dot_bs32_trainColbertT2only --config-overwrites "trained_model: ../experiments/msmarco-passage-experiments-neweval/2020-12-26_1107_uniformdyn2k_take1_distil_dot_bs32_trainColbertT2only/"
+
+
+CUDA_VISIBLE_DEVICES=0 python matchmaker/collection_indexer.py --config-file matchmaker/configs/vector_service/dl-msmarco.yaml --run-name distilbert_dot_bs32_trainT2_nogradclip --config-overwrites "trained_model: ../experiments/msmarco-passage-experiments-neweval/2020-12-25_0903_distilbert_dot_bs32_trainT2_nogradclip/"
+CUDA_VISIBLE_DEVICES=3 python matchmaker/collection_indexer.py --config-file matchmaker/configs/vector_service/dl-msmarco.yaml --run-name origtrain_distil_dot_bs32_trainT2_trainColBertT2_lambda075 --config-overwrites "trained_model: ../experiments/msmarco-passage-experiments-neweval/2020-12-26_1006_origtrain_distil_dot_bs32_trainT2_trainColBertT2_lambda075/"
+
+
+CUDA_VISIBLE_DEVICES=0 python matchmaker/collection_indexer.py --config-file matchmaker/configs/vector_service/dl-msmarco.yaml --run-name dyn2kcluster_take1_distil_dot_bs32_trainT2_trainColbertT2_lambda075 --config-overwrites "trained_model: ../experiments/msmarco-passage-experiments-neweval/2020-12-26_1009_dyn2kcluster_take1_distil_dot_bs32_trainT2_trainColbertT2_lambda075/"
+CUDA_VISIBLE_DEVICES=2 python matchmaker/collection_indexer.py --config-file matchmaker/configs/vector_service/dl-msmarco.yaml --run-name dyn2k_take1_distil_dot_bs32_trainT2_Colbert_lambdarank_lambda075_warmstartT2model --config-overwrites "trained_model: ../experiments/msmarco-passage-experiments-neweval/2020-12-28_1721_dyn2k_take1_distil_dot_bs32_trainT2_Colbert_lambdarank_lambda075_warmstartT2model/"
+
+2020-12-26_1009_dyn2kcluster_take1_distil_dot_bs32_trainT2_trainColbertT2_lambda075
+
+CUDA_VISIBLE_DEVICES=2 python matchmaker/collection_indexer.py --config-file matchmaker/configs/vector_service/dl-msmarco.yaml --run-name dyn4kclusters_take1_distil_dot_bs32_trainT2_trainColbertT2_lambda05_warmstartT2 --config-overwrites "trained_model: ../experiments/msmarco-passage-experiments-neweval/2020-12-29_0839_dyn4kclusters_take1_distil_dot_bs32_trainT2_trainColbertT2_lambda05_warmstartT2/"
+
+2020-12-29_0839_dyn4kclusters_take1_distil_dot_bs32_trainT2_trainColbertT2_lambda05_warmstartT2
+
+
+----------------
+
+
+CUDA_VISIBLE_DEVICES=1 python matchmaker/train.py --config-file matchmaker/configs/defaults.yaml matchmaker/configs/datasets/dl-msmarco-passage-dot-rank.yaml matchmaker/configs/models/bert_dot_dynamic.yaml \
+--run-name uni10dyn2k_take1_distil_dot_bs32_trainT2Colbert_lambda0_75_warmstartT2 --config-overwrites "tas_balanced_pair_strategy: bins,warmstart_model_path: ../experiments/msmarco-passage-experiments-neweval/2020-12-25_0903_distilbert_dot_bs32_trainT2_nogradclip/best-model.pytorch-state-dict"
+
+CUDA_VISIBLE_DEVICES=1 python matchmaker/train.py --config-file matchmaker/configs/defaults.yaml matchmaker/configs/datasets/dl-msmarco-passage-dot-rank.yaml matchmaker/configs/models/bert_dot_dynamic.yaml \
+--run-name hard12dyn2k_take1_distil_dot_bs32_trainT2Colbert_lambda0_75_warmstartT2 --config-overwrites "tas_balanced_pair_strategy: hard-margin,warmstart_model_path: ../experiments/msmarco-passage-experiments-neweval/2020-12-25_0903_distilbert_dot_bs32_trainT2_nogradclip/best-model.pytorch-state-dict"
+
+CUDA_VISIBLE_DEVICES=3 python matchmaker/train.py --config-file matchmaker/configs/defaults.yaml matchmaker/configs/datasets/dl-msmarco-passage-dot-rank.yaml matchmaker/configs/models/bert_dot_dynamic.yaml \
+--run-name hard6dyn2k_take1_distil_dot_bs32_trainT2Colbert_lambda0_75 --config-overwrites "tas_balanced_pair_strategy: hard-margin"
+
+
+tas_balanced_pair_strategy: "random" # or "bins" or "hard-margin"
+
+
+CUDA_VISIBLE_DEVICES=0 python matchmaker/collection_indexer.py --config-file matchmaker/configs/vector_service/dl-msmarco.yaml --run-name uni10dyn2k_take1_distil_dot_bs32_trainT2_trainColBertT2_lambda075_rand1 --config-overwrites "trained_model: ../experiments/msmarco-passage-experiments-neweval/2021-01-01_2026_uni10dyn2k_take1_distil_dot_bs32_trainT2_trainColBertT2_lambda075_rand1/"
+
+experiments/msmarco-passage-experiments-neweval/2021-01-01_2026_uni10dyn2k_take1_distil_dot_bs32_trainT2_trainColBertT2_lambda075_rand1
+
+2021-01-01_2015_uni10dyn2k_take1_distildot_bs32_trainT2_trainColBertT2_lambda075
+CUDA_VISIBLE_DEVICES=0 python matchmaker/collection_indexer.py --config-file matchmaker/configs/vector_service/dl-msmarco.yaml --run-name uni10dyn2k_distildot_bs32_trainT2_trainColBertT2lambdarank_lambda05 --config-overwrites "trained_model: ../experiments/msmarco-passage-experiments-neweval/2021-01-01_2026_uni10dyn2k_distildot_bs32_trainT2_trainColBertT2lambdarank_lambda05/"
+
+for f in ../experiments/msmarco-retrieval-experiments/2021*/trec2020*.txt; do echo "$f"; python matchmaker/core_metrics.py /home/dlmain/shofstaetter/data/msmarco-passage/qrels/2020-qrels-pass-final.txt $f 2 ; done
+
+
+
+
+ python matchmaker/core_metrics.py /home/dlmain/shofstaetter/data/msmarco-passage/qrels/2020-qrels-pass-final.txt ../experiments/msmarco-retrieval-experiments/2021-01-05_0931_uni10dyn2k_take1_distildot_bs96_trainT2_trainColbertT2_lambda075/trec2020_top1000-output.txt 2
+#####################
+MRR@10: 0.8412992357436802
+Recall@10: 0.36953962579882754
+QueriesWithNoRelevant@10: 146
+QueriesWithRelevant@10: 54
+AverageRankGoldLabel@10: 1.7222222222222223
+MedianRankGoldLabel@10: 1.0
+MRR@20: 0.8412992357436802
+Recall@20: 0.4811248432039086
+QueriesWithNoRelevant@20: 146
+QueriesWithRelevant@20: 54
+AverageRankGoldLabel@20: 1.7222222222222223
+MedianRankGoldLabel@20: 1.0
+MRR@1000: 0.8412992357436802
+Recall@1000: 0.8635104823217362
+QueriesWithNoRelevant@1000: 146
+QueriesWithRelevant@1000: 54
+AverageRankGoldLabel@1000: 1.7222222222222223
+MedianRankGoldLabel@1000: 1.0
+nDCG@3: 0.7419858258019111
+nDCG@5: 0.716699638893325
+nDCG@10: 0.6916911005124287
+nDCG@20: 0.6539992352042632
+nDCG@1000: 0.7104318442480819
+QueriesRanked: 54
+MAP@1000: 0.46700502934559107
+#####################
+
+
+train_qa_spans: False,in_batch_negatives: False,use_fp16: True
+
+
+2020-08-11_1720_bert_largewholewordmask_cls_bs16_lr7e6/
+
+2020-08-06_1712_bert_cls_albertlargev2_bs16_lr1e6/
+
+CUDA_VISIBLE_DEVICES=0,1 python matchmaker/teacher-train-scorer.py --run-name teacherscores_albertlarge_cls_missingPP --config-file matchmaker/configs/defaults.yaml ../experiments/msmarco-passage-experiments/2020-08-06_1712_bert_cls_albertlargev2_bs16_lr1e6/config.yaml matchmaker/configs/datasets/dl-msmarco-passage.yaml --config-overwrites "train_tsv: /home/dlmain/shofstaetter/data/msmarco-passage/train/msmarco_plusplus/plain_bm25_missingtrain_100k_top1k_triples.tsv,warmstart_model_path: ../experiments/msmarco-passage-experiments/2020-08-06_1712_bert_cls_albertlargev2_bs16_lr1e6/best-model.pytorch-state-dict,use_fp16: True"
+
+CUDA_VISIBLE_DEVICES=2,3 python matchmaker/teacher-train-scorer.py --run-name teacherscores_bertlargewm_cls_missingPP --config-file matchmaker/configs/defaults.yaml ../experiments/msmarco-passage-experiments/2020-08-11_1720_bert_largewholewordmask_cls_bs16_lr7e6/config.yaml matchmaker/configs/datasets/dl-msmarco-passage.yaml --config-overwrites "train_tsv: /home/dlmain/shofstaetter/data/msmarco-passage/train/msmarco_plusplus/plain_bm25_missingtrain_100k_top1k_triples.tsv,warmstart_model_path: ../experiments/msmarco-passage-experiments/2020-08-11_1720_bert_largewholewordmask_cls_bs16_lr7e6/best-model.pytorch-state-dict,use_fp16: True"
+
+
+
+---------------------------------------------
+
+2021-01-17_1028_msmarcopp_distildot_bs32_trainT2
+
+2021-01-18_0206_msmarcoPP_uni10dyn2k_distildot_bs32_trainT2_trainColbertT2_lambda075
+2021-01-20_1638_uni10dyn2k_first200only_distildot_bs32_trainT2_trainColBertT2_lambda075
+
+2021-01-01_1130_distilbert_dot_bs32_trainT2_nogradclip
+2021-01-05_1913_uni10dyn2k_take1_distildot_bs32_trainT2_trainColBertT2_lambda075
+
+
+CUDA_VISIBLE_DEVICES=0,1,2,3 python matchmaker/collection_indexer.py --continue-folder ../experiments/msmarco-retrieval-experiments/2021-01-18_0206_msmarcoPP_uni10dyn2k_distildot_bs32_trainT2_trainColbertT2_lambda075 --config-overwrites "
+faiss_use_gpu: true,inference_batch_size: 2000,query_sets:\n\
+  train_allqrels_top10:\n\
+    queries_tsv: /home/dlmain/shofstaetter/data/msmarco-passage/queries/queries.train.qrels_only.tsv\n\
+    top_n: 10\n\
+  dev_large_top1000:\n\
+    binarization_point: 1\n\
+    qrels: /home/dlmain/shofstaetter/data/msmarco-passage/qrels/qrels.dev.tsv\n\
+    queries_tsv: /home/dlmain/shofstaetter/data/msmarco-passage/queries/queries.dev.not-subset.tsv\n\
+    top_n: 1000\n"
+
+CUDA_VISIBLE_DEVICES=0,1,2,3 python matchmaker/collection_indexer.py --continue-folder ../experiments/msmarco-retrieval-experiments/2021-01-20_1638_uni10dyn2k_first200only_distildot_bs32_trainT2_trainColBertT2_lambda075 --config-overwrites "
+faiss_use_gpu: true,inference_batch_size: 2000,query_sets:\n\
+  train_allqrels_top10:\n\
+    queries_tsv: /home/dlmain/shofstaetter/data/msmarco-passage/queries/queries.train.qrels_only.tsv\n\
+    top_n: 10\n\
+  dev_large_top1000:\n\
+    binarization_point: 1\n\
+    qrels: /home/dlmain/shofstaetter/data/msmarco-passage/qrels/qrels.dev.tsv\n\
+    queries_tsv: /home/dlmain/shofstaetter/data/msmarco-passage/queries/queries.dev.not-subset.tsv\n\
+    top_n: 1000\n"
+
+
+CUDA_VISIBLE_DEVICES=0,1,2,3 python matchmaker/collection_indexer.py --continue-folder ../experiments/msmarco-retrieval-experiments/2021-01-01_1130_distilbert_dot_bs32_trainT2_nogradclip --config-overwrites "
+faiss_use_gpu: true,inference_batch_size: 2000,query_sets:\n\
+  train_allqrels_top10:\n\
+    queries_tsv: /home/dlmain/shofstaetter/data/msmarco-passage/queries/queries.train.qrels_only.tsv\n\
+    top_n: 10\n\
+  dev_large_top1000:\n\
+    binarization_point: 1\n\
+    qrels: /home/dlmain/shofstaetter/data/msmarco-passage/qrels/qrels.dev.tsv\n\
+    queries_tsv: /home/dlmain/shofstaetter/data/msmarco-passage/queries/queries.dev.not-subset.tsv\n\
+    top_n: 1000\n"
+
+
+CUDA_VISIBLE_DEVICES=0,1,2,3 python matchmaker/collection_indexer.py --continue-folder ../experiments/msmarco-retrieval-experiments/2021-01-05_1913_uni10dyn2k_take1_distildot_bs32_trainT2_trainColBertT2_lambda075 --config-overwrites "
+faiss_use_gpu: true,inference_batch_size: 2000,query_sets:\n\
+  train_allqrels_top10:\n\
+    queries_tsv: /home/dlmain/shofstaetter/data/msmarco-passage/queries/queries.train.qrels_only.tsv\n\
+    top_n: 10\n\
+  dev_large_top1000:\n\
+    binarization_point: 1\n\
+    qrels: /home/dlmain/shofstaetter/data/msmarco-passage/qrels/qrels.dev.tsv\n\
+    queries_tsv: /home/dlmain/shofstaetter/data/msmarco-passage/queries/queries.dev.not-subset.tsv\n\
+    top_n: 1000\n"
+
+
+dev_large_top1000-output.txt
+train_allqrels_top10-output.txt
+
+
+python matchmaker/evaluation/per_quer_results.py --qrel /home/dlmain/shofstaetter/data/msmarco-passage/qrels/qrels.train.tsv --results 
+
+--out-file 
+
+
+
+python matchmaker/evaluation/per_query_results.py --qrel /home/dlmain/shofstaetter/data/msmarco-passage/qrels/qrels.train.tsv --results  ../experiments/msmarco-retrieval-experiments/2021-01-17_1028_msmarcopp_distildot_bs32_trainT2/train_allqrels_top10-output.txt --out-file ../experiments/msmarco-retrieval-experiments/2021-01-17_1028_msmarcopp_distildot_bs32_trainT2/train_allqrels_mrr10.txt
+python matchmaker/evaluation/per_query_results.py --qrel /home/dlmain/shofstaetter/data/msmarco-passage/qrels/qrels.train.tsv --results  ../experiments/msmarco-retrieval-experiments/2021-01-18_0206_msmarcoPP_uni10dyn2k_distildot_bs32_trainT2_trainColbertT2_lambda075/train_allqrels_top10-output.txt --out-file ../experiments/msmarco-retrieval-experiments/2021-01-18_0206_msmarcoPP_uni10dyn2k_distildot_bs32_trainT2_trainColbertT2_lambda075/train_allqrels_mrr10.txt
+python matchmaker/evaluation/per_query_results.py --qrel /home/dlmain/shofstaetter/data/msmarco-passage/qrels/qrels.train.tsv --results  ../experiments/msmarco-retrieval-experiments/2021-01-20_1638_uni10dyn2k_first200only_distildot_bs32_trainT2_trainColBertT2_lambda075/train_allqrels_top10-output.txt --out-file ../experiments/msmarco-retrieval-experiments/2021-01-20_1638_uni10dyn2k_first200only_distildot_bs32_trainT2_trainColBertT2_lambda075/train_allqrels_mrr10.txt
+python matchmaker/evaluation/per_query_results.py --qrel /home/dlmain/shofstaetter/data/msmarco-passage/qrels/qrels.train.tsv --results  ../experiments/msmarco-retrieval-experiments/2021-01-01_1130_distilbert_dot_bs32_trainT2_nogradclip/train_allqrels_top10-output.txt --out-file ../experiments/msmarco-retrieval-experiments/2021-01-01_1130_distilbert_dot_bs32_trainT2_nogradclip/train_allqrels_mrr10.txt
+python matchmaker/evaluation/per_query_results.py --qrel /home/dlmain/shofstaetter/data/msmarco-passage/qrels/qrels.train.tsv --results  ../experiments/msmarco-retrieval-experiments/2021-01-05_1913_uni10dyn2k_take1_distildot_bs32_trainT2_trainColBertT2_lambda075/train_allqrels_top10-output.txt --out-file ../experiments/msmarco-retrieval-experiments/2021-01-05_1913_uni10dyn2k_take1_distildot_bs32_trainT2_trainColBertT2_lambda075/train_allqrels_mrr10.txt
+
+
+python matchmaker/evaluation/per_query_results.py --qrel /home/dlmain/shofstaetter/data/msmarco-passage/qrels/qrels.dev.tsv --results  ../experiments/msmarco-retrieval-experiments/2021-01-17_1028_msmarcopp_distildot_bs32_trainT2/dev_large_top1000-output.txt --out-file ../experiments/msmarco-retrieval-experiments/2021-01-17_1028_msmarcopp_distildot_bs32_trainT2/dev_large_mrr10.txt
+python matchmaker/evaluation/per_query_results.py --qrel /home/dlmain/shofstaetter/data/msmarco-passage/qrels/qrels.dev.tsv --results  ../experiments/msmarco-retrieval-experiments/2021-01-18_0206_msmarcoPP_uni10dyn2k_distildot_bs32_trainT2_trainColbertT2_lambda075/dev_large_top1000-output.txt --out-file ../experiments/msmarco-retrieval-experiments/2021-01-18_0206_msmarcoPP_uni10dyn2k_distildot_bs32_trainT2_trainColbertT2_lambda075/dev_large_mrr10.txt
+python matchmaker/evaluation/per_query_results.py --qrel /home/dlmain/shofstaetter/data/msmarco-passage/qrels/qrels.dev.tsv --results  ../experiments/msmarco-retrieval-experiments/2021-01-20_1638_uni10dyn2k_first200only_distildot_bs32_trainT2_trainColBertT2_lambda075/dev_large_top1000-output.txt --out-file ../experiments/msmarco-retrieval-experiments/2021-01-20_1638_uni10dyn2k_first200only_distildot_bs32_trainT2_trainColBertT2_lambda075/dev_large_mrr10.txt
+python matchmaker/evaluation/per_query_results.py --qrel /home/dlmain/shofstaetter/data/msmarco-passage/qrels/qrels.dev.tsv --results  ../experiments/msmarco-retrieval-experiments/2021-01-01_1130_distilbert_dot_bs32_trainT2_nogradclip/dev_large_top1000-output.txt --out-file ../experiments/msmarco-retrieval-experiments/2021-01-01_1130_distilbert_dot_bs32_trainT2_nogradclip/dev_large_mrr10.txt
+python matchmaker/evaluation/per_query_results.py --qrel /home/dlmain/shofstaetter/data/msmarco-passage/qrels/qrels.dev.tsv --results  ../experiments/msmarco-retrieval-experiments/2021-01-05_1913_uni10dyn2k_take1_distildot_bs32_trainT2_trainColBertT2_lambda075/dev_large_top1000-output.txt --out-file ../experiments/msmarco-retrieval-experiments/2021-01-05_1913_uni10dyn2k_take1_distildot_bs32_trainT2_trainColBertT2_lambda075/dev_large_mrr10.txt
+
+
+CUDA_VISIBLE_DEVICES=0,1,2,3 python matchmaker/collection_indexer.py --continue-folder ../experiments/msmarco-retrieval-experiments/2021-01-26_1517_uni10dyn2k_last18kclsutersonly_distildot_bs32_trainDual_T2Colbert --config-overwrites "
+faiss_use_gpu: true,inference_batch_size: 2000,query_sets:\n\
+  train_allqrels_top10:\n\
+    queries_tsv: /home/dlmain/shofstaetter/data/msmarco-passage/queries/queries.train.qrels_only.tsv\n\
+    top_n: 10\n\
+  dev_large_top1000:\n\
+    binarization_point: 1\n\
+    qrels: /home/dlmain/shofstaetter/data/msmarco-passage/qrels/qrels.dev.tsv\n\
+    queries_tsv: /home/dlmain/shofstaetter/data/msmarco-passage/queries/queries.dev.not-subset.tsv\n\
+    top_n: 1000\n"
+
+CUDA_VISIBLE_DEVICES=0,1,2,3 python matchmaker/collection_indexer.py --continue-folder ../experiments/msmarco-retrieval-experiments/2021-01-26_1054_uni10dyn2k_reducequeriesto10percent_distildot_bs32_trainDual_T2Colbert --config-overwrites "
+faiss_use_gpu: true,inference_batch_size: 2000,query_sets:\n\
+  train_allqrels_top10:\n\
+    queries_tsv: /home/dlmain/shofstaetter/data/msmarco-passage/queries/queries.train.qrels_only.tsv\n\
+    top_n: 10\n\
+  dev_large_top1000:\n\
+    binarization_point: 1\n\
+    qrels: /home/dlmain/shofstaetter/data/msmarco-passage/qrels/qrels.dev.tsv\n\
+    queries_tsv: /home/dlmain/shofstaetter/data/msmarco-passage/queries/queries.dev.not-subset.tsv\n\
+    top_n: 1000\n"
+
+python matchmaker/evaluation/per_query_results.py --qrel /home/dlmain/shofstaetter/data/msmarco-passage/qrels/qrels.train.tsv --results  ../experiments/msmarco-retrieval-experiments/2021-01-26_1517_uni10dyn2k_last18kclsutersonly_distildot_bs32_trainDual_T2Colbert/train_allqrels_top10-output.txt --out-file ../experiments/msmarco-retrieval-experiments/2021-01-26_1517_uni10dyn2k_last18kclsutersonly_distildot_bs32_trainDual_T2Colbert/train_allqrels_mrr10.txt
+python matchmaker/evaluation/per_query_results.py --qrel /home/dlmain/shofstaetter/data/msmarco-passage/qrels/qrels.train.tsv --results  ../experiments/msmarco-retrieval-experiments/2021-01-26_1054_uni10dyn2k_reducequeriesto10percent_distildot_bs32_trainDual_T2Colbert/train_allqrels_top10-output.txt --out-file ../experiments/msmarco-retrieval-experiments/2021-01-26_1054_uni10dyn2k_reducequeriesto10percent_distildot_bs32_trainDual_T2Colbert/train_allqrels_mrr10.txt
+python matchmaker/evaluation/per_query_results.py --qrel /home/dlmain/shofstaetter/data/msmarco-passage/qrels/qrels.dev.tsv --results  ../experiments/msmarco-retrieval-experiments/2021-01-26_1517_uni10dyn2k_last18kclsutersonly_distildot_bs32_trainDual_T2Colbert/dev_large_top1000-output.txt --out-file ../experiments/msmarco-retrieval-experiments/2021-01-26_1517_uni10dyn2k_last18kclsutersonly_distildot_bs32_trainDual_T2Colbert/dev_large_mrr10.txt
+python matchmaker/evaluation/per_query_results.py --qrel /home/dlmain/shofstaetter/data/msmarco-passage/qrels/qrels.dev.tsv --results  ../experiments/msmarco-retrieval-experiments/2021-01-26_1054_uni10dyn2k_reducequeriesto10percent_distildot_bs32_trainDual_T2Colbert/dev_large_top1000-output.txt --out-file ../experiments/msmarco-retrieval-experiments/2021-01-26_1054_uni10dyn2k_reducequeriesto10percent_distildot_bs32_trainDual_T2Colbert/dev_large_mrr10.txt
+
+
+../experiments/msmarco-retrieval-experiments/2021-01-17_1028_msmarcopp_distildot_bs32_trainT2
+../experiments/msmarco-retrieval-experiments/2021-01-18_0206_msmarcoPP_uni10dyn2k_distildot_bs32_trainT2_trainColbertT2_lambda075
+../experiments/msmarco-retrieval-experiments/2021-01-20_1638_uni10dyn2k_first200only_distildot_bs32_trainT2_trainColBertT2_lambda075
+../experiments/msmarco-retrieval-experiments/2021-01-01_1130_distilbert_dot_bs32_trainT2_nogradclip
+../experiments/msmarco-retrieval-experiments/2021-01-05_1913_uni10dyn2k_take1_distildot_bs32_trainT2_trainColBertT2_lambda075
+
+
+scp shofstaetter@lbd.zserv.tuwien.ac.at:experiments/msmarco-retrieval-experiments/2021-01-17_1028_msmarcopp_distildot_bs32_trainT2/train_allqrels_mrr10.txt msmarcopp_distildot_bs32_trainT2_train_allqrels_mrr10.txt
+scp shofstaetter@lbd.zserv.tuwien.ac.at:experiments/msmarco-retrieval-experiments/2021-01-18_0206_msmarcoPP_uni10dyn2k_distildot_bs32_trainT2_trainColbertT2_lambda075/train_allqrels_mrr10.txt msmarcoPP_uni10dyn2k_distildot_bs32_trainT2_trainColbertT2_lambda075_train_allqrels_mrr10.txt
+scp shofstaetter@lbd.zserv.tuwien.ac.at:experiments/msmarco-retrieval-experiments/2021-01-20_1638_uni10dyn2k_first200only_distildot_bs32_trainT2_trainColBertT2_lambda075/train_allqrels_mrr10.txt uni10dyn2k_first200only_distildot_bs32_trainT2_trainColBertT2_lambda075_train_allqrels_mrr10.txt
+scp shofstaetter@lbd.zserv.tuwien.ac.at:experiments/msmarco-retrieval-experiments/2021-01-01_1130_distilbert_dot_bs32_trainT2_nogradclip/train_allqrels_mrr10.txt distilbert_dot_bs32_trainT2_nogradclip_train_allqrels_mrr10.txt
+scp shofstaetter@lbd.zserv.tuwien.ac.at:experiments/msmarco-retrieval-experiments/2021-01-05_1913_uni10dyn2k_take1_distildot_bs32_trainT2_trainColBertT2_lambda075/train_allqrels_mrr10.txt uni10dyn2k_take1_distildot_bs32_trainT2_trainColBertT2_lambda075_train_allqrels_mrr10.txt
+scp shofstaetter@lbd.zserv.tuwien.ac.at:experiments/msmarco-retrieval-experiments/2021-01-17_1028_msmarcopp_distildot_bs32_trainT2/dev_large_mrr10.txt msmarcopp_distildot_bs32_trainT2_dev_large_mrr10.txt
+scp shofstaetter@lbd.zserv.tuwien.ac.at:experiments/msmarco-retrieval-experiments/2021-01-18_0206_msmarcoPP_uni10dyn2k_distildot_bs32_trainT2_trainColbertT2_lambda075/dev_large_mrr10.txt msmarcoPP_uni10dyn2k_distildot_bs32_trainT2_trainColbertT2_lambda075_dev_large_mrr10.txt
+scp shofstaetter@lbd.zserv.tuwien.ac.at:experiments/msmarco-retrieval-experiments/2021-01-20_1638_uni10dyn2k_first200only_distildot_bs32_trainT2_trainColBertT2_lambda075/dev_large_mrr10.txt uni10dyn2k_first200only_distildot_bs32_trainT2_trainColBertT2_lambda075_dev_large_mrr10.txt
+scp shofstaetter@lbd.zserv.tuwien.ac.at:experiments/msmarco-retrieval-experiments/2021-01-01_1130_distilbert_dot_bs32_trainT2_nogradclip/dev_large_mrr10.txt distilbert_dot_bs32_trainT2_nogradclip_dev_large_mrr10.txt
+scp shofstaetter@lbd.zserv.tuwien.ac.at:experiments/msmarco-retrieval-experiments/2021-01-05_1913_uni10dyn2k_take1_distildot_bs32_trainT2_trainColBertT2_lambda075/dev_large_mrr10.txt uni10dyn2k_take1_distildot_bs32_trainT2_trainColBertT2_lambda075_dev_large_mrr10.txt
+
+scp shofstaetter@lbd.zserv.tuwien.ac.at:experiments/msmarco-retrieval-experiments/2021-01-05_1913_uni10dyn2k_take1_distildot_bs32_trainT2_trainColBertT2_lambda075/dev_large_top1000-output.txt uni10dyn2k_take1_distildot_bs32_trainT2_trainColBertT2_lambda075_dev_large_top1000-output.txt
+
+
+scp shofstaetter@lbd.zserv.tuwien.ac.at:experiments/msmarco-retrieval-experiments/2021-01-26_1517_uni10dyn2k_last18kclsutersonly_distildot_bs32_trainDual_T2Colbert/train_allqrels_mrr10.txt uni10dyn2k_last18kclsutersonly_distildot_bs32_trainDual_T2Colbert_train_allqrels_mrr10.txt
+scp shofstaetter@lbd.zserv.tuwien.ac.at:experiments/msmarco-retrieval-experiments/2021-01-26_1054_uni10dyn2k_reducequeriesto10percent_distildot_bs32_trainDual_T2Colbert/train_allqrels_mrr10.txt uni10dyn2k_reducequeriesto10percent_distildot_bs32_trainDual_T2Colbert_train_allqrels_mrr10.txt
+scp shofstaetter@lbd.zserv.tuwien.ac.at:experiments/msmarco-retrieval-experiments/2021-01-26_1517_uni10dyn2k_last18kclsutersonly_distildot_bs32_trainDual_T2Colbert/dev_large_mrr10.txt uni10dyn2k_last18kclsutersonly_distildot_bs32_trainDual_T2Colbert_dev_large_mrr10.txt
+scp shofstaetter@lbd.zserv.tuwien.ac.at:experiments/msmarco-retrieval-experiments/2021-01-26_1054_uni10dyn2k_reducequeriesto10percent_distildot_bs32_trainDual_T2Colbert/dev_large_mrr10.txt uni10dyn2k_reducequeriesto10percent_distildot_bs32_trainDual_T2Colbert_dev_large_mrr10.txt
+
+
+scp shofstae@troubadix.ifs.tuwien.ac.at:/mnt/nvme-local/hofstaetter/msmarco-retrieval-experiments/2021-01-22_1312_qc_devlarge_2k_train_clusters/cluster-assignment-ids.tsv qc_devlarge_2k_train_clusters_cluster-assignment-ids.tsv
+scp shofstae@troubadix.ifs.tuwien.ac.at:/mnt/nvme-local/hofstaetter/msmarco-retrieval-experiments/2021-01-22_1406_qc_small_2k_train_clusters/cluster-assignment-ids.tsv qc_devsmall_2k_train_clusters_cluster-assignment-ids.tsv
+scp shofstae@troubadix.ifs.tuwien.ac.at:/mnt/nvme-local/hofstaetter/msmarco-retrieval-experiments/2021-01-22_1411_qc_trec20_2k_train_clusters/cluster-assignment-ids.tsv qc_trec20_2k_train_clusters_cluster-assignment-ids.tsv
+scp shofstae@troubadix.ifs.tuwien.ac.at:/mnt/nvme-local/hofstaetter/msmarco-retrieval-experiments/2021-01-22_1312_qc_sanitycheck_trainqueries_2kclusters/cluster-assignment-ids.tsv qc_sanitycheck_trainqueries_2kclusters_cluster-assignment-ids.tsv
+scp shofstae@troubadix.ifs.tuwien.ac.at:/mnt/nvme-local/hofstaetter/msmarco-retrieval-experiments/2021-01-22_1407_qc_trec19_2k_train_clusters/cluster-assignment-ids.tsv qc_trec19_2k_train_clusters_cluster-assignment-ids.tsv
+
+scp shofstae@troubadix.ifs.tuwien.ac.at:/mnt/nvme-local/hofstaetter/msmarco-retrieval-experiments/2021-01-22_1312_qc_devlarge_2k_train_clusters/cluster-assignment-text.tsv qc_devlarge_2k_train_clusters_cluster-assignment-text.tsv
+scp shofstae@troubadix.ifs.tuwien.ac.at:/mnt/nvme-local/hofstaetter/msmarco-retrieval-experiments/2021-01-22_1406_qc_small_2k_train_clusters/cluster-assignment-text.tsv qc_devsmall_2k_train_clusters_cluster-assignment-text.tsv
+scp shofstae@troubadix.ifs.tuwien.ac.at:/mnt/nvme-local/hofstaetter/msmarco-retrieval-experiments/2021-01-22_1411_qc_trec20_2k_train_clusters/cluster-assignment-text.tsv qc_trec20_2k_train_clusters_cluster-assignment-text.tsv
+scp shofstae@troubadix.ifs.tuwien.ac.at:/mnt/nvme-local/hofstaetter/msmarco-retrieval-experiments/2021-01-22_1312_qc_sanitycheck_trainqueries_2kclusters/cluster-assignment-text.tsv qc_sanitycheck_trainqueries_2kclusters_cluster-assignment-text.tsv
+scp shofstae@troubadix.ifs.tuwien.ac.at:/mnt/nvme-local/hofstaetter/msmarco-retrieval-experiments/2021-01-22_1407_qc_trec19_2k_train_clusters/cluster-assignment-text.tsv qc_trec19_2k_train_clusters_cluster-assignment-text.tsv
+
+
+(train) cluster-median mrr: BERT$_{[DOT]}$ (TAS-B) 0.3423206432192951
+(train) mrr: BERT$_{[DOT]}$ (TAS-B) 0.34521202546037555 (# queries: 502939 )
+(train) cluster-median mrr: BERT$_{[DOT]}$ (TAS-B) only 200 clusters 0.256283230360976
+(train) mrr: BERT$_{[DOT]}$ (TAS-B) only 200 clusters 0.27992057290421507 (# queries: 502939 )
+(train) cluster-median mrr: BERT$_{[DOT]}$ (TAS-B) All queries trained 0.34373785110260846
+(train) mrr: BERT$_{[DOT]}$ (TAS-B) All queries trained 0.34701765482809516 (# queries: 502939 )
+(no train) cluster-median mrr: BERT$_{[DOT]}$ (TAS-B) 0.3442033262016319
+(no train) mrr: BERT$_{[DOT]}$ (TAS-B) 0.34594797398699345 (# queries: 47976 )
+(no train) cluster-median mrr: BERT$_{[DOT]}$ (TAS-B) only 200 clusters 0.4388472119947635
+(no train) mrr: BERT$_{[DOT]}$ (TAS-B) only 200 clusters 0.42878607789344414 (# queries: 47976 )
+(no train) cluster-median mrr: BERT$_{[DOT]}$ (TAS-B) All queries trained 0.348166107581692
+(no train) mrr: BERT$_{[DOT]}$ (TAS-B) All queries trained 0.34741537435384356 (# queries: 47976 )
+
+CUDA_VISIBLE_DEVICES=4 python matchmaker/collection_indexer.py --continue-folder /mnt/nvme-local/hofstaetter/msmarco-retrieval-experiments/2021-01-23_1238_uni10dyn2k_take1_distildot_bs256_trainT2_trainColBertT2_lambda0_75 --config-overwrites "
+faiss_use_gpu: true,inference_batch_size: 1,query_sets:\n\
+  dev_large_top1000_querylatency:\n\
+    queries_tsv: /data01/hofstaetter/data/msmarco-passage/queries/queries.dev.not-subset.tsv\n\
+    top_n: 1000\n"
+
+OMP_NUM_THREADS=1
+CUDA_VISIBLE_DEVICES=4 python matchmaker/collection_indexer.py --continue-folder /mnt/nvme-local/hofstaetter/msmarco-retrieval-experiments/2021-01-23_1238_uni10dyn2k_take1_distildot_bs256_trainT2_trainColBertT2_lambda0_75 --config-overwrites "
+faiss_use_gpu: false,inference_batch_size: 1,query_sets:\n\
+  trec_20_querylatency:\n\
+    queries_tsv: /data01/hofstaetter/data/msmarco-passage/leaderboard/msmarco-test2020-queries.tsv\n\
+    top_n: 1000\n"
+
+
+faiss flat float32, bs=1, threads=1:
+
+mean: times_query_encode 0.011462550666464033 99th perc.: times_query_encode 0.023102521896362315
+mean: times_faiss 3.905699277043942 99th perc.: times_faiss 7.510787382125864
+mean: times_aggregate 0.0026745149238624763 99th perc.: times_aggregate 0.008734817504882815
+
+
+faiss flat float32, bs=10, threads=16:
+
+mean: times_query_encode 0.025478877519306383 99th perc.: times_query_encode 0.2401164674758912
+mean: times_faiss 6.265491711465936 99th perc.: times_faiss 22.36342665195465
+mean: times_aggregate 0.018240991391633685 99th perc.: times_aggregate 0.05951282024383547
+
+
+CUDA_VISIBLE_DEVICES=4,5 python matchmaker/collection_indexer.py --continue-folder /mnt/nvme-local/hofstaetter/msmarco-retrieval-experiments/2020-12-27_1734_distilbert_dot_bs32_neweval/ --config-overwrites "
+faiss_use_gpu: true,use_swa_model_ensemble: false,inference_batch_size: 4000,query_sets:\n\
+  train_allqrels_top10:\n\
+    queries_tsv: /data01/hofstaetter/data/msmarco-passage/queries/queries.train.qrels_only.tsv\n\
+    top_n: 10\n\
+  dev_large_top1000:\n\
+    binarization_point: 1\n\
+    qrels: /data01/hofstaetter/data/msmarco-passage/qrels/qrels.dev.tsv\n\
+    queries_tsv: /data01/hofstaetter/data/msmarco-passage/queries/queries.dev.judged.not-subset.tsv\n\
+    top_n: 1000\n"
+
+python matchmaker/evaluation/per_query_results.py --qrel /data01/hofstaetter/data/msmarco-passage/qrels/qrels.train.tsv --results  /mnt/nvme-local/hofstaetter/msmarco-retrieval-experiments/2020-12-27_1734_distilbert_dot_bs32_neweval//train_allqrels_top10-output.txt --out-file /mnt/nvme-local/hofstaetter/msmarco-retrieval-experiments/2020-12-27_1734_distilbert_dot_bs32_neweval/train_allqrels_mrr10.txt
+python matchmaker/evaluation/per_query_results.py --qrel /data01/hofstaetter/data/msmarco-passage/qrels/qrels.dev.tsv --results  /mnt/nvme-local/hofstaetter/msmarco-retrieval-experiments/2020-12-27_1734_distilbert_dot_bs32_neweval/dev_large_top1000-output.txt --out-file /mnt/nvme-local/hofstaetter/msmarco-retrieval-experiments/2020-12-27_1734_distilbert_dot_bs32_neweval/dev_large_mrr10.txt
+
+scp shofstae@troubadix.ifs.tuwien.ac.at:/mnt/nvme-local/hofstaetter/msmarco-retrieval-experiments/2020-12-27_1734_distilbert_dot_bs32_neweval/train_allqrels_mrr10.txt distilbert_dot_bs32_neweval_train_allqrels_mrr10.txt
+scp shofstae@troubadix.ifs.tuwien.ac.at:/mnt/nvme-local/hofstaetter/msmarco-retrieval-experiments/2020-12-27_1734_distilbert_dot_bs32_neweval/dev_large_mrr10.txt distilbert_dot_bs32_neweval_dev_large_mrr10.txt
+
+
+python matchmaker/evaluation/reduce_ranked_output.py --res-in  /mnt/nvme-local/hofstaetter/msmarco-retrieval-experiments/2020-12-27_1734_distilbert_dot_bs32_neweval/dev_large_top1000-output.txt --res-out  /mnt/nvme-local/hofstaetter/msmarco-retrieval-experiments/2020-12-27_1734_distilbert_dot_bs32_neweval/dev_large_top10-output.txt --max-rank 10
+
+scp shofstae@troubadix.ifs.tuwien.ac.at:/mnt/nvme-local/hofstaetter/msmarco-retrieval-experiments/2020-12-27_1734_distilbert_dot_bs32_neweval/dev_large_top10-output.txt distilbert_dot_bs32_neweval_dev_large_top10-output.txt
+
+
+
+
+
+python matchmaker/preprocessing/convert_formats/trec_robust04_collection_to_tsv.py --in-file "/newstorage4/hofstaetter/tripclick/benchmark/documents/*.txt" --out-file /newstorage4/hofstaetter/tripclick/benchmark/collection.tsv
+
+python matchmaker/preprocessing/convert_formats/trec_robust04_topics_to_tsv.py --type title --in-file /newstorage4/hofstaetter/tripclick/benchmark/topics/topics.all.txt  --out-file /newstorage4/hofstaetter/tripclick/benchmark/queries.all.tsv 
+python matchmaker/preprocessing/convert_formats/trec_robust04_topics_to_tsv.py --type title --in-file /newstorage4/hofstaetter/tripclick/benchmark/topics/topics.head.train.txt --out-file /newstorage4/hofstaetter/tripclick/benchmark/queries.head.train.tsv
+python matchmaker/preprocessing/convert_formats/trec_robust04_topics_to_tsv.py --type title --in-file /newstorage4/hofstaetter/tripclick/benchmark/topics/topics.tail.test.txt    --out-file /newstorage4/hofstaetter/tripclick/benchmark/queries.tail.test.tsv   
+python matchmaker/preprocessing/convert_formats/trec_robust04_topics_to_tsv.py --type title --in-file /newstorage4/hofstaetter/tripclick/benchmark/topics/topics.torso.all.txt     --out-file /newstorage4/hofstaetter/tripclick/benchmark/queries.torso.all.tsv    
+python matchmaker/preprocessing/convert_formats/trec_robust04_topics_to_tsv.py --type title --in-file /newstorage4/hofstaetter/tripclick/benchmark/topics/topics.torso.val.txt    --out-file /newstorage4/hofstaetter/tripclick/benchmark/queries.torso.val.tsv   
+python matchmaker/preprocessing/convert_formats/trec_robust04_topics_to_tsv.py --type title --in-file /newstorage4/hofstaetter/tripclick/benchmark/topics/topics.head.all.txt    --out-file /newstorage4/hofstaetter/tripclick/benchmark/queries.head.all.tsv   
+python matchmaker/preprocessing/convert_formats/trec_robust04_topics_to_tsv.py --type title --in-file /newstorage4/hofstaetter/tripclick/benchmark/topics/topics.head.val.txt   --out-file /newstorage4/hofstaetter/tripclick/benchmark/queries.head.val.tsv  
+python matchmaker/preprocessing/convert_formats/trec_robust04_topics_to_tsv.py --type title --in-file /newstorage4/hofstaetter/tripclick/benchmark/topics/topics.tail.train.txt   --out-file /newstorage4/hofstaetter/tripclick/benchmark/queries.tail.train.tsv  
+python matchmaker/preprocessing/convert_formats/trec_robust04_topics_to_tsv.py --type title --in-file /newstorage4/hofstaetter/tripclick/benchmark/topics/topics.torso.test.txt    --out-file /newstorage4/hofstaetter/tripclick/benchmark/queries.torso.test.tsv   
+python matchmaker/preprocessing/convert_formats/trec_robust04_topics_to_tsv.py --type title --in-file /newstorage4/hofstaetter/tripclick/benchmark/topics/topics.head.test.txt   --out-file /newstorage4/hofstaetter/tripclick/benchmark/queries.head.test.tsv  
+python matchmaker/preprocessing/convert_formats/trec_robust04_topics_to_tsv.py --type title --in-file /newstorage4/hofstaetter/tripclick/benchmark/topics/topics.tail.all.txt   --out-file /newstorage4/hofstaetter/tripclick/benchmark/queries.tail.all.tsv  
+python matchmaker/preprocessing/convert_formats/trec_robust04_topics_to_tsv.py --type title --in-file /newstorage4/hofstaetter/tripclick/benchmark/topics/topics.tail.val.txt     --out-file /newstorage4/hofstaetter/tripclick/benchmark/queries.tail.val.tsv    
+python matchmaker/preprocessing/convert_formats/trec_robust04_topics_to_tsv.py --type title --in-file /newstorage4/hofstaetter/tripclick/benchmark/topics/topics.torso.train.txt  --out-file /newstorage4/hofstaetter/tripclick/benchmark/queries.torso.train.tsv 
+
+topics.all.txt 
+topics.head.train.txt
+topics.tail.test.txt   
+topics.torso.all.txt    
+topics.torso.val.txt   
+topics.head.all.txt   
+topics.head.val.txt  
+topics.tail.train.txt  
+topics.torso.test.txt   
+topics.head.test.txt  
+topics.tail.all.txt  
+topics.tail.val.txt    
+topics.torso.train.txt 
+
+
+
+queries.head.test.tsv
+queries.head.val.tsv
+queries.tail.test.tsv
+queries.tail.val.tsv
+queries.torso.test.tsv
+queries.torso.val.tsv
+
+~/Anserini/target/appassembler/bin/SearchCollection -threads 1 -index /newstorage4/hofstaetter/tripclick/anserini-index/ -topicreader Tsv -topics /newstorage4/hofstaetter/tripclick/benchmark/queries.head.test.tsv -hits 1000 -bm25  -output /newstorage4/hofstaetter/tripclick/bm25_results/bm25_top1k_head.test.txt
+~/Anserini/target/appassembler/bin/SearchCollection -threads 1 -index /newstorage4/hofstaetter/tripclick/anserini-index/ -topicreader Tsv -topics /newstorage4/hofstaetter/tripclick/benchmark/queries.head.val.tsv -hits 1000 -bm25   -output /newstorage4/hofstaetter/tripclick/bm25_results/bm25_top1k_head.val.txt
+~/Anserini/target/appassembler/bin/SearchCollection -threads 1 -index /newstorage4/hofstaetter/tripclick/anserini-index/ -topicreader Tsv -topics /newstorage4/hofstaetter/tripclick/benchmark/queries.tail.test.tsv -hits 1000 -bm25  -output /newstorage4/hofstaetter/tripclick/bm25_results/bm25_top1k_tail.test.txt
+~/Anserini/target/appassembler/bin/SearchCollection -threads 1 -index /newstorage4/hofstaetter/tripclick/anserini-index/ -topicreader Tsv -topics /newstorage4/hofstaetter/tripclick/benchmark/queries.tail.val.tsv -hits 1000 -bm25   -output /newstorage4/hofstaetter/tripclick/bm25_results/bm25_top1k_tail.val.txt
+~/Anserini/target/appassembler/bin/SearchCollection -threads 1 -index /newstorage4/hofstaetter/tripclick/anserini-index/ -topicreader Tsv -topics /newstorage4/hofstaetter/tripclick/benchmark/queries.torso.test.tsv -hits 1000 -bm25 -output /newstorage4/hofstaetter/tripclick/bm25_results/bm25_top1k_torso.test.txt
+~/Anserini/target/appassembler/bin/SearchCollection -threads 1 -index /newstorage4/hofstaetter/tripclick/anserini-index/ -topicreader Tsv -topics /newstorage4/hofstaetter/tripclick/benchmark/queries.torso.val.tsv -hits 1000 -bm25  -output /newstorage4/hofstaetter/tripclick/bm25_results/bm25_top1k_torso.val.txt
+
+python matchmaker/preprocessing/generate_validation_input_from_candidate_set.py --collection-file /newstorage4/hofstaetter/tripclick/benchmark/collection/collection.tsv --query-file /newstorage4/hofstaetter/tripclick/benchmark/queries.all.tsv --top-N 1000 --out-file /newstorage4/hofstaetter/tripclick/dlfiles/tuples_top1k_head.test.txt --candidate-file /newstorage4/hofstaetter/tripclick/bm25_results/bm25_top1k_head.test.txt
+python matchmaker/preprocessing/generate_validation_input_from_candidate_set.py --collection-file /newstorage4/hofstaetter/tripclick/benchmark/collection/collection.tsv --query-file /newstorage4/hofstaetter/tripclick/benchmark/queries.all.tsv --top-N 1000 --out-file /newstorage4/hofstaetter/tripclick/dlfiles/tuples_top1k_head.val.txt --candidate-file /newstorage4/hofstaetter/tripclick/bm25_results/bm25_top1k_head.val.txt
+python matchmaker/preprocessing/generate_validation_input_from_candidate_set.py --collection-file /newstorage4/hofstaetter/tripclick/benchmark/collection/collection.tsv --query-file /newstorage4/hofstaetter/tripclick/benchmark/queries.all.tsv --top-N 1000 --out-file /newstorage4/hofstaetter/tripclick/dlfiles/tuples_top1k_tail.test.txt --candidate-file /newstorage4/hofstaetter/tripclick/bm25_results/bm25_top1k_tail.test.txt
+python matchmaker/preprocessing/generate_validation_input_from_candidate_set.py --collection-file /newstorage4/hofstaetter/tripclick/benchmark/collection/collection.tsv --query-file /newstorage4/hofstaetter/tripclick/benchmark/queries.all.tsv --top-N 1000 --out-file /newstorage4/hofstaetter/tripclick/dlfiles/tuples_top1k_tail.val.txt --candidate-file /newstorage4/hofstaetter/tripclick/bm25_results/bm25_top1k_tail.val.txt
+python matchmaker/preprocessing/generate_validation_input_from_candidate_set.py --collection-file /newstorage4/hofstaetter/tripclick/benchmark/collection/collection.tsv --query-file /newstorage4/hofstaetter/tripclick/benchmark/queries.all.tsv --top-N 1000 --out-file /newstorage4/hofstaetter/tripclick/dlfiles/tuples_top1k_torso.test.txt --candidate-file /newstorage4/hofstaetter/tripclick/bm25_results/bm25_top1k_torso.test.txt
+python matchmaker/preprocessing/generate_validation_input_from_candidate_set.py --collection-file /newstorage4/hofstaetter/tripclick/benchmark/collection/collection.tsv --query-file /newstorage4/hofstaetter/tripclick/benchmark/queries.all.tsv --top-N 1000 --out-file /newstorage4/hofstaetter/tripclick/dlfiles/tuples_top1k_torso.val.txt --candidate-file /newstorage4/hofstaetter/tripclick/bm25_results/bm25_top1k_torso.val.txt
+
+
+python matchmaker/evaluation/teacher_scores_ensemble.py --in-files /newstorage4/hofstaetter/tripclick/scibert_cat_train-scores-ids.tsv,/mnt/nvme-local/hofstaetter/tripclick-experiments/2021-04-12_1742_fix_freeze_pubmedbert_cat_trainscores/train_scores-ids.tsv --collection /newstorage4/hofstaetter/tripclick/benchmark/collection/collection.tsv --query /newstorage4/hofstaetter/tripclick/benchmark/queries.all.tsv --out-file-ordering /newstorage4/hofstaetter/tripclick/scibert_cat_train-scores-ids.tsv --out-file /newstorage4/hofstaetter/tripclick/train_2bertscores_triples.tsv
+
+
+python matchmaker/evaluation/teacher_scores_ensemble.py --collection ~/data/tripclick/benchmark/collection/collection.tsv --query ~/data/tripclick/benchmark/queries.all.tsv --in-files /home/dlmain/shofstaetter/data/tripclick/pubmedbert_cat_trainscores-ids.tsv,/home/dlmain/shofstaetter/data/tripclick/scibert_cat_train-scores-ids.tsv,/home/dlmain/shofstaetter/tripclick-experiments/2021-04-21_1618_teacherscores_fix_pubmedbert_full_cat_bs16/train_scores-ids.tsv --out-file-ordering /home/dlmain/shofstaetter/tripclick-experiments/2021-04-21_1618_teacherscores_fix_pubmedbert_full_cat_bs16/train_scores-ids.tsv --out-file ~/data/tripclick/fix_3bert_ensemble_train_triples.tsv
+
+
+CUDA_VISIBLE_DEVICES=0,1 python matchmaker/train.py --run-name scibert_dot_bs16_margin-mse_3bertfix --config-file matchmaker/configs/defaults.yaml matchmaker/configs/datasets/dl-tripclick.yaml matchmaker/configs/models/bert_dot.yaml matchmaker/configs/models/teacher.yaml --config-overwrites "bert_pretrained_model: allenai/scibert_scivocab_uncased"
+
+CUDA_VISIBLE_DEVICES=2,3 python matchmaker/train.py --run-name scibert_colbert_bs16_margin-mse_3bertfix --config-file matchmaker/configs/defaults.yaml matchmaker/configs/datasets/dl-tripclick.yaml matchmaker/configs/models/colbert.yaml matchmaker/configs/models/teacher.yaml --config-overwrites "bert_pretrained_model: allenai/scibert_scivocab_uncased"
+
+
+CUDA_VISIBLE_DEVICES=4 python matchmaker/train.py --run-name distil_colbert_bs16_margin-mse_bertbase --config-file matchmaker/configs/defaults.yaml matchmaker/configs/datasets/tr-tripclick.yaml matchmaker/configs/models/colbert.yaml matchmaker/configs/models/teacher.yaml --config-overwrites "train_tsv: /mnt/nvme-local/hofstaetter/tripclick-experiments/2021-05-23_1057_bertbase_fix_bs16_teacherscores/train_scores.tsv"
+CUDA_VISIBLE_DEVICES=5 python matchmaker/train.py --run-name distildot_bs16_margin-mse_bertbase --config-file matchmaker/configs/defaults.yaml matchmaker/configs/datasets/tr-tripclick.yaml matchmaker/configs/models/bert_dot.yaml matchmaker/configs/models/teacher.yaml --config-overwrites "train_tsv: /mnt/nvme-local/hofstaetter/tripclick-experiments/2021-05-23_1057_bertbase_fix_bs16_teacherscores/train_scores.tsv"
+
+/mnt/nvme-local/hofstaetter/tripclick-experiments/2021-05-23_1057_bertbase_fix_bs16_teacherscores/train_scores.tsv
+
+
+python matchmaker/ensemble.py --ensemble-folder /home/dlmain/shofstaetter/tripclick-experiments/3bert_fix_ensemble_avg --ensemble-type avg \
+--run-config /home/dlmain/shofstaetter/tripclick-experiments/2021-04-14_1100_fix_pubmedbert_full_cat_bs16/config.yaml --runs /home/dlmain/shofstaetter/tripclick-experiments/2021-04-14_1100_fix_pubmedbert_full_cat_bs16/,/home/dlmain/shofstaetter/tripclick-experiments/2021-04-08_1000_fix_pubmedbert_cat_bs16/,/home/dlmain/shofstaetter/tripclick-experiments/2021-04-13_1551_fix_scibert_colbert_bs16/
+
+[team-name]_[head/torso/tail]_[validation/test]_[datetime].run
+
+python matchmaker/evaluation/prepare_trec_submission.py --max-rank 200 --run-id tu-wien_tail_test_20210607 --res-in /home/dlmain/shofstaetter/tripclick-experiments/3bert_fix_ensemble_avg/top200_rerank_tail_raw-ensemble-output.txt --res-out /home/dlmain/shofstaetter/tripclick-experiments/3bert_fix_ensemble_avg/tu-wien_tail_test_20210607.run
+python matchmaker/evaluation/prepare_trec_submission.py --max-rank 200 --run-id tu-wien_head_test_20210607 --res-in /home/dlmain/shofstaetter/tripclick-experiments/3bert_fix_ensemble_avg/top200_rerank_head_dctr-ensemble-output.txt --res-out /home/dlmain/shofstaetter/tripclick-experiments/3bert_fix_ensemble_avg/tu-wien_head_test_20210607.run
+python matchmaker/evaluation/prepare_trec_submission.py --max-rank 200 --run-id tu-wien_torso_test_20210607 --res-in /home/dlmain/shofstaetter/tripclick-experiments/3bert_fix_ensemble_avg/top200_rerank_torso_raw-ensemble-output.txt --res-out /home/dlmain/shofstaetter/tripclick-experiments/3bert_fix_ensemble_avg/tu-wien_torso_test_20210607.run
+
+
+
+
+python matchmaker/train.py --continue-folder /home/dlmain/shofstaetter/tripclick-experiments/2021-04-14_1100_fix_pubmedbert_full_cat_bs16/
+
+python matchmaker/train.py --continue-folder 
+python matchmaker/train.py --continue-folder 
+
+/home/dlmain/shofstaetter/tripclick-experiments/2021-04-08_1000_fix_pubmedbert_cat_bs16/
+/home/dlmain/shofstaetter/tripclick-experiments/2021-04-13_1551_fix_scibert_colbert_bs16/
+
+
+CUDA_VISIBLE_DEVICES=2 python matchmaker/train.py --run-name mini-lm12_dot_bs32 --config-file matchmaker/configs/defaults.yaml matchmaker/configs/datasets/tr-msmarco-passage-dot-rank.yaml \
+matchmaker/configs/models/bert_dot.yaml  --config-overwrites "bert_pretrained_model: microsoft/MiniLM-L12-H384-uncased,train_tsv: /data01/hofstaetter/data/msmarco-passage/train/triples.train.small-split4/*"
+
+CUDA_VISIBLE_DEVICES=4 python matchmaker/train.py --run-name mini-lm12_dot_bs32_margin-mse --config-file matchmaker/configs/defaults.yaml matchmaker/configs/datasets/tr-msmarco-passage-dot-rank.yaml \
+matchmaker/configs/models/bert_dot.yaml matchmaker/configs/models/teacher.yaml --config-overwrites "bert_pretrained_model: microsoft/MiniLM-L12-H384-uncased"
+
+CUDA_VISIBLE_DEVICES=5,3 python matchmaker/train.py --run-name mini-lm12_dot_bs32_tasb --config-file matchmaker/configs/defaults.yaml matchmaker/configs/datasets/tr-msmarco-passage-dot-rank.yaml \
+matchmaker/configs/models/bert_dot_dynamic.yaml --config-overwrites "bert_pretrained_model: microsoft/MiniLM-L12-H384-uncased"
+
+
+
+CUDA_VISIBLE_DEVICES=5 python matchmaker/dense_retrieval.py encode+index+search --run-name tasb_256_onnx_optimize_gpu_level99 --config config/dense_retrieval/tr-msmarco.yaml
+CUDA_VISIBLE_DEVICES=4,5 python matchmaker/dense_retrieval.py index+search --run-name tasb_256_recheck_index_search --config matchmaker/configs/vector_service/tr-msmarco.yaml --config-overwrites "continue_folder: /mnt/nvme-local/hofstaetter/msmarco-retrieval-experiments/2021-06-02_0926_tasb_256_recheck"
+
+CUDA_VISIBLE_DEVICES=4,5 python matchmaker/dense_retrieval.py index+search --run-name tasb_256_recheck_hnsw --config matchmaker/configs/vector_service/tr-msmarco.yaml --config-overwrites "continue_folder: /mnt/nvme-local/hofstaetter/msmarco-retrieval-experiments/2021-06-02_0926_tasb_256_recheck"
+
+
+faiss_param=(64 128 256 512 1024)
+for i in ${faiss_param[@]}; do
+CUDA_VISIBLE_DEVICES=5 python matchmaker/dense_retrieval.py index+search --run-name tasb_256_hnsw${i} --config config/dense_retrieval/tr-msmarco.yaml \
+--config-overwrites "continue_folder: /mnt/nvme-local/hofstaetter/msmarco-retrieval-experiments/2021-06-04_0937_tasb_256_recheck_newversions,faiss_index_type: hnsw,faiss_hnsw_graph_neighbors: ${i},faiss_hnsw_efConstruction: ${i},faiss_hnsw_efSearch: ${i}"
+done
+
+
+CUDA_VISIBLE_DEVICES=5 python matchmaker/dense_retrieval.py index+search --run-name tasb_256_hnsw_n64_cs128 --config config/dense_retrieval/tr-msmarco.yaml \
+--config-overwrites "continue_folder: /mnt/nvme-local/hofstaetter/msmarco-retrieval-experiments/2021-06-04_0937_tasb_256_recheck_newversions,faiss_index_type: hnsw,faiss_hnsw_graph_neighbors: 64,faiss_hnsw_efConstruction: 128,faiss_hnsw_efSearch: 128"
+
+CUDA_VISIBLE_DEVICES=5 python matchmaker/dense_retrieval.py index+search --run-name tasb_256_hnsw_ns64_c128 --config config/dense_retrieval/tr-msmarco.yaml \
+--config-overwrites "continue_folder: /mnt/nvme-local/hofstaetter/msmarco-retrieval-experiments/2021-06-04_0937_tasb_256_recheck_newversions,faiss_index_type: hnsw,faiss_hnsw_graph_neighbors: 64,faiss_hnsw_efConstruction: 128,faiss_hnsw_efSearch: 64"
+
+CUDA_VISIBLE_DEVICES=5 python matchmaker/dense_retrieval.py index+search --run-name tasb_256_hnsw_n128_cs64 --config config/dense_retrieval/tr-msmarco.yaml \
+--config-overwrites "continue_folder: /mnt/nvme-local/hofstaetter/msmarco-retrieval-experiments/2021-06-04_0937_tasb_256_recheck_newversions,faiss_index_type: hnsw,faiss_hnsw_graph_neighbors: 128,faiss_hnsw_efConstruction: 64,faiss_hnsw_efSearch: 64"
+
+
+CUDA_VISIBLE_DEVICES=5 python matchmaker/dense_retrieval.py index+search --run-name tasb_256_hnsw_n96_cs256 --config config/dense_retrieval/tr-msmarco.yaml \
+--config-overwrites "continue_folder: /mnt/nvme-local/hofstaetter/msmarco-retrieval-experiments/2021-06-04_0937_tasb_256_recheck_newversions,faiss_index_type: hnsw,faiss_hnsw_graph_neighbors: 96,faiss_hnsw_efConstruction: 256,faiss_hnsw_efSearch: 256"
+
+
+CUDA_VISIBLE_DEVICES=4 python matchmaker/dense_retrieval.py index+search --run-name tasb_256_ivf_c20k_s100 --config config/dense_retrieval/tr-msmarco.yaml \
+--config-overwrites "continue_folder: /mnt/nvme-local/hofstaetter/msmarco-retrieval-experiments/2021-06-04_0937_tasb_256_recheck_newversions,faiss_index_type: ivf,faiss_use_gpu: False,faiss_ivf_search_probe_count: 100,faiss_ivf_list_count: 20000"
+
+CUDA_VISIBLE_DEVICES=4 python matchmaker/dense_retrieval.py index+search --run-name tasb_256_ivf_c2k_s100 --config config/dense_retrieval/tr-msmarco.yaml \
+--config-overwrites "continue_folder: /mnt/nvme-local/hofstaetter/msmarco-retrieval-experiments/2021-06-04_0937_tasb_256_recheck_newversions,faiss_index_type: ivf,faiss_use_gpu: False,faiss_ivf_search_probe_count: 100,faiss_ivf_list_count: 2000"
+
+CUDA_VISIBLE_DEVICES=4 python matchmaker/dense_retrieval.py index+search --run-name tasb_256_ivf_c10k_s500 --config config/dense_retrieval/tr-msmarco.yaml \
+--config-overwrites "continue_folder: /mnt/nvme-local/hofstaetter/msmarco-retrieval-experiments/2021-06-04_0937_tasb_256_recheck_newversions,faiss_index_type: ivf,faiss_use_gpu: False,faiss_ivf_search_probe_count: 500,faiss_ivf_list_count: 10000"
+
+
+CUDA_VISIBLE_DEVICES=4 python matchmaker/dense_retrieval.py encode+index+search --run-name bertdot_tas-b_bs32_dim192_init-trained768 --config config/dense_retrieval/tr-msmarco.yaml \
+--config-overwrites "trained_model: /data01/hofstaetter/msmarco-passage-experiments-neweval/2021-07-13_1922_bertdot_tas-b_bs32_dim192_init-trained768"
+
+
+
+
+
+ivf_1_param=(64 128 256 512 1024)
+ivf_2_param=(640 1280 2560 5120 10240)
+for i in ${faiss_param[@]}; do
+CUDA_VISIBLE_DEVICES=5 python matchmaker/dense_retrieval.py index+search --run-name tasb_256_hnsw${i} --config config/dense_retrieval/tr-msmarco.yaml \
+--config-overwrites "continue_folder: /mnt/nvme-local/hofstaetter/msmarco-retrieval-experiments/2021-06-04_0937_tasb_256_recheck_newversions,faiss_index_type: ivf,faiss_hnsw_graph_neighbors: ${i},faiss_hnsw_efConstruction: ${i},faiss_hnsw_efSearch: ${i}"
+done
+
+python matchmaker/train.py --config-file config/train/defaults.yaml config/train/data/dl-msmarco-passage-dot-rank.yaml config/train/models/colbert.yaml config/train/modes/teacher.yaml --run-name msmarcopp_colbert_dim768_bs512_margin-mseT2
+
+
+CUDA_VISIBLE_DEVICES=0,1 python matchmaker/train.py --config-file config/train/defaults.yaml config/train/data/dl-msmarco-passage-dot-rank.yaml config/train/models/colbert.yaml config/train/modes/tas_balanced.yaml --run-name colbert_dim768_bs240_tas-b_msmarcopp --config-overwrites "batch_size_train: 240,dynamic_teacher_path: /home/dlmain/shofstaetter/experiments/msmarco-passage-experiments-neweval/2021-07-08_1815_colbert_dim768_bs240_margin-mseT2_msmarcopp"
+
+
+CUDA_VISIBLE_DEVICES=0,1 python matchmaker/train.py --config-file config/train/defaults.yaml config/train/data/dl-msmarco-passage-dot-rank.yaml config/train/models/bert_dot.yaml config/train/modes/tas_balanced.yaml --run-name bertdot_tas-b_bs240_colbert240_msmarcopp --config-overwrites "batch_size_train: 240,dynamic_teacher_path: /home/dlmain/shofstaetter/experiments/msmarco-passage-experiments-neweval/2021-07-08_1815_colbert_dim768_bs240_margin-mseT2_msmarcopp"
+CUDA_VISIBLE_DEVICES=0,1 python matchmaker/train.py --config-file config/train/defaults.yaml config/train/data/dl-msmarco-passage-dot-rank.yaml config/train/models/bert_dot.yaml config/train/modes/tas_balanced.yaml --run-name bertdot_tas-b_bs240_colbert240 --config-overwrites "batch_size_train: 240,dynamic_teacher_path: /home/dlmain/shofstaetter/experiments/msmarco-passage-experiments-neweval/2021-07-08_1815_colbert_dim768_bs240_margin-mseT2,dynamic_pairs_with_teacher_scores: /scratch/hofstaetter/msmarco-passage/T2-train-ids.tsv"
+
+
+CUDA_VISIBLE_DEVICES=5,4 python matchmaker/train.py --config-file config/train/defaults.yaml config/train/data/tr-msmarco-passage-dot-rank.yaml config/train/models/bert_dot.yaml config/train/modes/tas_balanced.yaml --run-name bertdot_tas-b_bs128_dim192_init-trained768 --config-overwrites "batch_size_train: 128,bert_dot_compress_dim: 192,warmstart_model_path: /data01/hofstaetter/msmarco-passage-experiments-neweval/2021-01-13_1042_uni10dyn2k_take1_distildot_bs256_trainT2_trainColBertT2_lambda0_75/best-model.pytorch-state-dict"
+CUDA_VISIBLE_DEVICES=5,4 python matchmaker/train.py --config-file config/train/defaults.yaml config/train/data/tr-msmarco-passage-dot-rank.yaml config/train/models/bert_dot.yaml config/train/modes/tas_balanced.yaml --run-name bertdot_tas-b_bs128_dim160_init-trained768 --config-overwrites "batch_size_train: 128,bert_dot_compress_dim: 160,warmstart_model_path: /data01/hofstaetter/msmarco-passage-experiments-neweval/2021-01-13_1042_uni10dyn2k_take1_distildot_bs256_trainT2_trainColBertT2_lambda0_75/best-model.pytorch-state-dict"
+CUDA_VISIBLE_DEVICES=5,4 python matchmaker/train.py --config-file config/train/defaults.yaml config/train/data/tr-msmarco-passage-dot-rank.yaml config/train/models/bert_dot.yaml config/train/modes/tas_balanced.yaml --run-name bertdot_tas-b_bs128_dim256_init-trained768 --config-overwrites "batch_size_train: 128,bert_dot_compress_dim: 256,warmstart_model_path: /data01/hofstaetter/msmarco-passage-experiments-neweval/2021-01-13_1042_uni10dyn2k_take1_distildot_bs256_trainT2_trainColBertT2_lambda0_75/best-model.pytorch-state-dict"
+
+CUDA_VISIBLE_DEVICES=4 python matchmaker/dense_retrieval.py encode+index+search --run-name bertdot_tas-b_b256_onnx_full --config config/dense_retrieval/tr-msmarco-passage-v2.yaml
+
+CUDA_VISIBLE_DEVICES=0,1 python matchmaker/dense_retrieval.py encode+index+search --run-name bertdot_tas-b_bs240_colbert240_msmarcopp --config config/dense_retrieval/dl-msmarco.yaml --config-overwrites "trained_model: /home/dlmain/shofstaetter/experiments/msmarco-passage-experiments-neweval/2021-07-18_1002_bertdot_tas-b_bs240_colbert240_msmarcopp,onnx_use_inference: False"
+
+
+CUDA_VISIBLE_DEVICES=0,1 python matchmaker/train.py --config-file config/train/defaults.yaml config/train/data/dl-msmarco-passage-dot-rank.yaml config/train/models/bert_dot.yaml config/train/modes/tas_balanced.yaml --run-name bertdot_tas-b_bs240_compress192dims_colbert240_msmarcopp --config-overwrites "bert_dot_compress_dim: 192,batch_size_train: 240,dynamic_teacher_path: /home/dlmain/shofstaetter/experiments/msmarco-passage-experiments-neweval/2021-07-08_1815_colbert_dim768_bs240_margin-mseT2_msmarcopp,warmstart_model_path: /home/dlmain/shofstaetter/experiments/msmarco-passage-experiments-neweval/2021-07-18_1002_bertdot_tas-b_bs240_colbert240_msmarcopp/best-model.pytorch-state-dict"
+
+
+python -m pyserini.index -collection JsonCollection -generator DefaultLuceneDocumentGenerator \
+ -threads 9 -input /newstorage4/hofstaetter/sample_100_keepall_jsonl_new/ \
+ -index deep_ct_pyserini_index
+
+python -m pyserini.search --topics msmarco-passage-dev-subset \
+ --index deep_ct_pyserini_index \
+ --output runs/deep_ct-dev7k.bm25.txt \
+ --bm25 --output-format msmarco --hits 1000 --k1 10 --b 0.9
+
+
+python -m pyserini.search --topics /data01/hofstaetter/data/msmarco-passage/queries/msmarco-test2019-queries.tsv \
+ --index deep_ct_pyserini_index \
+ --output runs/deep_ct-trec19.bm25.txt \
+ --bm25 --output-format msmarco --hits 1000 --k1 10 --b 0.9
+
+
+python -m pyserini.search --topics /data01/hofstaetter/data/msmarco-passage/leaderboard/msmarco-test2020-queries.tsv \
+ --index deep_ct_pyserini_index \
+ --output runs/deep_ct-trec20.bm25.txt \
+ --bm25 --output-format msmarco --hits 1000 --k1 10 --b 0.9
+
+
+python -m pyserini.search --topics /data01/hofstaetter/data/msmarco-passage/queries/queries.dev.judged.not-subset.tsv \
+ --index deep_ct_pyserini_index \
+ --output runs/deep_ct-dev49k.bm25.txt \
+ --bm25 --output-format msmarco --hits 1000 --k1 10 --b 0.9
+
+
+python convert_msmarco_passage_to_anserini.py \
+  --collection_path=/data01/hofstaetter/data/msmarco-passage/collection.tsv \
+  --predictions=../predicted_queries_topk.txt-1004000 \
+  --output_folder=../msmarco-passage-doct5query
+
+
+python -m pyserini.index -collection JsonCollection -generator DefaultLuceneDocumentGenerator \
+ -threads 9 -input ./msmarco-passage-doct5query \
+ -index msmarco-passage-doct5query_index
+
+python -m pyserini.search --topics msmarco-passage-dev-subset \
+ --index msmarco-passage-doct5query_index \
+ --output runs/dt5q-dev7k.bm25.txt \
+ --bm25 --output-format msmarco --hits 1000
+
+
+python -m pyserini.search --topics /data01/hofstaetter/data/msmarco-passage/queries/msmarco-test2019-queries.tsv \
+ --index msmarco-passage-doct5query_index \
+ --output runs/dt5q-trec19.bm25.txt \
+ --bm25 --output-format msmarco --hits 1000
+
+
+python -m pyserini.search --topics /data01/hofstaetter/data/msmarco-passage/leaderboard/msmarco-test2020-queries.tsv \
+ --index msmarco-passage-doct5query_index \
+ --output runs/dt5q-trec20.bm25.txt \
+ --bm25 --output-format msmarco --hits 1000
+
+
+python -m pyserini.search --topics /data01/hofstaetter/data/msmarco-passage/queries/queries.dev.judged.not-subset.tsv \
+ --index msmarco-passage-doct5query_index \
+ --output runs/dt5q-dev49k.bm25.txt \
+ --bm25 --output-format msmarco --hits 1000
+
+
+python matchmaker/evaluation/per_query_results.py --qrel /data01/hofstaetter/data/msmarco-passage/qrels/qrels.dev.tsv --results  /newstorage4/hofstaetter/runs/dt5q-dev49k.bm25.txt --out-file /newstorage4/hofstaetter/runs/dt5q-dev49k_mrr10.txt
+python matchmaker/evaluation/per_query_results.py --qrel /data01/hofstaetter/data/msmarco-passage/qrels/qrels.dev.tsv --results  /newstorage4/hofstaetter/runs/deep_ct-dev49k.bm25.txt --out-file /newstorage4/hofstaetter/runs/deep_ct-dev_large_mrr10.txt
+
+
+CUDA_VISIBLE_DEVICES=5 python matchmaker/dense_retrieval.py encode+index+search --run-name bertdot_tas-b_maxp124 --config config/dense_retrieval/tr-msmarco-document.yaml
+
+
+
+
+python -m pyserini.search --topics /data01/hofstaetter/data/msmarco-document/msmarco-docdev-queries.tsv \
+ --index indexes/lucene-index-msmarco-doc \
+ --output runs/dev.msmarco-doc.bm25tuned.txt \
+ --bm25 --output-format msmarco --hits 100 --k1 4.46 --b 0.82
+
+python -m pyserini.search --topics /data01/hofstaetter/data/msmarco-document/leaderboard/msmarco-test2019-queries.tsv \
+ --index indexes/lucene-index-msmarco-doc \
+ --output runs/trec19.msmarco-doc.bm25tuned.txt \
+ --bm25 --output-format msmarco --hits 100 --k1 4.46 --b 0.82
+
+python -m pyserini.search --topics /data01/hofstaetter/data/msmarco-document/leaderboard/msmarco-test2020-queries.tsv \
+ --index indexes/lucene-index-msmarco-doc \
+ --output runs/trec20.msmarco-doc.bm25tuned.txt \
+ --bm25 --output-format msmarco --hits 100 --k1 4.46 --b 0.82
+
+
+
+python convert_msmarco_doc_to_anserini.py \
+  --original_docs_path=../msmarco-docs.tsv.gz \
+  --doc_ids_path=../msmarco_doc_passage_ids.txt \
+  --predictions_path=../doc-predictions/predicted_queries_doc_sample_all.txt \
+  --output_docs_path=../msmarco-doc-expanded-passage/docs.json
+
+
+python -m pyserini.index -collection JsonCollection \
+  -generator DefaultLuceneDocumentGenerator -threads 1 \
+  -input msmarco-doc-expanded-passage -index lucene-index-msmarco-doc-expanded
+
+python -m pyserini.search --topics /data01/hofstaetter/data/msmarco-document/msmarco-docdev-queries.tsv \
+ --index lucene-index-msmarco-doc-expanded \
+ --output runs/dev.msmarco-doc.doct5query.txt \
+ --bm25 --output-format msmarco --hits 100
+
+python -m pyserini.search --topics /data01/hofstaetter/data/msmarco-document/leaderboard/msmarco-test2019-queries.tsv \
+ --index lucene-index-msmarco-doc-expanded \
+ --output runs/trec19.msmarco-doc.doct5query.txt \
+ --bm25 --output-format msmarco --hits 100
+
+python -m pyserini.search --topics /data01/hofstaetter/data/msmarco-document/leaderboard/msmarco-test2020-queries.tsv \
+ --index lucene-index-msmarco-doc-expanded \
+ --output runs/trec20.msmarco-doc.doct5query.txt \
+ --bm25 --output-format msmarco --hits 100
+
+
+python matchmaker/utils/core_metrics.py /data01/hofstaetter/data/msmarco-document/qrels/msmarco-docdev-qrels.tsv /newstorage4/hofstaetter/runs/dev.msmarco-doc.bm25tuned.txt 1
+python matchmaker/utils/core_metrics.py /data01/hofstaetter/data/msmarco-document/qrels/trec2019-qrels-docs.txt /newstorage4/hofstaetter/runs/trec19.msmarco-doc.bm25tuned.txt 2
+python matchmaker/utils/core_metrics.py /data01/hofstaetter/data/msmarco-passage/qrels/2020-qrels-docs-final.txt /newstorage4/hofstaetter/runs/trec20.msmarco-doc.bm25tuned.txt 2
+
+python matchmaker/utils/core_metrics.py /data01/hofstaetter/data/msmarco-document/qrels/msmarco-docdev-qrels.tsv /newstorage4/hofstaetter/runs/dev.msmarco-doc.doct5query.txt 1
+python matchmaker/utils/core_metrics.py /data01/hofstaetter/data/msmarco-document/qrels/trec2019-qrels-docs.txt /newstorage4/hofstaetter/runs/trec19.msmarco-doc.doct5query.txt 2
+python matchmaker/utils/core_metrics.py /data01/hofstaetter/data/msmarco-passage/qrels/2020-qrels-docs-final.txt /newstorage4/hofstaetter/runs/trec20.msmarco-doc.doct5query.txt 2
+
+
+CUDA_VISIBLE_DEVICES=5 python matchmaker/dense_retrieval.py index+search --run-name bertdot_tas-b_bs240_compress192dims_colbert240_msmarcopp_hnsw128 --config config/dense_retrieval/tr-msmarco-passage-v2.yaml --config-overwrites "continue_folder: /mnt/nvme-local/hofstaetter/msmarco-passage-v2-retrieval-experiments2021-08-04_1843_bertdot_tas-b_bs240_compress192dims_colbert240_msmarcopp/,faiss_index_type: hnsw"
+
+
+
+python analysis/evaluation/prepare_trec_submission.py --res-in /mnt/nvme-local/hofstaetter/msmarco-passage-v2-retrieval-experiments/2021-08-04_1343_bertdot_standalone_full/trec2021_top1000-output.txt --res-out /mnt/nvme-local/hofstaetter/msmarco-passage-v2-retrieval-experiments/2021-08-04_1343_bertdot_standalone_full/trec2021_TUW_DR_Base.txt --max-rank 100 --run-id TUW_DR_Base
+python analysis/evaluation/prepare_trec_submission.py --res-in /mnt/nvme-local/hofstaetter/msmarco-passage-v2-retrieval-experiments/2021-08-02_0941_bertdot_tas-b_onnx_full_augmented-title/trec2021_top1000-output.txt --res-out /mnt/nvme-local/hofstaetter/msmarco-passage-v2-retrieval-experiments/2021-08-02_0941_bertdot_tas-b_onnx_full_augmented-title/trec2021_TUW_TAS-B_768.txt --max-rank 100 --run-id TUW_TAS-B_768
+python analysis/evaluation/prepare_trec_submission.py --res-in /mnt/nvme-local/hofstaetter/msmarco-passage-v2-retrieval-experiments/2021-08-07_1155_bertdot_tas-b_bs240_compress192dims_colbert240_msmarcopp_hnsw96/trec2021_top1000-output.txt --res-out /mnt/nvme-local/hofstaetter/msmarco-passage-v2-retrieval-experiments/2021-08-07_1155_bertdot_tas-b_bs240_compress192dims_colbert240_msmarcopp_hnsw96/trec2021_TUW_TAS-B_ANN.txt --max-rank 100 --run-id TUW_TAS-B_ANN
+
+
+scp shofstae@troubadix.ifs.tuwien.ac.at:/mnt/nvme-local/hofstaetter/msmarco-passage-v2-retrieval-experiments/2021-08-04_1343_bertdot_standalone_full/trec2021_TUW_DR_Base.txt .
+scp shofstae@troubadix.ifs.tuwien.ac.at:/mnt/nvme-local/hofstaetter/msmarco-passage-v2-retrieval-experiments/2021-08-02_0941_bertdot_tas-b_onnx_full_augmented-title/trec2021_TUW_TAS-B_768.txt .
+scp shofstae@troubadix.ifs.tuwien.ac.at:/mnt/nvme-local/hofstaetter/msmarco-passage-v2-retrieval-experiments/2021-08-07_1155_bertdot_tas-b_bs240_compress192dims_colbert240_msmarcopp_hnsw96/trec2021_TUW_TAS-B_ANN.txt .
+
+
+
+python analysis/evaluation/prepare_trec_submission.py --res-in  --res-out  --max-rank 100 --run-id TUW_IDCM_ALL
+python analysis/evaluation/prepare_trec_submission.py --res-in  --res-out  --max-rank 100 --run-id TUW_IDCM_S4
+
+
+
+
+python analysis/evaluation/prepare_trec_submission.py --res-in /home/dlmain/shofstaetter/experiments/msmarco-document-experiments/2020-08-28_1229_bert_patch_top3weighted_max2k_fix_warmstart_distilcls_bs6_acc4_lr7e6/leaderboardtrec2021_top100-output.txt --res-out /home/dlmain/shofstaetter/experiments/msmarco-document-experiments/2020-08-28_1229_bert_patch_top3weighted_max2k_fix_warmstart_distilcls_bs6_acc4_lr7e6/trec2021_TUW_IDCM_ALL.txt --max-rank 100 --run-id TUW_IDCM_ALL
+python analysis/evaluation/prepare_trec_submission.py --res-in /home/dlmain/shofstaetter/experiments/msmarco-document-experiments/2020-09-24_1021_bps_ck-big_sample4_ndcg2loss/leaderboardtrec2021_top100-output.txt --res-out /home/dlmain/shofstaetter/experiments/msmarco-document-experiments/2020-09-24_1021_bps_ck-big_sample4_ndcg2loss/trec2021_TUW_IDCM_S4.txt --max-rank 100 --run-id TUW_IDCM_S4
+
+scp shofstaetter@lbd.zserv.tuwien.ac.at:/home/dlmain/shofstaetter/experiments/msmarco-document-experiments/2020-08-28_1229_bert_patch_top3weighted_max2k_fix_warmstart_distilcls_bs6_acc4_lr7e6/trec2021_TUW_IDCM_ALL.txt .
+scp shofstaetter@lbd.zserv.tuwien.ac.at:/home/dlmain/shofstaetter/experiments/msmarco-document-experiments/2020-09-24_1021_bps_ck-big_sample4_ndcg2loss/trec2021_TUW_IDCM_S4.txt .
+
+
+python preprocessing/generate_validation_input_from_candidate_set.py --out-file  /newstorage4/hofstaetter/ir_datasets/msmarco-document-v2/docv2_dev_top100_tuples.tsv --candidate-file /newstorage4/hofstaetter/docv2_dev_top100.txt --collection-file /newstorage4/hofstaetter/ir_datasets/msmarco-document-v2/collection.tsv --query-file /newstorage4/hofstaetter/ir_datasets/msmarco-document-v2/dev1_queries.tsv --top-N 100
+python preprocessing/generate_validation_input_from_candidate_set.py --out-file  /newstorage4/hofstaetter/ir_datasets/msmarco-document-v2/docv2_dev2_top100_tuples.tsv --candidate-file /newstorage4/hofstaetter/docv2_dev2_top100.txt --collection-file /newstorage4/hofstaetter/ir_datasets/msmarco-document-v2/collection.tsv --query-file /newstorage4/hofstaetter/ir_datasets/msmarco-document-v2/dev2_queries.tsv --top-N 100
+python preprocessing/generate_validation_input_from_candidate_set.py --out-file  /newstorage4/hofstaetter/ir_datasets/msmarco-document-v2/2021_document_top100_tuples.tsv --candidate-file /newstorage4/hofstaetter/2021_document_top100.txt --collection-file /newstorage4/hofstaetter/ir_datasets/msmarco-document-v2/collection.tsv --query-file /newstorage4/hofstaetter/2021_queries.tsv --top-N 100
+
+
+/home/dlmain/shofstaetter/experiments/msmarco-document-experiments/2020-08-28_1229_bert_patch_top3weighted_max2k_fix_warmstart_distilcls_bs6_acc4_lr7e6
+/home/dlmain/shofstaetter/experiments/msmarco-document-experiments/2020-09-24_1021_bps_ck-big_sample4_ndcg2loss
+
+2020-09-24 10:21 │ bps_ck-big_sample4_ndcg2loss
+
+
+
+
+python analysis\visualizing\wsdm21\track_word_overlap_errors.py --results "C:\Users\sebas\data\tbd21\new-eval-runs\bert_untrained_dev_large_top5.txt" --collection "C:\Users\sebas\data\msmarco\collection\collection-fixed.tsv" --queries "C:\Users\sebas\data\msmarco\queries.dev.not-subset.tsv"
+
+
+
+
+python analysis/evaluation/batch_sig_test_all.py  --results /mnt/nvme-local/hofstaetter/msmarco-retrieval-experiments/2021-06-05_1355_tasb_256_hnsw128/trec2019_top1000-output.txt,/data01/hofstaetter/data/msmarco-passage/fs_results/plain_bm25_best_msmarco-test2019_top1k.txt --out-file /mnt/nvme-local/hofstaetter/msmarco-retrieval-experiments/wsdm_sig_test_fig1  --qrel /data01/hofstaetter/data/msmarco-passage/qrels/trec2019-qrels-pass.txt --bp 2
+
+
+/mnt/nvme-local/hofstaetter/msmarco-doc-retrieval-experiments/2021-04-22_1457_sanity_check_tasb_msmarcopassage_max512/
+/mnt/nvme-local/hofstaetter/msmarco-doc-retrieval-experiments/2021-08-04_1854_bertdot_tas-b_maxp400_maxdoc4000/
+/mnt/nvme-local/hofstaetter/msmarco-doc-retrieval-experiments/2021-08-06_1317_tasb_msmarcopassage_max512_hnsw128/
+/mnt/nvme-local/hofstaetter/msmarco-doc-retrieval-experiments/2021-08-06_1322_bertdot_tas-b_maxp400_maxdoc4000_hnsw128/
+
+/newstorage4/hofstaetter/runs/dev.msmarco-doc.bm25tuned.txt
+/newstorage4/hofstaetter/runs/trec19.msmarco-doc.bm25tuned.txt
+/newstorage4/hofstaetter/runs/trec20.msmarco-doc.bm25tuned.txt
+
+
+
+python analysis/evaluation/batch_sig_test_all.py  --results /newstorage4/hofstaetter/runs/trec19.msmarco-doc.bm25tuned.txt,/mnt/nvme-local/hofstaetter/msmarco-doc-retrieval-experiments/2021-04-22_1457_sanity_check_tasb_msmarcopassage_max512/trec2019_top1k-output.txt,/mnt/nvme-local/hofstaetter/msmarco-doc-retrieval-experiments/2021-08-04_1854_bertdot_tas-b_maxp400_maxdoc4000/trec2019_top1k-output.txt,/mnt/nvme-local/hofstaetter/msmarco-doc-retrieval-experiments/2021-08-06_1317_tasb_msmarcopassage_max512_hnsw128/trec2019_top1k-output.txt,/mnt/nvme-local/hofstaetter/msmarco-doc-retrieval-experiments/2021-08-06_1322_bertdot_tas-b_maxp400_maxdoc4000_hnsw128/trec2019_top1k-output.txt --out-file /mnt/nvme-local/hofstaetter/msmarco-doc-retrieval-experiments/wsdm_statsig_trec19 --qrel  /data01/hofstaetter/data/msmarco-document/qrels/trec2019-qrels-docs.txt --bp 2
+python analysis/evaluation/batch_sig_test_all.py  --results /newstorage4/hofstaetter/runs/trec20.msmarco-doc.bm25tuned.txt,/mnt/nvme-local/hofstaetter/msmarco-doc-retrieval-experiments/2021-04-22_1457_sanity_check_tasb_msmarcopassage_max512/trec2020_top1k-output.txt,/mnt/nvme-local/hofstaetter/msmarco-doc-retrieval-experiments/2021-08-04_1854_bertdot_tas-b_maxp400_maxdoc4000/trec2020_top1k-output.txt,/mnt/nvme-local/hofstaetter/msmarco-doc-retrieval-experiments/2021-08-06_1317_tasb_msmarcopassage_max512_hnsw128/trec2020_top1k-output.txt,/mnt/nvme-local/hofstaetter/msmarco-doc-retrieval-experiments/2021-08-06_1322_bertdot_tas-b_maxp400_maxdoc4000_hnsw128/trec2020_top1k-output.txt --out-file /mnt/nvme-local/hofstaetter/msmarco-doc-retrieval-experiments/wsdm_statsig_trec20 --qrel /data01/hofstaetter/data/msmarco-passage/qrels/2020-qrels-docs-final.txt --bp 2
+python analysis/evaluation/batch_sig_test_all.py  --results /newstorage4/hofstaetter/runs/dev.msmarco-doc.bm25tuned.txt,/mnt/nvme-local/hofstaetter/msmarco-doc-retrieval-experiments/2021-04-22_1457_sanity_check_tasb_msmarcopassage_max512/dev_top1k-output.txt,/mnt/nvme-local/hofstaetter/msmarco-doc-retrieval-experiments/2021-08-04_1854_bertdot_tas-b_maxp400_maxdoc4000/dev_top1k-output.txt,/mnt/nvme-local/hofstaetter/msmarco-doc-retrieval-experiments/2021-08-06_1317_tasb_msmarcopassage_max512_hnsw128/dev_top1k-output.txt,/mnt/nvme-local/hofstaetter/msmarco-doc-retrieval-experiments/2021-08-06_1322_bertdot_tas-b_maxp400_maxdoc4000_hnsw128/dev_top1k-output.txt --out-file /mnt/nvme-local/hofstaetter/msmarco-doc-retrieval-experiments/wsdm_statsig_dev --qrel  /data01/hofstaetter/data/msmarco-document/qrels/msmarco-docdev-qrels.tsv --bp 1
+
+
+table 3 train set:
+
+(train) BM25 -> BERT$_{[DOT]}$ (TAS-B) All Clusters Trained s 0.0
+(train) BM25 -> BERT$_{[DOT]}$ (TAS-B) 10% of Clusters Trained s 0.0
+(train) BM25 -> BERT$_{[DOT]}$ (TAS-B) only 10% queries s 0.0
+(train) BM25 -> BERT$_{[DOT]}$ (TAS-B) rest 1.8k clusters s 0.0
+(train) BERT$_{[DOT]}$ (TAS-B) All Clusters Trained -> BM25 s 0.0
+(train) BERT$_{[DOT]}$ (TAS-B) All Clusters Trained -> BERT$_{[DOT]}$ (TAS-B) 10% of Clusters Trained s 0.0
+(train) BERT$_{[DOT]}$ (TAS-B) All Clusters Trained -> BERT$_{[DOT]}$ (TAS-B) only 10% queries s 0.0
+(train) BERT$_{[DOT]}$ (TAS-B) All Clusters Trained -> BERT$_{[DOT]}$ (TAS-B) rest 1.8k clusters s 1.6407505199791513e-34
+(train) BERT$_{[DOT]}$ (TAS-B) 10% of Clusters Trained -> BM25 s 0.0
+(train) BERT$_{[DOT]}$ (TAS-B) 10% of Clusters Trained -> BERT$_{[DOT]}$ (TAS-B) All Clusters Trained s 0.0
+(train) BERT$_{[DOT]}$ (TAS-B) 10% of Clusters Trained -> BERT$_{[DOT]}$ (TAS-B) only 10% queries s 0.0
+(train) BERT$_{[DOT]}$ (TAS-B) 10% of Clusters Trained -> BERT$_{[DOT]}$ (TAS-B) rest 1.8k clusters s 0.0
+(train) BERT$_{[DOT]}$ (TAS-B) only 10% queries -> BM25 s 0.0
+(train) BERT$_{[DOT]}$ (TAS-B) only 10% queries -> BERT$_{[DOT]}$ (TAS-B) All Clusters Trained s 0.0
+(train) BERT$_{[DOT]}$ (TAS-B) only 10% queries -> BERT$_{[DOT]}$ (TAS-B) 10% of Clusters Trained s 0.0
+(train) BERT$_{[DOT]}$ (TAS-B) only 10% queries -> BERT$_{[DOT]}$ (TAS-B) rest 1.8k clusters s 0.0
+(train) BERT$_{[DOT]}$ (TAS-B) rest 1.8k clusters -> BM25 s 0.0
+(train) BERT$_{[DOT]}$ (TAS-B) rest 1.8k clusters -> BERT$_{[DOT]}$ (TAS-B) All Clusters Trained s 1.6407505199791513e-34
+(train) BERT$_{[DOT]}$ (TAS-B) rest 1.8k clusters -> BERT$_{[DOT]}$ (TAS-B) 10% of Clusters Trained s 0.0
+(train) BERT$_{[DOT]}$ (TAS-B) rest 1.8k clusters -> BERT$_{[DOT]}$ (TAS-B) only 10% queries s 0.0
+Backend TkAgg is interactive backend. Turning interactive mode on.
+(no train) BM25 -> BERT$_{[DOT]}$ (TAS-B) All Clusters Trained s 0.0
+(no train) BM25 -> BERT$_{[DOT]}$ (TAS-B) 10% of Clusters Trained s 0.0
+(no train) BM25 -> BERT$_{[DOT]}$ (TAS-B) only 10% queries s 0.0
+(no train) BM25 -> BERT$_{[DOT]}$ (TAS-B) rest 1.8k clusters s 0.0
+(no train) BERT$_{[DOT]}$ (TAS-B) All Clusters Trained -> BM25 s 0.0
+(no train) BERT$_{[DOT]}$ (TAS-B) All Clusters Trained -> BERT$_{[DOT]}$ (TAS-B) 10% of Clusters Trained s 0.0
+(no train) BERT$_{[DOT]}$ (TAS-B) All Clusters Trained -> BERT$_{[DOT]}$ (TAS-B) only 10% queries s 2.766734728087484e-285
+(no train) BERT$_{[DOT]}$ (TAS-B) All Clusters Trained -> BERT$_{[DOT]}$ (TAS-B) rest 1.8k clusters s 0.0
+(no train) BERT$_{[DOT]}$ (TAS-B) 10% of Clusters Trained -> BM25 s 0.0
+(no train) BERT$_{[DOT]}$ (TAS-B) 10% of Clusters Trained -> BERT$_{[DOT]}$ (TAS-B) All Clusters Trained s 0.0
+(no train) BERT$_{[DOT]}$ (TAS-B) 10% of Clusters Trained -> BERT$_{[DOT]}$ (TAS-B) only 10% queries s 0.0
+(no train) BERT$_{[DOT]}$ (TAS-B) 10% of Clusters Trained -> BERT$_{[DOT]}$ (TAS-B) rest 1.8k clusters s 0.0
+(no train) BERT$_{[DOT]}$ (TAS-B) only 10% queries -> BM25 s 0.0
+(no train) BERT$_{[DOT]}$ (TAS-B) only 10% queries -> BERT$_{[DOT]}$ (TAS-B) All Clusters Trained s 2.766734728087484e-285
+(no train) BERT$_{[DOT]}$ (TAS-B) only 10% queries -> BERT$_{[DOT]}$ (TAS-B) 10% of Clusters Trained s 0.0
+(no train) BERT$_{[DOT]}$ (TAS-B) only 10% queries -> BERT$_{[DOT]}$ (TAS-B) rest 1.8k clusters  0.06585179020871233
+(no train) BERT$_{[DOT]}$ (TAS-B) rest 1.8k clusters -> BM25 s 0.0
+(no train) BERT$_{[DOT]}$ (TAS-B) rest 1.8k clusters -> BERT$_{[DOT]}$ (TAS-B) All Clusters Trained s 0.0
+(no train) BERT$_{[DOT]}$ (TAS-B) rest 1.8k clusters -> BERT$_{[DOT]}$ (TAS-B) 10% of Clusters Trained s 0.0
+
+
+table 3 test set
+
+(train) BM25 -> BERT$_{[DOT]}$ (TAS-B) s 0.0
+(train) BM25 -> BERT$_{[DOT]}$ (TAS-B) only 200 clusters s 0.0
+(train) BM25 -> BERT$_{[DOT]}$ (TAS-B) All queries trained s 0.0
+(train) BM25 -> BERT$_{[DOT]}$ (TAS-B) only 10% queries s 0.0
+(train) BM25 -> BERT$_{[DOT]}$ (TAS-B) rest 1.8k clusters s 0.0
+(train) BERT$_{[DOT]}$ (TAS-B) -> BM25 s 0.0
+(train) BERT$_{[DOT]}$ (TAS-B) -> BERT$_{[DOT]}$ (TAS-B) only 200 clusters s 1.586119765028888e-277
+(train) BERT$_{[DOT]}$ (TAS-B) -> BERT$_{[DOT]}$ (TAS-B) All queries trained s 0.0020823666530860037
+(train) BERT$_{[DOT]}$ (TAS-B) -> BERT$_{[DOT]}$ (TAS-B) only 10% queries s 5.273132844672666e-119
+(train) BERT$_{[DOT]}$ (TAS-B) -> BERT$_{[DOT]}$ (TAS-B) rest 1.8k clusters  0.053400432809444724
+(train) BERT$_{[DOT]}$ (TAS-B) only 200 clusters -> BM25 s 0.0
+(train) BERT$_{[DOT]}$ (TAS-B) only 200 clusters -> BERT$_{[DOT]}$ (TAS-B) s 1.586119765028888e-277
+(train) BERT$_{[DOT]}$ (TAS-B) only 200 clusters -> BERT$_{[DOT]}$ (TAS-B) All queries trained s 4.695312263599463e-295
+(train) BERT$_{[DOT]}$ (TAS-B) only 200 clusters -> BERT$_{[DOT]}$ (TAS-B) only 10% queries s 3.4780032482482597e-57
+(train) BERT$_{[DOT]}$ (TAS-B) only 200 clusters -> BERT$_{[DOT]}$ (TAS-B) rest 1.8k clusters s 4.907056082200465e-252
+(train) BERT$_{[DOT]}$ (TAS-B) All queries trained -> BM25 s 0.0
+(train) BERT$_{[DOT]}$ (TAS-B) All queries trained -> BERT$_{[DOT]}$ (TAS-B) s 0.0020823666530860037
+(train) BERT$_{[DOT]}$ (TAS-B) All queries trained -> BERT$_{[DOT]}$ (TAS-B) only 200 clusters s 4.695312263599463e-295
+(train) BERT$_{[DOT]}$ (TAS-B) All queries trained -> BERT$_{[DOT]}$ (TAS-B) only 10% queries s 3.905146839998548e-133
+(train) BERT$_{[DOT]}$ (TAS-B) All queries trained -> BERT$_{[DOT]}$ (TAS-B) rest 1.8k clusters s 2.0656497416324876e-06
+(train) BERT$_{[DOT]}$ (TAS-B) only 10% queries -> BM25 s 0.0
+(train) BERT$_{[DOT]}$ (TAS-B) only 10% queries -> BERT$_{[DOT]}$ (TAS-B) s 5.273132844672666e-119
+(train) BERT$_{[DOT]}$ (TAS-B) only 10% queries -> BERT$_{[DOT]}$ (TAS-B) only 200 clusters s 3.4780032482482597e-57
+(train) BERT$_{[DOT]}$ (TAS-B) only 10% queries -> BERT$_{[DOT]}$ (TAS-B) All queries trained s 3.905146839998548e-133
+(train) BERT$_{[DOT]}$ (TAS-B) only 10% queries -> BERT$_{[DOT]}$ (TAS-B) rest 1.8k clusters s 4.2287984596658735e-109
+(train) BERT$_{[DOT]}$ (TAS-B) rest 1.8k clusters -> BM25 s 0.0
+(train) BERT$_{[DOT]}$ (TAS-B) rest 1.8k clusters -> BERT$_{[DOT]}$ (TAS-B)  0.053400432809444724
+(train) BERT$_{[DOT]}$ (TAS-B) rest 1.8k clusters -> BERT$_{[DOT]}$ (TAS-B) only 200 clusters s 4.907056082200465e-252
+(train) BERT$_{[DOT]}$ (TAS-B) rest 1.8k clusters -> BERT$_{[DOT]}$ (TAS-B) All queries trained s 2.0656497416324876e-06
+(train) BERT$_{[DOT]}$ (TAS-B) rest 1.8k clusters -> BERT$_{[DOT]}$ (TAS-B) only 10% queries s 4.2287984596658735e-109
+(no train) BM25 -> BERT$_{[DOT]}$ (TAS-B) s 4.427810419630042e-134
+(no train) BM25 -> BERT$_{[DOT]}$ (TAS-B) only 200 clusters s 1.2569168452794509e-107
+(no train) BM25 -> BERT$_{[DOT]}$ (TAS-B) All queries trained s 1.4760061877327223e-138
+(no train) BM25 -> BERT$_{[DOT]}$ (TAS-B) only 10% queries s 3.3226064055598065e-92
+(no train) BM25 -> BERT$_{[DOT]}$ (TAS-B) rest 1.8k clusters s 8.038080487576256e-127
+(no train) BERT$_{[DOT]}$ (TAS-B) -> BM25 s 4.427810419630042e-134
+(no train) BERT$_{[DOT]}$ (TAS-B) -> BERT$_{[DOT]}$ (TAS-B) only 200 clusters s 1.0813806699136697e-06
+(no train) BERT$_{[DOT]}$ (TAS-B) -> BERT$_{[DOT]}$ (TAS-B) All queries trained  0.24716878970870285
+(no train) BERT$_{[DOT]}$ (TAS-B) -> BERT$_{[DOT]}$ (TAS-B) only 10% queries s 8.245098362389414e-15
+(no train) BERT$_{[DOT]}$ (TAS-B) -> BERT$_{[DOT]}$ (TAS-B) rest 1.8k clusters  0.06944783786146694
+(no train) BERT$_{[DOT]}$ (TAS-B) only 200 clusters -> BM25 s 1.2569168452792362e-107
+(no train) BERT$_{[DOT]}$ (TAS-B) only 200 clusters -> BERT$_{[DOT]}$ (TAS-B) s 1.0813806699136697e-06
+(no train) BERT$_{[DOT]}$ (TAS-B) only 200 clusters -> BERT$_{[DOT]}$ (TAS-B) All queries trained s 1.5257518280620432e-08     
+(no train) BERT$_{[DOT]}$ (TAS-B) only 200 clusters -> BERT$_{[DOT]}$ (TAS-B) only 10% queries s 0.0025272395509676497
+(no train) BERT$_{[DOT]}$ (TAS-B) only 200 clusters -> BERT$_{[DOT]}$ (TAS-B) rest 1.8k clusters s 0.0003671863245243066       
+(no train) BERT$_{[DOT]}$ (TAS-B) All queries trained -> BM25 s 1.4760061877327223e-138
+(no train) BERT$_{[DOT]}$ (TAS-B) All queries trained -> BERT$_{[DOT]}$ (TAS-B)  0.24716878970870285
+(no train) BERT$_{[DOT]}$ (TAS-B) All queries trained -> BERT$_{[DOT]}$ (TAS-B) only 200 clusters s 1.5257518280620432e-08     
+(no train) BERT$_{[DOT]}$ (TAS-B) All queries trained -> BERT$_{[DOT]}$ (TAS-B) only 10% queries s 3.020425474642629e-17       
+(no train) BERT$_{[DOT]}$ (TAS-B) All queries trained -> BERT$_{[DOT]}$ (TAS-B) rest 1.8k clusters s 0.005934831610717123
+(no train) BERT$_{[DOT]}$ (TAS-B) only 10% queries -> BM25 s 3.3226064055598065e-92
+(no train) BERT$_{[DOT]}$ (TAS-B) only 10% queries -> BERT$_{[DOT]}$ (TAS-B) s 8.245098362389414e-15
+(no train) BERT$_{[DOT]}$ (TAS-B) only 10% queries -> BERT$_{[DOT]}$ (TAS-B) only 200 clusters s 0.0025272395509676497
+(no train) BERT$_{[DOT]}$ (TAS-B) only 10% queries -> BERT$_{[DOT]}$ (TAS-B) All queries trained s 3.020425474642629e-17       
+(no train) BERT$_{[DOT]}$ (TAS-B) only 10% queries -> BERT$_{[DOT]}$ (TAS-B) rest 1.8k clusters s 9.748166425012318e-12
+(no train) BERT$_{[DOT]}$ (TAS-B) rest 1.8k clusters -> BM25 s 8.038080487576256e-127
+(no train) BERT$_{[DOT]}$ (TAS-B) rest 1.8k clusters -> BERT$_{[DOT]}$ (TAS-B)  0.06944783786146694
+(no train) BERT$_{[DOT]}$ (TAS-B) rest 1.8k clusters -> BERT$_{[DOT]}$ (TAS-B) only 200 clusters s 0.0003671863245243066
+(no train) BERT$_{[DOT]}$ (TAS-B) rest 1.8k clusters -> BERT$_{[DOT]}$ (TAS-B) All queries trained s 0.005934831610717123      
+(no train) BERT$_{[DOT]}$ (TAS-B) rest 1.8k clusters -> BERT$_{[DOT]}$ (TAS-B) only 10% queries s 9.748166425012318e-12        
+
+rm -r /data01/hofstaetter/msmarco-passage-experiments-neweval/
+
+
+rm -r /data01/hofstaetter/msmarco-passage-experiments-neweval/2021-06-29_1639_msmarcopp_colbert_dim768_bs512_margin-mseT2
+rm -r /data01/hofstaetter/msmarco-passage-experiments-neweval/2021-06-29_1722_colbert_dim768_bs256_margin-mseT2
+rm -r /data01/hofstaetter/msmarco-passage-experiments-neweval/2021-06-30_1127_colbert_dim768_bs256_margin-mseT2
+rm -r /data01/hofstaetter/msmarco-passage-experiments-neweval/2021-06-30_1321_colbert_dim768_bs256_margin-mseT2
+rm -r /data01/hofstaetter/msmarco-passage-experiments-neweval/2021-06-30_1505_colbert_dim768_bs256_margin-mseT2
+rm -r /data01/hofstaetter/msmarco-passage-experiments-neweval/2021-06-30_1533_colbert_dim768_bs256_margin-mseT2
+rm -r /data01/hofstaetter/msmarco-passage-experiments-neweval/2021-06-30_1546_colbert_dim768_bs256_margin-mseT2
+rm -r /data01/hofstaetter/msmarco-passage-experiments-neweval/2021-06-30_1556_colbert_dim768_bs256_margin-mseT2
+rm -r /data01/hofstaetter/msmarco-passage-experiments-neweval/2021-06-30_1620_colbert_dim768_bs256_margin-mseT2
+rm -r /data01/hofstaetter/msmarco-passage-experiments-neweval/2021-07-01_1441_ddp_test
+rm -r /data01/hofstaetter/msmarco-passage-experiments-neweval/2021-07-01_1506_ddp_test
+rm -r /data01/hofstaetter/msmarco-passage-experiments-neweval/2021-07-01_1512_ddp_test
+rm -r /data01/hofstaetter/msmarco-passage-experiments-neweval/2021-07-01_1513_ddp_test
+rm -r /data01/hofstaetter/msmarco-passage-experiments-neweval/2021-07-01_1514_ddp_test
+rm -r /data01/hofstaetter/msmarco-passage-experiments-neweval/2021-07-01_1520_ddp_test
+rm -r /data01/hofstaetter/msmarco-passage-experiments-neweval/2021-07-01_1605_ddp_test
+rm -r /data01/hofstaetter/msmarco-passage-experiments-neweval/2021-07-01_1610_ddp_test
+rm -r /data01/hofstaetter/msmarco-passage-experiments-neweval/2021-07-01_1613_ddp_test
+rm -r /data01/hofstaetter/msmarco-passage-experiments-neweval/2021-07-01_1615_ddp_test
+rm -r /data01/hofstaetter/msmarco-passage-experiments-neweval/2021-07-01_1618_ddp_test
+rm -r /data01/hofstaetter/msmarco-passage-experiments-neweval/2021-07-01_1621_ddp_test
+rm -r /data01/hofstaetter/msmarco-passage-experiments-neweval/2021-07-01_1623_ddp_test
+rm -r /data01/hofstaetter/msmarco-passage-experiments-neweval/2021-07-01_1637_ddp_test
+rm -r /data01/hofstaetter/msmarco-passage-experiments-neweval/2021-07-08_1041_colbert_dim768_bs32_recheck
+rm -r /data01/hofstaetter/msmarco-passage-experiments-neweval/2021-07-08_1107_bertcat_bs32_recheck
+rm -r /data01/hofstaetter/msmarco-passage-experiments-neweval/2021-07-08_1121_bertcat_bs32_recheck
+rm -r /data01/hofstaetter/msmarco-passage-experiments-neweval/2021-07-09_1334_bertdot_tas-b_bs32_dim768_recheck
+rm -r /data01/hofstaetter/msmarco-passage-experiments-neweval/2021-07-09_1343_bertdot_tas-b_bs32_dim768_recheck
+rm -r /data01/hofstaetter/msmarco-passage-experiments-neweval/2021-07-09_1534_bertdot_tas-b_bs32_dim768_recheck_localteacher
+rm -r /data01/hofstaetter/msmarco-passage-experiments-neweval/2021-07-10_0826_bertdot_tas-b_bs32_dim768_recheck_multiproc
+rm -r /data01/hofstaetter/msmarco-passage-experiments-neweval/2021-07-10_0830_bertdot_tas-b_bs32_dim768_recheck_multiproc
+rm -r /data01/hofstaetter/msmarco-passage-experiments-neweval/2021-07-10_0838_bertdot_tas-b_bs32_dim768_recheck_multiproc
+rm -r /data01/hofstaetter/msmarco-passage-experiments-neweval/2021-07-10_0840_bertdot_tas-b_bs32_dim768_recheck_multiproc
+rm -r /data01/hofstaetter/msmarco-passage-experiments-neweval/2021-07-10_0842_bertdot_tas-b_bs32_dim768_recheck_multiproc
+rm -r /data01/hofstaetter/msmarco-passage-experiments-neweval/2021-07-10_0846_bertdot_tas-b_bs32_dim768_recheck_multiproc
+rm -r /data01/hofstaetter/msmarco-passage-experiments-neweval/2021-07-10_0852_bertdot_tas-b_bs32_dim768_recheck_multiproc
+rm -r /data01/hofstaetter/msmarco-passage-experiments-neweval/2021-07-10_0857_bertdot_tas-b_bs32_dim768_recheck_multiproc
+rm -r /data01/hofstaetter/msmarco-passage-experiments-neweval/2021-07-10_0903_bertdot_tas-b_bs32_dim768_recheck_multiproc
+rm -r /data01/hofstaetter/msmarco-passage-experiments-neweval/2021-07-10_0909_bertdot_tas-b_bs32_dim768_recheck_multiproc
+rm -r /data01/hofstaetter/msmarco-passage-experiments-neweval/2021-07-10_0923_bertdot_tas-b_bs32_dim768_recheck_multiproc
+rm -r /data01/hofstaetter/msmarco-passage-experiments-neweval/2021-07-10_0942_bertdot_tas-b_bs32_dim768_recheck_multiproc
+rm -r /data01/hofstaetter/msmarco-passage-experiments-neweval/2021-07-26_0920_tk_check
+rm -r /data01/hofstaetter/msmarco-passage-experiments-neweval/2021-08-24_1008_colbert_v2_sumfirst_top3_trainT2
+rm -r /data01/hofstaetter/msmarco-passage-experiments-neweval/2021-08-24_1036_colbert_v2_meanfirst_top3_trainT2
+rm -r /data01/hofstaetter/msmarco-passage-experiments-neweval/2021-08-24_1038_distildot_simplerefine_cat_dim384_n_32_trainT2
+rm -r /data01/hofstaetter/msmarco-passage-experiments-neweval/2021-08-24_1040_distildot_simplerefine_cat_dim384_n_32_trainT2
+rm -r /data01/hofstaetter/msmarco-passage-experiments-neweval/2021-08-24_1057_distildot_simplerefine_cat_dim384_n_32_trainT2_warmstart
+
+
+CUDA_VISIBLE_DEVICES=4 python matchmaker/dense_retrieval.py encode+index+search --config config/dense_retrieval/tr-msmarco.yaml --config-overwrites "continue-folder: /mnt/nvme-local/hofstaetter/msmarco-retrieval-experiments/2021-01-23_1238_uni10dyn2k_take1_distildot_bs256_trainT2_trainColBertT2_lambda0_75"
+
+
+python preprocessing/generate_validation_input_from_candidate_set.py --out-file /newstorage4/hofstaetter/msmarco-passage/tasb_hard_negative_tuples.tsv --candidate-file /mnt/nvme-local/hofstaetter/msmarco-retrieval-experiments/2021-08-26_1048_tasb_bs256_trainall/train_top100_top1k_subsample.txt --collection-file /data01/hofstaetter/data/msmarco-passage/collection.tsv --query-file /data01/hofstaetter/data/msmarco-passage/queries/queries.train.tsv --top-N 1000
+
+
+t2 teachers:
+
+
+/data01/hofstaetter/msmarco-passage-experiments/2019-08-01_2109_bert_base_cont                        
+/data01/hofstaetter/msmarco-passage-experiments/2020-08-06_1712_bert_cls_albertlargev2_bs16_lr1e6     
+/data01/hofstaetter/msmarco-passage-experiments/2020-08-11_1720_bert_largewholewordmask_cls_bs16_lr7e6
+
+CUDA_VISIBLE_DEVICES=4 python matchmaker/train.py --continue-folder /data01/hofstaetter/msmarco-passage-experiments/2019-08-01_2109_bert_base_cont --config-overwrites "\
+in_batch_negatives: False,query_augment_mask_number: -1,train_pairwise_distillation: False,\
+token_embedder_type: bert_cat,use_fp16: False,dataloader_num_workers: 4,batch_size_eval: 512,validation_end: {},test:\n\
+  trec2019_top1000_sanity:\n\
+    tsv: /data01/hofstaetter/data/msmarco-passage/leaderboard/test2019.bm25_plain_top1000.tsv\n\
+    qrels: /data01/hofstaetter/data/msmarco-passage/qrels/trec2019-qrels-pass.txt\n\
+    binarization_point: 2\n\
+    save_secondary_output: True\n\
+  tasb_train:\n\
+    tsv: /newstorage4/hofstaetter/msmarco-passage/tasb_hard_negative_tuples.tsv\n\
+    qrels: /data01/hofstaetter/data/msmarco-passage/qrels/qrels.train.tsv\n\
+    binarization_point: 1\n\
+    save_secondary_output: False\n"
+
+tasb_hard_negative_tuples-splitaa  tasb_hard_negative_tuples-splitac  tasb_hard_negative_tuples-splitae 
+tasb_hard_negative_tuples-splitab  tasb_hard_negative_tuples-splitad  tasb_hard_negative_tuples-splitaf 
+
+CUDA_VISIBLE_DEVICES=0,1 python matchmaker/train.py --continue-folder /data01/hofstaetter/msmarco-passage-experiments/2020-08-06_1712_bert_cls_albertlargev2_bs16_lr1e6 --config-overwrites "\
+in_batch_negatives: False,query_augment_mask_number: -1,train_pairwise_distillation: False,\
+token_embedder_type: bert_cat,use_fp16: False,dataloader_num_workers: 3,batch_size_eval: 512,validation_end: {},test:\n\
+  trec2019_top1000_sanity:\n\
+    tsv: /data01/hofstaetter/data/msmarco-passage/leaderboard/test2019.bm25_plain_top1000.tsv\n\
+    qrels: /data01/hofstaetter/data/msmarco-passage/qrels/trec2019-qrels-pass.txt\n\
+    binarization_point: 2\n\
+    save_secondary_output: True\n\
+  tasb_train0:\n\
+    tsv: /newstorage4/hofstaetter/msmarco-passage/tasb_hard_negative_tuples-splitaa\n\
+    qrels: /data01/hofstaetter/data/msmarco-passage/qrels/qrels.train.tsv\n\
+    binarization_point: 1\n\
+    save_secondary_output: False\n
+  tasb_train1:\n\
+    tsv: /newstorage4/hofstaetter/msmarco-passage/tasb_hard_negative_tuples-splitab\n\
+    qrels: /data01/hofstaetter/data/msmarco-passage/qrels/qrels.train.tsv\n\
+    binarization_point: 1\n\
+    save_secondary_output: False\n
+  tasb_train2:\n\
+    tsv: /newstorage4/hofstaetter/msmarco-passage/tasb_hard_negative_tuples-splitac\n\
+    qrels: /data01/hofstaetter/data/msmarco-passage/qrels/qrels.train.tsv\n\
+    binarization_point: 1\n\
+    save_secondary_output: False\n
+  tasb_train3:\n\
+    tsv: /newstorage4/hofstaetter/msmarco-passage/tasb_hard_negative_tuples-splitad\n\
+    qrels: /data01/hofstaetter/data/msmarco-passage/qrels/qrels.train.tsv\n\
+    binarization_point: 1\n\
+    save_secondary_output: False\n
+  tasb_train4:\n\
+    tsv: /newstorage4/hofstaetter/msmarco-passage/tasb_hard_negative_tuples-splitae\n\
+    qrels: /data01/hofstaetter/data/msmarco-passage/qrels/qrels.train.tsv\n\
+    binarization_point: 1\n\
+    save_secondary_output: False\n
+  tasb_train5:\n\
+    tsv: /newstorage4/hofstaetter/msmarco-passage/tasb_hard_negative_tuples-splitaf\n\
+    qrels: /data01/hofstaetter/data/msmarco-passage/qrels/qrels.train.tsv\n\
+    binarization_point: 1\n\
+    save_secondary_output: False\n"
+
+CUDA_VISIBLE_DEVICES=5 python matchmaker/train.py --continue-folder /data01/hofstaetter/msmarco-passage-experiments/2020-08-11_1720_bert_largewholewordmask_cls_bs16_lr7e6 --config-overwrites "\
+in_batch_negatives: False,query_augment_mask_number: -1,train_pairwise_distillation: False,\
+token_embedder_type: bert_cat,use_fp16: False,dataloader_num_workers: 3,batch_size_eval: 512,validation_end: {},test:\n\
+  trec2019_top1000_sanity:\n\
+    tsv: /data01/hofstaetter/data/msmarco-passage/leaderboard/test2019.bm25_plain_top1000.tsv\n\
+    qrels: /data01/hofstaetter/data/msmarco-passage/qrels/trec2019-qrels-pass.txt\n\
+    binarization_point: 2\n\
+    save_secondary_output: True\n\
+  tasb_train0:\n\
+    tsv: /newstorage4/hofstaetter/msmarco-passage/tasb_hard_negative_tuples-splitaa\n\
+    qrels: /data01/hofstaetter/data/msmarco-passage/qrels/qrels.train.tsv\n\
+    binarization_point: 1\n\
+    save_secondary_output: False\n
+  tasb_train1:\n\
+    tsv: /newstorage4/hofstaetter/msmarco-passage/tasb_hard_negative_tuples-splitab\n\
+    qrels: /data01/hofstaetter/data/msmarco-passage/qrels/qrels.train.tsv\n\
+    binarization_point: 1\n\
+    save_secondary_output: False\n
+  tasb_train2:\n\
+    tsv: /newstorage4/hofstaetter/msmarco-passage/tasb_hard_negative_tuples-splitac\n\
+    qrels: /data01/hofstaetter/data/msmarco-passage/qrels/qrels.train.tsv\n\
+    binarization_point: 1\n\
+    save_secondary_output: False\n
+  tasb_train3:\n\
+    tsv: /newstorage4/hofstaetter/msmarco-passage/tasb_hard_negative_tuples-splitad\n\
+    qrels: /data01/hofstaetter/data/msmarco-passage/qrels/qrels.train.tsv\n\
+    binarization_point: 1\n\
+    save_secondary_output: False\n
+  tasb_train4:\n\
+    tsv: /newstorage4/hofstaetter/msmarco-passage/tasb_hard_negative_tuples-splitae\n\
+    qrels: /data01/hofstaetter/data/msmarco-passage/qrels/qrels.train.tsv\n\
+    binarization_point: 1\n\
+    save_secondary_output: False\n
+  tasb_train5:\n\
+    tsv: /newstorage4/hofstaetter/msmarco-passage/tasb_hard_negative_tuples-splitaf\n\
+    qrels: /data01/hofstaetter/data/msmarco-passage/qrels/qrels.train.tsv\n\
+    binarization_point: 1\n\
+    save_secondary_output: False\n"
+
+
+CUDA_VISIBLE_DEVICES=0 python matchmaker/train.py --config-file config/train/defaults.yaml config/train/data/dl-msmarco-passage-dot-rank.yaml config/train/models/colbert.yaml config/train/modes/pairwise_distillation.yaml --run-name colbert_distilbert_compress_dim32_bs32_warmstartstripped --config-overwrites "batch_size_train: 32, warmstart_model_path: /scratch/hofstaetter/experiments/msmarco-passage-v1/2021-08-27_0903_colbert_distilbert_stripped_dim768_bs32/best-model.pytorch-state-dict"
+
+
+CUDA_VISIBLE_DEVICES=1 python matchmaker/train.py --config-file config/train/defaults.yaml config/train/data/dl-msmarco-passage-dot-rank.yaml config/train/models/bert_dot_qa.yaml config/train/modes/pairwise_distillation.yaml --run-name colbert_residual_distilbert_compress_main192_res32_bs32 --config-overwrites "batch_size_train: 32,warmstart_model_path: /scratch/hofstaetter/experiments/msmarco-passage-v1/2021-08-27_0903_colbert_residual_distilbert_stripped_dim768_bs32/best-model.pytorch-state-dict"
+
+
+CUDA_VISIBLE_DEVICES=5 python matchmaker/train.py --config-file config/train/defaults.yaml config/train/data/tr-msmarco-passage-dot-rank.yaml config/train/models/bert_dot_qa.yaml config/train/modes/pairwise_distillation.yaml --run-name colbert_residual_compress-merge_main192_res16_bs32 --config-overwrites "batch_size_train: 32,warmstart_model_path: /data01/hofstaetter/msmarco-passage-experiments-neweval/2021-08-27_0903_colbert_residual_distilbert_stripped_dim768_bs32/best-model.pytorch-state-dict"
+CUDA_VISIBLE_DEVICES=5 python matchmaker/train.py --config-file config/train/defaults.yaml config/train/data/tr-msmarco-passage-dot-rank.yaml config/train/models/bert_dot_qa.yaml config/train/modes/pseudo_labels.yaml --run-name colbert_residual_dim768_bs32_continuePLv1 --config-overwrites "batch_size_train: 32,warmstart_model_path: /data01/hofstaetter/msmarco-passage-experiments-neweval/2021-08-27_0903_colbert_residual_distilbert_stripped_dim768_bs32/best-model.pytorch-state-dict"
+
+
+
+CUDA_VISIBLE_DEVICES=1 python matchmaker/train.py --config-file config/train/defaults.yaml config/train/data/dl-msmarco-passage-dot-rank.yaml config/train/models/bert_dot_qa.yaml config/train/modes/pairwise_distillation.yaml --run-name colbert_residual_merge_main192_res8_bs32_warmstart --config-overwrites "batch_size_train: 32,warmstart_model_path: /scratch/hofstaetter/experiments/msmarco-passage-v1/2021-08-27_0903_colbert_residual_distilbert_stripped_dim768_bs32/best-model.pytorch-state-dict"
+
+
+CUDA_VISIBLE_DEVICES=0 python matchmaker/train.py --config-file config/train/defaults.yaml config/train/data/dl-msmarco-passage-dot-rank.yaml config/train/models/colbert.yaml config/train/modes/pairwise_distillation.yaml --run-name colbert_distilbert_compress_dim16_bs32_warmstartstripped --config-overwrites "colbert_compression_dim: 16,batch_size_train: 32, warmstart_model_path: /scratch/hofstaetter/experiments/msmarco-passage-v1/2021-08-27_0903_colbert_distilbert_stripped_dim768_bs32/best-model.pytorch-state-dict"
+
+CUDA_VISIBLE_DEVICES=0 python matchmaker/train.py --config-file config/train/defaults.yaml config/train/data/dl-msmarco-passage-dot-rank.yaml config/train/models/colbert.yaml config/train/modes/pairwise_distillation.yaml --run-name colbert_compress_dim16_bs32_warmstartstripped --config-overwrites "colbert_compression_dim: 16,batch_size_train: 32, warmstart_model_path: /scratch/hofstaetter/experiments/msmarco-passage-v1/2021-08-27_0903_colbert_distilbert_stripped_dim768_bs32/best-model.pytorch-state-dict"
+CUDA_VISIBLE_DEVICES=1 python matchmaker/train.py --config-file config/train/defaults.yaml config/train/data/dl-msmarco-passage-dot-rank.yaml config/train/models/colbert.yaml config/train/modes/pairwise_distillation.yaml --run-name colbert_compress_dim8_bs32_warmstartstripped --config-overwrites "colbert_compression_dim: 8,batch_size_train: 32, warmstart_model_path: /scratch/hofstaetter/experiments/msmarco-passage-v1/2021-08-27_0903_colbert_distilbert_stripped_dim768_bs32/best-model.pytorch-state-dict"
+
+
+CUDA_VISIBLE_DEVICES=1 python matchmaker/train.py --config-file config/train/defaults.yaml config/train/data/dl-msmarco-passage-dot-rank.yaml config/train/models/bert_dot_qa.yaml config/train/modes/pairwise_distillation.yaml --run-name colbert_residual_merge_main192_res4_bs32_warmstart --config-overwrites "rcr_residual_compress_dim: 4,batch_size_train: 32,warmstart_model_path: /scratch/hofstaetter/experiments/msmarco-passage-v1/2021-08-27_0903_colbert_residual_distilbert_stripped_dim768_bs32/best-model.pytorch-state-dict"
+CUDA_VISIBLE_DEVICES=0 python matchmaker/train.py --config-file config/train/defaults.yaml config/train/data/dl-msmarco-passage-dot-rank.yaml config/train/models/bert_dot_qa.yaml config/train/modes/pairwise_distillation.yaml --run-name colbert_residual_add_main192_res8_bs32_warmstart --config-overwrites "rcr_residual_compress_dim: 8,batch_size_train: 32,warmstart_model_path: /scratch/hofstaetter/experiments/msmarco-passage-v1/2021-08-27_0903_colbert_residual_distilbert_stripped_dim768_bs32/best-model.pytorch-state-dict"
+
+
+#
+# podcast re-rankings
+#
+
+
+# 2020 test:
+/mnt/nvme-local/msertkan/spotify_podcast_track/experiments/pyserini/runs/run.only_transcript.bm25.txt
+
+
+/mnt/nvme-local/msertkan/spotify_podcast_track/experiments/matchmaker/2021-08-26_1552_only_transcript/trec_podcast_2020_train-output.txt
+/mnt/nvme-local/msertkan/spotify_podcast_track/experiments/matchmaker/2021-08-26_1552_only_transcript/trec_podcast_2020_test-output.txt  
+/mnt/nvme-local/msertkan/spotify_podcast_track/experiments/matchmaker/2021-08-26_1552_only_transcript/trec_podcast_2021-output.txt
+
+##
+
+/mnt/nvme-local/msertkan/spotify_podcast_track/experiments/pyserini/runs/2020/test/run.title-transcript.bm25.txt
+/mnt/nvme-local/msertkan/spotify_podcast_track/experiments/pyserini/runs/2020/test/run.title-transcript.tas-b.txt
+/mnt/nvme-local/msertkan/spotify_podcast_track/experiments/pyserini/runs/2021/run.title-transcript.bm25.txt
+/mnt/nvme-local/msertkan/spotify_podcast_track/experiments/pyserini/runs/2021/run.title-transcript.tas-b.txt
+
+python preprocessing/generate_validation_input_from_candidate_set.py --collection-file /mnt/nvme-local/msertkan/spotify_podcast_track/data/preprocessed/collections/episode_title_and_segment_collection.tsv --query-file /mnt/nvme-local/msertkan/spotify_podcast_track/data/preprocessed/queries/podcast_2020_queries_test.tsv --top-N 1000 \
+--out-file /mnt/nvme-local/hofstaetter/trec_podcast/bm25_2020test_titletranscript_tuples_top1000.tsv --candidate-file /mnt/nvme-local/msertkan/spotify_podcast_track/experiments/pyserini/runs/2020/test/run.title-transcript.bm25.txt
+
+python preprocessing/generate_validation_input_from_candidate_set.py --collection-file /mnt/nvme-local/msertkan/spotify_podcast_track/data/preprocessed/collections/episode_title_and_segment_collection.tsv --query-file /mnt/nvme-local/msertkan/spotify_podcast_track/data/preprocessed/queries/podcast_2020_queries_test.tsv --top-N 1000 \
+--out-file /mnt/nvme-local/hofstaetter/trec_podcast/tas_2020test_titletranscript_tuples_top1000.tsv --candidate-file /mnt/nvme-local/msertkan/spotify_podcast_track/experiments/pyserini/runs/2020/test/run.title-transcript.tas-b.txt
+
+python preprocessing/generate_validation_from_n_candidate_sets.py --collection-file /mnt/nvme-local/msertkan/spotify_podcast_track/data/preprocessed/collections/episode_title_and_segment_collection.tsv --query-file /mnt/nvme-local/msertkan/spotify_podcast_track/data/preprocessed/queries/podcast_2020_queries_test.tsv \
+--out-file /mnt/nvme-local/hofstaetter/trec_podcast/bm25_n_tasb_2020test_titletranscript_tuples_top2K.tsv --candidate-file /mnt/nvme-local/msertkan/spotify_podcast_track/experiments/pyserini/runs/2020/test/run.title-transcript.bm25.txt /mnt/nvme-local/msertkan/spotify_podcast_track/experiments/pyserini/runs/2020/test/run.title-transcript.tas-b.txt
+
+python preprocessing/generate_validation_input_from_candidate_set.py --collection-file /mnt/nvme-local/msertkan/spotify_podcast_track/data/preprocessed/collections/episode_title_and_segment_collection.tsv --query-file /mnt/nvme-local/msertkan/spotify_podcast_track/data/preprocessed/queries/podcast_2021_queries_test.tsv --top-N 1000 \
+--out-file /mnt/nvme-local/hofstaetter/trec_podcast/tas_2021_titletranscript_tuples_top1000.tsv --candidate-file /mnt/nvme-local/msertkan/spotify_podcast_track/experiments/pyserini/runs/2021/run.title-transcript.tas-b.txt
+
+python preprocessing/generate_validation_from_n_candidate_sets.py --collection-file /mnt/nvme-local/msertkan/spotify_podcast_track/data/preprocessed/collections/episode_title_and_segment_collection.tsv --query-file /mnt/nvme-local/msertkan/spotify_podcast_track/data/preprocessed/queries/podcast_2021_queries_test.tsv \
+--out-file /mnt/nvme-local/hofstaetter/trec_podcast/bm25_n_tasb_2021_titletranscript_tuples_top2K.tsv --candidate-file /mnt/nvme-local/msertkan/spotify_podcast_track/experiments/pyserini/runs/2021/run.title-transcript.bm25.txt /mnt/nvme-local/msertkan/spotify_podcast_track/experiments/pyserini/runs/2021/run.title-transcript.tas-b.txt
+
+CUDA_VISIBLE_DEVICES=4 python matchmaker/train.py --continue-folder /data01/hofstaetter/msmarco-passage-experiments/2020-09-15_1409_distilbert_cls_teacherensembmeantrain/ --config-overwrites "\
+train_qa_spans: False,in_batch_negatives: False,query_augment_mask_number: -1,train_pairwise_distillation: False,\
+max_doc_length: 480,token_embedder_type: bert_cat,use_fp16: False,dataloader_num_workers: 3,batch_size_eval: 512,validation_end: {},leaderboard: {},test:\n\
+  podcast_2020_test_titletranscript_bm25_top1k:\n\
+    tsv: /mnt/nvme-local/hofstaetter/trec_podcast/bm25_2020test_titletranscript_tuples_top1000.tsv\n\
+    qrels: /mnt/nvme-local/msertkan/spotify_podcast_track/data/trec_topics/2020_test_qrels.list.txt\n\
+    binarization_point: 1\n\
+    save_secondary_output: False\n\
+  podcast_2020_test_titletranscript_tasb_top1k:\n\
+    tsv: /mnt/nvme-local/hofstaetter/trec_podcast/tas_2020test_titletranscript_tuples_top1000.tsv\n\
+    qrels: /mnt/nvme-local/msertkan/spotify_podcast_track/data/trec_topics/2020_test_qrels.list.txt\n\
+    binarization_point: 1\n\
+    save_secondary_output: True\n\
+  podcast_2020_test_titletranscript_tasb_n_bm25_top1k:\n\
+    tsv: /mnt/nvme-local/hofstaetter/trec_podcast/bm25_n_tasb_2020test_titletranscript_tuples_top2K.tsv\n\
+    qrels: /mnt/nvme-local/msertkan/spotify_podcast_track/data/trec_topics/2020_test_qrels.list.txt\n\
+    binarization_point: 1\n\
+    save_secondary_output: True\n\
+  podcast_2021_titletranscript_bm25_n_tasb_top1k:\n\
+    tsv: /mnt/nvme-local/hofstaetter/trec_podcast/bm25_n_tasb_2021_titletranscript_tuples_top2K.tsv\n\
+    save_secondary_output: True\n\
+  podcast_2021_titletranscript_tasb_top1k:\n\
+    tsv: /mnt/nvme-local/hofstaetter/trec_podcast/tas_2021_titletranscript_tuples_top1000.tsv\n\
+    save_secondary_output: True\n"
+
+###
+
+python preprocessing/generate_validation_input_from_candidate_set.py --collection-file /mnt/nvme-local/msertkan/spotify_podcast_track/data/preprocessed/collections/segment_collection.tsv --query-file /mnt/nvme-local/msertkan/spotify_podcast_track/data/preprocessed/queries/podcast_2020_queries_test.tsv --top-N 100 \
+--out-file /mnt/nvme-local/hofstaetter/trec_podcast/bm25_2020test_tuples_top100.tsv --candidate-file /mnt/nvme-local/msertkan/spotify_podcast_track/experiments/pyserini/runs/run.only_transcript.bm25.txt
+
+python preprocessing/generate_validation_input_from_candidate_set.py --collection-file /mnt/nvme-local/msertkan/spotify_podcast_track/data/preprocessed/collections/segment_collection.tsv --query-file /mnt/nvme-local/msertkan/spotify_podcast_track/data/preprocessed/queries/podcast_2020_queries_test.tsv --top-N 100 \
+--out-file /mnt/nvme-local/hofstaetter/trec_podcast/tasb_2020test_tuples_top100.tsv --candidate-file /mnt/nvme-local/msertkan/spotify_podcast_track/experiments/matchmaker/2021-08-26_1552_only_transcript/trec_podcast_2020_test-output.txt
+
+python preprocessing/generate_validation_input_from_candidate_set.py --collection-file /mnt/nvme-local/msertkan/spotify_podcast_track/data/preprocessed/collections/segment_collection.tsv --query-file /mnt/nvme-local/msertkan/spotify_podcast_track/data/preprocessed/queries/podcast_2021_queries_test.tsv --top-N 100 \
+--out-file /mnt/nvme-local/hofstaetter/trec_podcast/tasb_2021_tuples_top100.tsv --candidate-file /mnt/nvme-local/msertkan/spotify_podcast_track/experiments/matchmaker/2021-08-26_1552_only_transcript/trec_podcast_2021-output.txt 
+
+CUDA_VISIBLE_DEVICES=4 python matchmaker/train.py --continue-folder /data01/hofstaetter/msmarco-passage-experiments/2020-09-15_1409_distilbert_cls_teacherensembmeantrain/ --config-overwrites "\
+train_qa_spans: False,in_batch_negatives: False,query_augment_mask_number: -1,train_pairwise_distillation: False,\
+max_doc_length: 480,token_embedder_type: bert_cat,use_fp16: False,dataloader_num_workers: 3,batch_size_eval: 512,validation_end: {},leaderboard: {},test:\n\
+  trec2019_top1000_sanity:\n\
+    tsv: /data01/hofstaetter/data/msmarco-passage/leaderboard/test2019.bm25_plain_top1000.tsv\n\
+    qrels: /data01/hofstaetter/data/msmarco-passage/qrels/trec2019-qrels-pass.txt\n\
+    binarization_point: 2\n\
+    save_secondary_output: False\n\
+  podcast_2020_test_bm25top100:\n\
+    tsv: /mnt/nvme-local/hofstaetter/trec_podcast/bm25_2020test_tuples_top100.tsv\n\
+    qrels: /mnt/nvme-local/msertkan/spotify_podcast_track/data/trec_topics/2020_test_qrels.list.txt\n\
+    binarization_point: 1\n\
+    save_secondary_output: False\n\
+  podcast_2020_test_tasbtop100:\n\
+    tsv: /mnt/nvme-local/hofstaetter/trec_podcast/tasb_2020test_tuples_top100.tsv\n\
+    qrels: /mnt/nvme-local/msertkan/spotify_podcast_track/data/trec_topics/2020_test_qrels.list.txt\n\
+    binarization_point: 1\n\
+    save_secondary_output: True\n\
+  podcast_2021_tasbtop100:\n\
+    tsv: /mnt/nvme-local/hofstaetter/trec_podcast/tasb_2021_tuples_top100.tsv\n\
+    save_secondary_output: True\n"
+
+python preprocessing/generate_validation_from_n_candidate_sets.py --collection-file /mnt/nvme-local/msertkan/spotify_podcast_track/data/preprocessed/collections/segment_collection.tsv --query-file /mnt/nvme-local/msertkan/spotify_podcast_track/data/preprocessed/queries/podcast_2020_queries_test.tsv --out-file /mnt/nvme-local/hofstaetter/trec_podcast/bm25_n_tasb_2020test_tuples_top200.tsv --candidate-file /mnt/nvme-local/msertkan/spotify_podcast_track/experiments/pyserini/runs/run.only_transcript.bm25.txt /mnt/nvme-local/msertkan/spotify_podcast_track/experiments/matchmaker/2021-08-26_1552_only_transcript/trec_podcast_2020_test-output.txt
+
+
+CUDA_VISIBLE_DEVICES=4 python matchmaker/train.py --continue-folder /data01/hofstaetter/msmarco-passage-experiments/2020-09-15_1409_distilbert_cls_teacherensembmeantrain/ --config-overwrites "\
+train_qa_spans: False,in_batch_negatives: False,query_augment_mask_number: -1,train_pairwise_distillation: False,\
+max_doc_length: 480,token_embedder_type: bert_cat,use_fp16: False,dataloader_num_workers: 3,batch_size_eval: 512,validation_end: {},leaderboard: {},test:\n\
+  podcast_2020_test_bm25_n_tasb_top100:\n\
+    tsv: /mnt/nvme-local/hofstaetter/trec_podcast/bm25_n_tasb_2020test_tuples_top200.tsv\n\
+    qrels: /mnt/nvme-local/msertkan/spotify_podcast_track/data/trec_topics/2020_test_qrels.list.txt\n\
+    binarization_point: 1\n\
+    save_secondary_output: False\n"
+
+
+podcast_2020_test_titletranscript_bm25_top1k               
+podcast_2020_test_titletranscript_tasb_top1k               
+podcast_2020_test_titletranscript_tasb_n_bm25_top1k        
+podcast_2021_titletranscript_bm25_n_tasb_top1k             
+podcast_2021_titletranscript_tasb_top1k                    
+
+cp /data01/hofstaetter/msmarco-passage-experiments/2020-09-15_1409_distilbert_cls_teacherensembmeantrain/test_podcast_2020_test_titletranscript_bm25_top1k-output.txt  /mnt/nvme-local/hofstaetter/trec_podcast/run_2020_test_titletranscript_bm25_top1k_rerankdistilbert_catT2.txt
+cp /data01/hofstaetter/msmarco-passage-experiments/2020-09-15_1409_distilbert_cls_teacherensembmeantrain/test_podcast_2020_test_titletranscript_tasb_top1k-output.txt  /mnt/nvme-local/hofstaetter/trec_podcast/run_2020_test_titletranscript_tasb_top1k_rerankdistilbert_catT2.txt
+cp /data01/hofstaetter/msmarco-passage-experiments/2020-09-15_1409_distilbert_cls_teacherensembmeantrain/test_podcast_2020_test_titletranscript_tasb_n_bm25_top1k-output.txt  /mnt/nvme-local/hofstaetter/trec_podcast/run_2020_test_titletranscript_tasb_n_bm25_top1k_rerankdistilbert_catT2.txt
+cp /data01/hofstaetter/msmarco-passage-experiments/2020-09-15_1409_distilbert_cls_teacherensembmeantrain/test_podcast_2021_titletranscript_bm25_n_tasb_top1k-output.txt  /mnt/nvme-local/hofstaetter/trec_podcast/run_2021_titletranscript_bm25_n_tasb_top1k_rerankdistilbert_catT2.txt
+cp /data01/hofstaetter/msmarco-passage-experiments/2020-09-15_1409_distilbert_cls_teacherensembmeantrain/test_podcast_2021_titletranscript_tasb_top1k-output.txt  /mnt/nvme-local/hofstaetter/trec_podcast/run_2021_titletranscript_tasb_top1k_rerankdistilbert_catT2.txt
+
+cp /mnt/nvme-local/hofstaetter/trec_podcast/2021-09-02_1504_bertdot_tasb_compressed192_hnsw128/trec_podcast_2020_test-output.txt /mnt/nvme-local/hofstaetter/trec_podcast/run_2020_test_titletranscript_tasb-compressed_top1k.txt
+cp /mnt/nvme-local/hofstaetter/trec_podcast/2021-09-02_1504_bertdot_tasb_compressed192_hnsw128/trec_podcast_2021-output.txt /mnt/nvme-local/hofstaetter/trec_podcast/run_2021_titletranscript_tasb-compressed_top1k.txt
+
+python analysis/evaluation/prepare_trec_submission.py --res-in /mnt/nvme-local/hofstaetter/trec_podcast/run_2020_test_titletranscript_bm25_top1k_rerankdistilbert_catT2.txt --res-out /mnt/nvme-local/hofstaetter/trec_podcast/run_2020_test_titletranscript_bm25_top1k_rerankdistilbert_catT2_trec.txt --max-rank 1000 --run-id distilbert_cat
+python analysis/evaluation/prepare_trec_submission.py --res-in /mnt/nvme-local/hofstaetter/trec_podcast/run_2020_test_titletranscript_tasb_top1k_rerankdistilbert_catT2.txt --res-out /mnt/nvme-local/hofstaetter/trec_podcast/run_2020_test_titletranscript_tasb_top1k_rerankdistilbert_catT2_trec.txt --max-rank 1000 --run-id distilbert_cat
+python analysis/evaluation/prepare_trec_submission.py --res-in /mnt/nvme-local/hofstaetter/trec_podcast/run_2020_test_titletranscript_tasb_n_bm25_top1k_rerankdistilbert_catT2.txt --res-out /mnt/nvme-local/hofstaetter/trec_podcast/run_2020_test_titletranscript_tasb_n_bm25_top1k_rerankdistilbert_catT2_trec.txt --max-rank 1000 --run-id distilbert_cat
+python analysis/evaluation/prepare_trec_submission.py --res-in /mnt/nvme-local/hofstaetter/trec_podcast/run_2021_titletranscript_bm25_n_tasb_top1k_rerankdistilbert_catT2.txt --res-out /mnt/nvme-local/hofstaetter/trec_podcast/run_2021_titletranscript_bm25_n_tasb_top1k_rerankdistilbert_catT2_trec.txt --max-rank 1000 --run-id TUW_hybrid_cat
+python analysis/evaluation/prepare_trec_submission.py --res-in /mnt/nvme-local/hofstaetter/trec_podcast/run_2021_titletranscript_tasb_top1k_rerankdistilbert_catT2.txt --res-out /mnt/nvme-local/hofstaetter/trec_podcast/run_2021_titletranscript_tasb_top1k_rerankdistilbert_catT2_trec.txt --max-rank 1000 --run-id TUW_tasb_cat
+
+python analysis/evaluation/prepare_trec_submission.py --res-in /mnt/nvme-local/hofstaetter/trec_podcast/run_2020_test_titletranscript_tasb-compressed_top1k.txt --res-out /mnt/nvme-local/hofstaetter/trec_podcast/run_2020_test_titletranscript_tasb-compressed_top1k_trec.txt --max-rank 1000 --run-id TUW_tasb_cat
+python analysis/evaluation/prepare_trec_submission.py --res-in /mnt/nvme-local/hofstaetter/trec_podcast/run_2021_titletranscript_tasb-compressed_top1k.txt --res-out /mnt/nvme-local/hofstaetter/trec_podcast/run_2021_titletranscript_tasb-compressed_top1k_trec.txt --max-rank 1000 --run-id TUW_tasb192_ann
+
+~/trec_eval/trec_eval -m ndcg_cut -J /mnt/nvme-local/msertkan/spotify_podcast_track/data/trec_topics/2020_test_qrels.list.txt /mnt/nvme-local/hofstaetter/trec_podcast/run_2020_test_titletranscript_tasb-compressed_top1k_trec.txt
+~/trec_eval/trec_eval -m ndcg_cut -J /mnt/nvme-local/msertkan/spotify_podcast_track/data/trec_topics/2020_test_qrels.list.txt /mnt/nvme-local/hofstaetter/trec_podcast/run_2020_test_titletranscript_bm25_top1k_rerankdistilbert_catT2_trec.txt
+~/trec_eval/trec_eval -m ndcg_cut -J /mnt/nvme-local/msertkan/spotify_podcast_track/data/trec_topics/2020_test_qrels.list.txt /mnt/nvme-local/hofstaetter/trec_podcast/run_2020_test_titletranscript_tasb_top1k_rerankdistilbert_catT2_trec.txt
+~/trec_eval/trec_eval -m ndcg_cut -J /mnt/nvme-local/msertkan/spotify_podcast_track/data/trec_topics/2020_test_qrels.list.txt /mnt/nvme-local/hofstaetter/trec_podcast/run_2020_test_titletranscript_tasb_n_bm25_top1k_rerankdistilbert_catT2_trec.txt
+
+
+cp /data01/hofstaetter/msmarco-passage-experiments/2020-09-15_1409_distilbert_cls_teacherensembmeantrain/test_podcast_2020_test_bm25top100-output.txt  /mnt/nvme-local/hofstaetter/trec_podcast/run_2020test_bm25-top100_rerankdistilbert_catT2.txt
+cp /data01/hofstaetter/msmarco-passage-experiments/2020-09-15_1409_distilbert_cls_teacherensembmeantrain/test_podcast_2020_test_tasbtop100-output.txt  /mnt/nvme-local/hofstaetter/trec_podcast/run_2020test_tasb-top100_rerankdistilbert_catT2.txt
+cp /data01/hofstaetter/msmarco-passage-experiments/2020-09-15_1409_distilbert_cls_teacherensembmeantrain/test_podcast_2020_test_bm25_n_tasb_top100-output.txt /mnt/nvme-local/hofstaetter/trec_podcast/run_2020test_bm25_n_tasb-top100_rerankdistilbert_catT2.txt
+
+python analysis/evaluation/prepare_trec_submission.py --res-in /mnt/nvme-local/hofstaetter/trec_podcast/run_2020test_bm25-top100_rerankdistilbert_catT2.txt --res-out /mnt/nvme-local/hofstaetter/trec_podcast/run_2020test_bm25-top100_rerankdistilbert_catT2_trec.txt --max-rank 100 --run-id distilbert_cat
+python analysis/evaluation/prepare_trec_submission.py --res-in /mnt/nvme-local/hofstaetter/trec_podcast/run_2020test_tasb-top100_rerankdistilbert_catT2.txt --res-out /mnt/nvme-local/hofstaetter/trec_podcast/run_2020test_tasb-top100_rerankdistilbert_catT2_trec.txt --max-rank 100 --run-id distilbert_cat
+python analysis/evaluation/prepare_trec_submission.py --res-in /mnt/nvme-local/hofstaetter/trec_podcast/run_2020test_bm25_n_tasb-top100_rerankdistilbert_catT2.txt --res-out /mnt/nvme-local/hofstaetter/trec_podcast/run_2020test_bm25_n_tasb-top100_rerankdistilbert_catT2_trec.txt --max-rank 100 --run-id distilbert_cat
+
+~/trec_eval/trec_eval -m all_trec -J /mnt/nvme-local/msertkan/spotify_podcast_track/data/trec_topics/2020_test_qrels.list.txt /mnt/nvme-local/hofstaetter/trec_podcast/run_2020test_bm25-top100_rerankdistilbert_catT2_trec.txt
+~/trec_eval/trec_eval -m all_trec -J /mnt/nvme-local/msertkan/spotify_podcast_track/data/trec_topics/2020_test_qrels.list.txt /mnt/nvme-local/hofstaetter/trec_podcast/run_2020test_tasb-top100_rerankdistilbert_catT2_trec.txt
+
+  podcast_2020_train_tasbtop100:\n\
+    tsv: \n\
+    qrels: \n\
+    binarization_point: 1\n\
+    save_secondary_output: True\n\
+
+
+  podcast_2020_train_bm25top100:\n\
+    tsv: \n\
+    qrels: \n\
+    binarization_point: 1\n\
+    save_secondary_output: False\n\
+  podcast_2021_bm25top100:\n\
+    tsv: \n\
+    save_secondary_output: False\n\
+
+
+# podcast compressed index
+
+CUDA_VISIBLE_DEVICES=4 python matchmaker/dense_retrieval.py encode+index+search --config /mnt/nvme-local/msertkan/matchmaker/config/dense_retrieval/episode_title_and_transcript.yaml --config-overwrites "expirement_base_path: /mnt/nvme-local/hofstaetter/trec_podcast/,faiss_index_type: hnsw,trained_model: /mnt/nvme-local/hofstaetter/2021-07-28_1504_bertdot_tas-b_bs240_compress192dims_colbert240_msmarcopp"
+
+
+/mnt/nvme-local/hofstaetter/trec_podcast/run_2020_test_titletranscript_tasb-compressed_top1k_trec.txt
+ndcg_cut_30             all     0.5043
+
+/mnt/nvme-local/hofstaetter/trec_podcast/run_2020_test_titletranscript_bm25_top1k_rerankdistilbert_catT2_trec.txt
+ndcg_cut_30             all     0.5344
+
+/mnt/nvme-local/hofstaetter/trec_podcast/run_2020_test_titletranscript_tasb_top1k_rerankdistilbert_catT2_trec.txt
+ndcg_cut_30             all     0.5155
+
+/mnt/nvme-local/hofstaetter/trec_podcast/run_2020_test_titletranscript_tasb_n_bm25_top1k_rerankdistilbert_catT2_trec.txt
+ndcg_cut_30             all     0.5301
+
+
+
+cat /data01/hofstaetter/msmarco-passage-experiments/2020-08-06_1712_bert_cls_albertlargev2_bs16_lr1e6/test_tasb_train*-output.txt > /data01/hofstaetter/msmarco-passage-experiments/2020-08-06_1712_bert_cls_albertlargev2_bs16_lr1e6/test_tasb_train-output.txt
+cat /data01/hofstaetter/msmarco-passage-experiments/2020-08-11_1720_bert_largewholewordmask_cls_bs16_lr7e6/test_tasb_train*-output.txt > /data01/hofstaetter/msmarco-passage-experiments/2020-08-11_1720_bert_largewholewordmask_cls_bs16_lr7e6/test_tasb_train-output.txt
+
+
+python matchmaker/utils/ensemble.py --ensemble-type avg --ensemble-folder /data01/hofstaetter/msmarco-passage-experiments/3bert_ensemble_hardnegs --runs /data01/hofstaetter/msmarco-passage-experiments/2019-08-01_2109_bert_base_cont/,/data01/hofstaetter/msmarco-passage-experiments/2020-08-11_1720_bert_largewholewordmask_cls_bs16_lr7e6/,/data01/hofstaetter/msmarco-passage-experiments/2020-08-06_1712_bert_cls_albertlargev2_bs16_lr1e6/ \
+ --run-config /data01/hofstaetter/msmarco-passage-experiments/2019-08-01_2109_bert_base_cont --config-overwrites "\
+in_batch_negatives: False,query_augment_mask_number: -1,train_pairwise_distillation: False,\
+token_embedder_type: bert_cat,use_fp16: False,dataloader_num_workers: 4,batch_size_eval: 512,validation_end: {},leaderboard: {},test:\n\
+  trec2019_top1000_sanity:\n\
+    tsv: /data01/hofstaetter/data/msmarco-passage/leaderboard/test2019.bm25_plain_top1000.tsv\n\
+    qrels: /data01/hofstaetter/data/msmarco-passage/qrels/trec2019-qrels-pass.txt\n\
+    binarization_point: 2\n\
+    save_secondary_output: True\n\
+  tasb_train:\n\
+    tsv: /newstorage4/hofstaetter/msmarco-passage/tasb_hard_negative_tuples.tsv\n\
+    qrels: /data01/hofstaetter/data/msmarco-passage/qrels/qrels.train.tsv\n\
+    binarization_point: 1\n\
+    save_secondary_output: False\n"
+
+
+CUDA_VISIBLE_DEVICES=5 python matchmaker/train.py --config-file config/train/defaults.yaml config/train/data/tr-msmarco-passage-dot-rank.yaml config/train/models/bert_dot_qa.yaml config/train/modes/pseudo_labels.yaml --run-name colbert_residual_dim768_bs32_continuePLv1 --config-overwrites "batch_size_train: 32,warmstart_model_path: /data01/hofstaetter/msmarco-passage-experiments-neweval/2021-08-27_0903_colbert_residual_distilbert_stripped_dim768_bs32/best-model.pytorch-state-dict"
+CUDA_VISIBLE_DEVICES=5 python matchmaker/train.py --config-file config/train/defaults.yaml config/train/data/tr-msmarco-passage-dot-rank.yaml config/train/models/bert_dot_qa.yaml config/train/modes/pseudo_labels.yaml --run-name colbert_residual_add_dim768_bs32_PL3bert --config-overwrites "rcr_residual_compress_dim: -1,rcr_main_compress_dim: -1"
+
+
+CUDA_VISIBLE_DEVICES=0 python matchmaker/train.py --config-file config/train/defaults.yaml config/train/data/dl-msmarco-passage-dot-rank.yaml config/train/models/colbert.yaml config/train/modes/pseudo_labels.yaml --run-name colbert_compress_dim64_bs32_PL_3bert --config-overwrites "colbert_compression_dim: 64,warmstart_model_path: /scratch/hofstaetter/experiments/msmarco-passage-v1/2021-09-15_1254_colbert_dim768_bs32_PL_3bert/best-model.pytorch-state-dict"
+CUDA_VISIBLE_DEVICES=0 python matchmaker/train.py --config-file config/train/defaults.yaml config/train/data/dl-msmarco-passage-dot-rank.yaml config/train/models/colbert.yaml config/train/modes/pseudo_labels.yaml --run-name colbert_compress_dim32_bs32_PL_3bert --config-overwrites "colbert_compression_dim: 32,warmstart_model_path: /scratch/hofstaetter/experiments/msmarco-passage-v1/2021-09-15_1254_colbert_dim768_bs32_PL_3bert/best-model.pytorch-state-dict"
+CUDA_VISIBLE_DEVICES=0 python matchmaker/train.py --config-file config/train/defaults.yaml config/train/data/dl-msmarco-passage-dot-rank.yaml config/train/models/colbert.yaml config/train/modes/pseudo_labels.yaml --run-name colbert_compress_dim16_bs32_PL_3bert --config-overwrites "colbert_compression_dim: 16,warmstart_model_path: /scratch/hofstaetter/experiments/msmarco-passage-v1/2021-09-15_1254_colbert_dim768_bs32_PL_3bert/best-model.pytorch-state-dict"
+
+CUDA_VISIBLE_DEVICES=1 python matchmaker/train.py --config-file config/train/defaults.yaml config/train/data/dl-msmarco-passage-dot-rank.yaml config/train/models/colbert.yaml config/train/modes/pseudo_labels.yaml --run-name colbert_compress_dim8_bs32_PL_3bert --config-overwrites "colbert_compression_dim: 8,warmstart_model_path: /scratch/hofstaetter/experiments/msmarco-passage-v1/2021-09-15_1254_colbert_dim768_bs32_PL_3bert/best-model.pytorch-state-dict"
+CUDA_VISIBLE_DEVICES=1 python matchmaker/train.py --config-file config/train/defaults.yaml config/train/data/dl-msmarco-passage-dot-rank.yaml config/train/models/colbert.yaml config/train/modes/pseudo_labels.yaml --run-name colbert_compress_dim6_bs32_PL_3bert --config-overwrites "colbert_compression_dim: 6,warmstart_model_path: /scratch/hofstaetter/experiments/msmarco-passage-v1/2021-09-15_1254_colbert_dim768_bs32_PL_3bert/best-model.pytorch-state-dict"
+CUDA_VISIBLE_DEVICES=1 python matchmaker/train.py --config-file config/train/defaults.yaml config/train/data/dl-msmarco-passage-dot-rank.yaml config/train/models/colbert.yaml config/train/modes/pseudo_labels.yaml --run-name colbert_compress_dim4_bs32_PL_3bert --config-overwrites "colbert_compression_dim: 4,warmstart_model_path: /scratch/hofstaetter/experiments/msmarco-passage-v1/2021-09-15_1254_colbert_dim768_bs32_PL_3bert/best-model.pytorch-state-dict"
+
+
+CUDA_VISIBLE_DEVICES=0 python matchmaker/train.py --config-file config/train/defaults.yaml config/train/data/dl-msmarco-passage-dot-rank.yaml config/train/models/colbert.yaml config/train/modes/pseudo_labels.yaml --run-name colbert_compress_dim64_bs32_PL_3bert_coldstart --config-overwrites "colbert_compression_dim: 64"
+CUDA_VISIBLE_DEVICES=0 python matchmaker/train.py --config-file config/train/defaults.yaml config/train/data/dl-msmarco-passage-dot-rank.yaml config/train/models/colbert.yaml config/train/modes/pseudo_labels.yaml --run-name colbert_compress_dim32_bs32_PL_3bert_coldstart --config-overwrites "colbert_compression_dim: 32"
+CUDA_VISIBLE_DEVICES=0 python matchmaker/train.py --config-file config/train/defaults.yaml config/train/data/dl-msmarco-passage-dot-rank.yaml config/train/models/colbert.yaml config/train/modes/pseudo_labels.yaml --run-name colbert_compress_dim16_bs32_PL_3bert_coldstart --config-overwrites "colbert_compression_dim: 16"
+
+CUDA_VISIBLE_DEVICES=1 python matchmaker/train.py --config-file config/train/defaults.yaml config/train/data/dl-msmarco-passage-dot-rank.yaml config/train/models/colbert.yaml config/train/modes/pseudo_labels.yaml --run-name colbert_compress_dim8_bs32_PL_3bert_coldstart --config-overwrites "colbert_compression_dim: 8"
+CUDA_VISIBLE_DEVICES=1 python matchmaker/train.py --config-file config/train/defaults.yaml config/train/data/dl-msmarco-passage-dot-rank.yaml config/train/models/colbert.yaml config/train/modes/pseudo_labels.yaml --run-name colbert_compress_dim6_bs32_PL_3bert_coldstart --config-overwrites "colbert_compression_dim: 6"
+CUDA_VISIBLE_DEVICES=1 python matchmaker/train.py --config-file config/train/defaults.yaml config/train/data/dl-msmarco-passage-dot-rank.yaml config/train/models/colbert.yaml config/train/modes/pseudo_labels.yaml --run-name colbert_compress_dim4_bs32_PL_3bert_coldstart --config-overwrites "colbert_compression_dim: 4"
+
+
+CUDA_VISIBLE_DEVICES=4 python matchmaker/train.py --config-file config/train/defaults.yaml config/train/data/tr-msmarco-passage-dot-rank.yaml config/train/models/colbert.yaml config/train/modes/pseudo_labels.yaml --run-name colbert_binary_dim768_bs32_PL_3bert --config-overwrites "colbert_compression_dim: -1,warmstart_model_path: /data01/hofstaetter/msmarco-passage-experiments-neweval/2021-09-15_1254_colbert_dim768_bs32_PL_3bert/best-model.pytorch-state-dict"
+
+CUDA_VISIBLE_DEVICES=5 python matchmaker/train.py --config-file config/train/defaults.yaml config/train/data/tr-msmarco-passage-dot-rank.yaml config/train/models/colbert.yaml config/train/modes/pseudo_labels.yaml --run-name colbert_dim768_bs32_PL_3bert --config-overwrites "colbert_compression_dim: -1"
+CUDA_VISIBLE_DEVICES=4 python matchmaker/train.py --config-file config/train/defaults.yaml config/train/data/tr-msmarco-passage-dot-rank.yaml config/train/models/bert_cat.yaml config/train/modes/pseudo_labels.yaml --run-name distilcat_bs32_PL_3bert
+
+
+CUDA_VISIBLE_DEVICES=1 python matchmaker/train.py --config-file config/train/defaults.yaml config/train/data/dl-msmarco-passage-dot-rank.yaml config/train/models/bert_dot_qa.yaml config/train/modes/pseudo_labels.yaml --run-name colbert_residual_add_main192_res8_bs32_warmstart_PL3bert --config-overwrites "rcr_residual_compress_dim: 8,warmstart_model_path: /scratch/hofstaetter/experiments/msmarco-passage-v1/2021-09-15_1254_colbert_dim768_bs32_PL_3bert/best-model.pytorch-state-dict"
+CUDA_VISIBLE_DEVICES=0 python matchmaker/train.py --config-file config/train/defaults.yaml config/train/data/dl-msmarco-passage-dot-rank.yaml config/train/models/bert_dot_qa.yaml config/train/modes/pseudo_labels.yaml --run-name colbert_residual_mult_main192_res8_bs32_warmstart_PL3bert --config-overwrites "rcr_residual_compress_dim: 8,warmstart_model_path: /scratch/hofstaetter/experiments/msmarco-passage-v1/2021-09-15_1254_colbert_dim768_bs32_PL_3bert/best-model.pytorch-state-dict"
+
+
+CUDA_VISIBLE_DEVICES=4 python matchmaker/train.py --config-file config/train/defaults.yaml config/train/data/tr-msmarco-passage-dot-rank.yaml config/train/models/bert_dot_qa.yaml config/train/modes/pseudo_labels.yaml --run-name rcr_binarized_add_main192_res32_bs32_warmstart_PL3bert --config-overwrites "rcr_residual_compress_dim: 32,warmstart_model_path: /data01/hofstaetter/msmarco-passage-experiments-neweval/2021-09-15_1254_colbert_dim768_bs32_PL_3bert/best-model.pytorch-state-dict"
+
+
+CUDA_VISIBLE_DEVICES=0 python matchmaker/train.py --config-file config/train/defaults.yaml config/train/data/dl-msmarco-passage-dot-rank.yaml config/train/models/bert_dot_qa.yaml config/train/modes/pairwise_distillation.yaml --run-name colbert_residual_add_main192_res16_bs32_warmstart_termMSE --config-overwrites "rcr_residual_compress_dim: 16,warmstart_model_path: /scratch/hofstaetter/experiments/msmarco-passage-v1/2021-08-27_0903_colbert_residual_distilbert_stripped_dim768_bs32/best-model.pytorch-state-dict"
+
+
+CUDA_VISIBLE_DEVICES=5 python matchmaker/train.py --config-file config/train/defaults.yaml config/train/data/tr-msmarco-passage-dot-rank.yaml config/train/models/bert_dot_qa.yaml config/train/modes/pseudo_labels.yaml --run-name rcr_add_main384_res64_bs32_warmstart_PL3bert --config-overwrites "rcr_main_compress_dim: 384,rcr_residual_compress_dim: 64,warmstart_model_path: /data01/hofstaetter/msmarco-passage-experiments-neweval/2021-09-19_0946_colbert_residual_add_dim768_bs32_PL3bert/best-model.pytorch-state-dict"
+CUDA_VISIBLE_DEVICES=5 python matchmaker/train.py --config-file config/train/defaults.yaml config/train/data/tr-msmarco-passage-dot-rank.yaml config/train/models/bert_dot_qa.yaml config/train/modes/pseudo_labels.yaml --run-name rcr_add_main384_res32_bs32_warmstart_PL3bert --config-overwrites "rcr_main_compress_dim: 384,rcr_residual_compress_dim: 32,warmstart_model_path: /data01/hofstaetter/msmarco-passage-experiments-neweval/2021-09-19_0946_colbert_residual_add_dim768_bs32_PL3bert/best-model.pytorch-state-dict"
+CUDA_VISIBLE_DEVICES=5 python matchmaker/train.py --config-file config/train/defaults.yaml config/train/data/tr-msmarco-passage-dot-rank.yaml config/train/models/bert_dot_qa.yaml config/train/modes/pseudo_labels.yaml --run-name rcr_add_main384_res16_bs32_warmstart_PL3bert --config-overwrites "rcr_main_compress_dim: 384,rcr_residual_compress_dim: 16,warmstart_model_path: /data01/hofstaetter/msmarco-passage-experiments-neweval/2021-09-19_0946_colbert_residual_add_dim768_bs32_PL3bert/best-model.pytorch-state-dict"
+
+CUDA_VISIBLE_DEVICES=4 python matchmaker/train.py --config-file config/train/defaults.yaml config/train/data/tr-msmarco-passage-dot-rank.yaml config/train/models/bert_dot_qa.yaml config/train/modes/pseudo_labels.yaml --run-name rcr_add_main384_res8_bs32_warmstart_PL3bert --config-overwrites "rcr_main_compress_dim: 384,rcr_residual_compress_dim: 8,warmstart_model_path: /data01/hofstaetter/msmarco-passage-experiments-neweval/2021-09-19_0946_colbert_residual_add_dim768_bs32_PL3bert/best-model.pytorch-state-dict"
+CUDA_VISIBLE_DEVICES=4 python matchmaker/train.py --config-file config/train/defaults.yaml config/train/data/tr-msmarco-passage-dot-rank.yaml config/train/models/bert_dot_qa.yaml config/train/modes/pseudo_labels.yaml --run-name rcr_add_main384_res6_bs32_warmstart_PL3bert --config-overwrites "rcr_main_compress_dim: 384,rcr_residual_compress_dim: 6,warmstart_model_path: /data01/hofstaetter/msmarco-passage-experiments-neweval/2021-09-19_0946_colbert_residual_add_dim768_bs32_PL3bert/best-model.pytorch-state-dict"
+CUDA_VISIBLE_DEVICES=4 python matchmaker/train.py --config-file config/train/defaults.yaml config/train/data/tr-msmarco-passage-dot-rank.yaml config/train/models/bert_dot_qa.yaml config/train/modes/pseudo_labels.yaml --run-name rcr_add_main384_res4_bs32_warmstart_PL3bert --config-overwrites "rcr_main_compress_dim: 384,rcr_residual_compress_dim: 4,warmstart_model_path: /data01/hofstaetter/msmarco-passage-experiments-neweval/2021-09-19_0946_colbert_residual_add_dim768_bs32_PL3bert/best-model.pytorch-state-dict"
+
+
+/scratch/hofstaetter/experiments/msmarco-passage-v1/2021-10-22_1640_colbert_compress_dim64_bs32_PL_3bert_unique_sum
+
+
+python preprocessing/generate_validation_input_from_candidate_set.py --collection-file /data01/hofstaetter/data/msmarco-passage/collection.tsv \
+ --query-file  /data01/hofstaetter/data/msmarco-passage/queries/queries.dev.subset.tsv --top-N 1000 \
+--out-file  /data01/hofstaetter/data/msmarco-passage/tasb256_dev7k_tuples_top1k.tsv --candidate-file /mnt/nvme-local/hofstaetter/msmarco-retrieval-experiments/2021-01-23_1238_uni10dyn2k_take1_distildot_bs256_trainT2_trainColBertT2_lambda0_75/dev_top1000-output.txt
+
+CUDA_VISIBLE_DEVICES=0,1,2,3 python matchmaker/train.py --continue-folder  /data01/hofstaetter/msmarco-passage-experiments-neweval/2021-09-15_1303_distilcat_bs32_PL_3bert --config-overwrites "batch_size_eval: 256,\
+test:\n\
+  top1000_6kdev_tasb256_rerank:\n\
+    tsv: /data01/hofstaetter/data/msmarco-passage/tasb256_dev7k_tuples_top1k.tsv\n\
+    qrels: /data01/hofstaetter/data/msmarco-passage/qrels/qrels.dev.tsv\n\
+    binarization_point: 1\n\
+    save_secondary_output: False\n"
+
+
+CUDA_VISIBLE_DEVICES=4 python matchmaker/train.py --config-file config/train/defaults.yaml config/train/data/tr-msmarco-passage-dot-rank.yaml config/train/models/colbert.yaml config/train/modes/pseudo_labels.yaml --run-name colbert_dim768_bs32_continuePL_3bert_p4_n1 --config-overwrites "colbert_compression_dim: -1,warmstart_model_path:  /data01/hofstaetter/msmarco-passage-experiments-neweval/2021-08-27_0903_colbert_distilbert_stripped_dim768_bs32/best-model.pytorch-state-dict"
+
+
+CUDA_VISIBLE_DEVICES=1 python matchmaker/train.py --config-file config/train/defaults.yaml config/train/data/dl-msmarco-passage-dot-rank.yaml config/train/models/colbert.yaml config/train/modes/pseudo_labels.yaml config/train/modes/sparsity.yaml --run-name colbert_compress_dim64_bs32_PL_3bert_stopwords --config-overwrites "colbert_compression_dim: 64,warmstart_model_path: /scratch/hofstaetter/experiments/msmarco-passage-v1/2021-09-20_1118_colbert_compress_dim64_bs32_PL_3bert/best-model.pytorch-state-dict"
+CUDA_VISIBLE_DEVICES=1 python matchmaker/train.py --config-file config/train/defaults.yaml config/train/data/dl-msmarco-passage-dot-rank.yaml config/train/models/colbert.yaml config/train/modes/pseudo_labels.yaml config/train/modes/sparsity.yaml --run-name colbert_compress_dim16_bs32_PL_3bert_stopwords --config-overwrites "colbert_compression_dim: 16,warmstart_model_path: /scratch/hofstaetter/experiments/msmarco-passage-v1/2021-09-23_1041_colbert_compress_dim16_bs32_PL_3bert/best-model.pytorch-state-dict"
+
+
+CUDA_VISIBLE_DEVICES=0 python matchmaker/train.py --config-file config/train/defaults.yaml config/train/data/dl-msmarco-passage-dot-rank.yaml config/train/models/colbert.yaml config/train/modes/pseudo_labels.yaml config/train/modes/sparsity.yaml --run-name colbert_compress_dim64_bs32_PL_3bert_stopword_relu0.01 --config-overwrites "colbert_compression_dim: 64,warmstart_model_path: /scratch/hofstaetter/experiments/msmarco-passage-v1/2021-09-20_1118_colbert_compress_dim64_bs32_PL_3bert/best-model.pytorch-state-dict"
+
+
+CUDA_VISIBLE_DEVICES=1 python matchmaker/train.py --config-file config/train/defaults.yaml config/train/data/dl-msmarco-passage-dot-rank.yaml config/train/models/colbert.yaml config/train/modes/pseudo_labels.yaml config/train/modes/sparsity.yaml --run-name colbert_compress_dim32_bs32_PL_3bert_stopword_relu5 --config-overwrites "colbert_compression_dim: 32,warmstart_model_path: /scratch/hofstaetter/experiments/msmarco-passage-v1/2021-09-21_2244_colbert_compress_dim32_bs32_PL_3bert/best-model.pytorch-state-dict,sparsity_loss_lambda_factor: 5"
+CUDA_VISIBLE_DEVICES=1 python matchmaker/train.py --config-file config/train/defaults.yaml config/train/data/dl-msmarco-passage-dot-rank.yaml config/train/models/colbert.yaml config/train/modes/pseudo_labels.yaml config/train/modes/sparsity.yaml --run-name colbert_compress_dim16_bs32_PL_3bert_stopword_relu5 --config-overwrites "colbert_compression_dim: 16,warmstart_model_path: /scratch/hofstaetter/experiments/msmarco-passage-v1/2021-09-23_1041_colbert_compress_dim16_bs32_PL_3bert/best-model.pytorch-state-dict,sparsity_loss_lambda_factor: 5"
+
+CUDA_VISIBLE_DEVICES=0 python matchmaker/train.py --config-file config/train/defaults.yaml config/train/data/dl-msmarco-passage-dot-rank.yaml config/train/models/colbert.yaml config/train/modes/pseudo_labels.yaml config/train/modes/sparsity.yaml --run-name colbert_compress_dim8_bs32_PL_3bert_stopword_relu1 --config-overwrites "colbert_compression_dim: 8,warmstart_model_path: /scratch/hofstaetter/experiments/msmarco-passage-v1/2021-09-20_1117_colbert_compress_dim8_bs32_PL_3bert/best-model.pytorch-state-dict,sparsity_loss_lambda_factor: 1"
+CUDA_VISIBLE_DEVICES=0 python matchmaker/train.py --config-file config/train/defaults.yaml config/train/data/dl-msmarco-passage-dot-rank.yaml config/train/models/colbert.yaml config/train/modes/pseudo_labels.yaml config/train/modes/sparsity.yaml --run-name colbert_compress_dim6_bs32_PL_3bert_stopword_relu1 --config-overwrites "colbert_compression_dim: 6,warmstart_model_path: /scratch/hofstaetter/experiments/msmarco-passage-v1/2021-09-22_2013_colbert_compress_dim6_bs32_PL_3bert/best-model.pytorch-state-dict,sparsity_loss_lambda_factor: 1"
+
+
+CUDA_VISIBLE_DEVICES=1 python matchmaker/train.py --config-file config/train/defaults.yaml config/train/data/dl-msmarco-passage-dot-rank.yaml config/train/models/colbert.yaml config/train/modes/pseudo_labels.yaml config/train/modes/sparsity.yaml --run-name colbert_compress_dim64_bs32_PL_3bert_uniquesum_stopword_relu5 --config-overwrites "colbert_compression_dim: 64,warmstart_model_path: /scratch/hofstaetter/experiments/msmarco-passage-v1/2021-10-22_1640_colbert_compress_dim64_bs32_PL_3bert_unique_sum/best-model.pytorch-state-dict,sparsity_loss_lambda_factor: 5"
+
+
+
+
+CUDA_VISIBLE_DEVICES=1 python matchmaker/autolabel/generate_queries.py --config-file config/autolabel/dl-podcast.yaml --run-name podcast_t5base_stopwords
+
+
+
+python matchmaker/distillation/generate_triples_from_rankings.py --in-rankings /data01/hofstaetter/msmarco-passage-experiments/3bert_ensemble_hardnegs/test_tasb_train-ensemble-output.txt --out-triple-ids /newstorage5/shofstae/msmarco-passage-experiments/3bert_ensemble_hardnegs/test_tasb_train-ensemble-triples-100M.txt
+
+python matchmaker/distillation/generate_triples_from_rankings.py --in-rankings /data01/hofstaetter/msmarco-passage-experiments/3bert_ensemble_hardnegs/test_tasb_train-ensemble-output.txt --out-triple-ids /newstorage5/shofstae/msmarco-passage-experiments/3bert_ensemble_hardnegs/tasb_train-ensemble-triples-50M-v2.txt
+
+
+#
+# colberter
+#
+CUDA_VISIBLE_DEVICES=4 python matchmaker/train.py --run-name colberter_PL_dim32_uniquesum \
+--config-file config/train/defaults.yaml config/train/data/tr-msmarco-passage-dot-rank.yaml config/train/models/colberter.yaml config/train/modes/pseudo_labels.yaml \
+--config-overwrites "colberter_compression_dim: 32,colberter_aggregate_unique_ids: True,warmstart_model_path: /newstorage5/shofstae/msmarco-passage-experiments/2021-09-21_2244_colbert_compress_dim32_bs32_PL_3bert/best-model.pytorch-state-dict"
+
+CUDA_VISIBLE_DEVICES=4 python matchmaker/train.py --run-name colberter_PL_dim16_uniquesum \
+--config-file config/train/defaults.yaml config/train/data/tr-msmarco-passage-dot-rank.yaml config/train/models/colberter.yaml config/train/modes/pseudo_labels.yaml \
+--config-overwrites "colberter_compression_dim: 16,colberter_aggregate_unique_ids: True,warmstart_model_path: /newstorage5/shofstae/msmarco-passage-experiments/2021-09-23_1041_colbert_compress_dim16_bs32_PL_3bert/best-model.pytorch-state-dict"
+
+
+
+CUDA_VISIBLE_DEVICES=4 python matchmaker/train.py --run-name colberter_PL_dim8_uniquesum \
+--config-file config/train/defaults.yaml config/train/data/tr-msmarco-passage-dot-rank.yaml config/train/models/colberter.yaml config/train/modes/pseudo_labels.yaml \
+--config-overwrites "colberter_compression_dim: 8,colberter_aggregate_unique_ids: True,warmstart_model_path: /newstorage5/shofstae/msmarco-passage-experiments/2021-09-20_1117_colbert_compress_dim8_bs32_PL_3bert/best-model.pytorch-state-dict"
+
+CUDA_VISIBLE_DEVICES=4 python matchmaker/train.py --run-name colberter_PL_dim6_uniquesum \
+--config-file config/train/defaults.yaml config/train/data/tr-msmarco-passage-dot-rank.yaml config/train/models/colberter.yaml config/train/modes/pseudo_labels.yaml \
+--config-overwrites "colberter_compression_dim: 6,colberter_aggregate_unique_ids: True,warmstart_model_path: /newstorage5/shofstae/msmarco-passage-experiments/2021-09-22_2013_colbert_compress_dim6_bs32_PL_3bert/best-model.pytorch-state-dict"
+
+
+
+CUDA_VISIBLE_DEVICES=5 python matchmaker/train.py --run-name colberter_PL_dim64_uniquesum_stop_lambda7 \
+--config-file config/train/defaults.yaml config/train/data/tr-msmarco-passage-dot-rank.yaml config/train/models/colberter.yaml config/train/modes/pseudo_labels.yaml config/train/modes/sparsity.yaml \
+--config-overwrites "colberter_compression_dim: 64,colberter_aggregate_unique_ids: True,colberter_use_contextualized_stopwords: True,sparsity_loss_lambda_factor: 7,warmstart_model_path: /newstorage5/shofstae/msmarco-passage-experiments/2021-10-22_1640_colbert_compress_dim64_bs32_PL_3bert_unique_sum/best-model.pytorch-state-dict"
+
+CUDA_VISIBLE_DEVICES=5 python matchmaker/train.py --run-name colberter_PL_dim64_uniquesum_stop_lambda5 \
+--config-file config/train/defaults.yaml config/train/data/tr-msmarco-passage-dot-rank.yaml config/train/models/colberter.yaml config/train/modes/pseudo_labels.yaml config/train/modes/sparsity.yaml \
+--config-overwrites "colberter_compression_dim: 64,colberter_aggregate_unique_ids: True,colberter_use_contextualized_stopwords: True,sparsity_loss_lambda_factor: 5,warmstart_model_path: /newstorage5/shofstae/msmarco-passage-experiments/2021-10-22_1640_colbert_compress_dim64_bs32_PL_3bert_unique_sum/best-model.pytorch-state-dict"
+
+
+CUDA_VISIBLE_DEVICES=5 python matchmaker/train.py --run-name colberter_PL_dim16_uniquesum_stop_lambda5 \
+--config-file config/train/defaults.yaml config/train/data/tr-msmarco-passage-dot-rank.yaml config/train/models/colberter.yaml config/train/modes/pseudo_labels.yaml config/train/modes/sparsity.yaml \
+--config-overwrites "colberter_compression_dim: 16,colberter_aggregate_unique_ids: True,colberter_use_contextualized_stopwords: True,sparsity_loss_lambda_factor: 5,warmstart_model_path: /newstorage5/shofstae/msmarco-passage-experiments/2021-10-29_2133_colberter_PL_dim16_uniquesum/best-model.pytorch-state-dict"
+
+CUDA_VISIBLE_DEVICES=5 python matchmaker/train.py --run-name colberter_PL_dim32_uniquesum_stop_lambda5 \
+--config-file config/train/defaults.yaml config/train/data/tr-msmarco-passage-dot-rank.yaml config/train/models/colberter.yaml config/train/modes/pseudo_labels.yaml config/train/modes/sparsity.yaml \
+--config-overwrites "colberter_compression_dim: 32,colberter_aggregate_unique_ids: True,colberter_use_contextualized_stopwords: True,sparsity_loss_lambda_factor: 5,warmstart_model_path: /newstorage5/shofstae/msmarco-passage-experiments/2021-10-27_1659_colberter_PL_dim32_uniquesum/best-model.pytorch-state-dict"
+
+
+CUDA_VISIBLE_DEVICES=4 python matchmaker/train.py --run-name colberter_PL_dim8_uniquesum_stop_lambda7 \
+--config-file config/train/defaults.yaml config/train/data/tr-msmarco-passage-dot-rank.yaml config/train/models/colberter.yaml config/train/modes/pseudo_labels.yaml config/train/modes/sparsity.yaml \
+--config-overwrites "colberter_compression_dim: 8,colberter_aggregate_unique_ids: True,colberter_use_contextualized_stopwords: True,sparsity_loss_lambda_factor: 7,warmstart_model_path: /newstorage5/shofstae/msmarco-passage-experiments/2021-10-31_2334_colberter_PL_dim8_uniquesum/best-model.pytorch-state-dict"
+
+CUDA_VISIBLE_DEVICES=4 python matchmaker/train.py --run-name colberter_PL_dim16_uniquesum_stop_lambda7 \
+--config-file config/train/defaults.yaml config/train/data/tr-msmarco-passage-dot-rank.yaml config/train/models/colberter.yaml config/train/modes/pseudo_labels.yaml config/train/modes/sparsity.yaml \
+--config-overwrites "colberter_compression_dim: 16,colberter_aggregate_unique_ids: True,colberter_use_contextualized_stopwords: True,sparsity_loss_lambda_factor: 7,warmstart_model_path: /newstorage5/shofstae/msmarco-passage-experiments/2021-10-29_2133_colberter_PL_dim16_uniquesum/best-model.pytorch-state-dict"
+
+CUDA_VISIBLE_DEVICES=5 python matchmaker/train.py --run-name colberter_PL_dim16_uniquesum_stop_lambda6 \
+--config-file config/train/defaults.yaml config/train/data/tr-msmarco-passage-dot-rank.yaml config/train/models/colberter.yaml config/train/modes/pseudo_labels.yaml config/train/modes/sparsity.yaml \
+--config-overwrites "colberter_compression_dim: 16,colberter_aggregate_unique_ids: True,colberter_use_contextualized_stopwords: True,sparsity_loss_lambda_factor: 6,warmstart_model_path: /newstorage5/shofstae/msmarco-passage-experiments/2021-10-29_2133_colberter_PL_dim16_uniquesum/best-model.pytorch-state-dict"
+
+
+
+CUDA_VISIBLE_DEVICES=0 python matchmaker/train.py --run-name colberter_PL_dim16_uniquesum_bias \
+--config-file config/train/defaults.yaml config/train/data/dl-msmarco-passage-dot-rank.yaml config/train/models/colberter.yaml config/train/modes/pseudo_labels.yaml \
+--config-overwrites "colberter_compression_dim: 16,colberter_aggregate_unique_ids: True,colberter_use_contextualized_stopwords: False,warmstart_model_path: /scratch/hofstaetter/experiments/msmarco-passage-v1/2021-10-29_2133_colberter_PL_dim16_uniquesum/best-model.pytorch-state-dict"
+
+
+CUDA_VISIBLE_DEVICES=1 python matchmaker/train.py --run-name colbert_bertbase_PL_dim768_bs32_wd \
+--config-file config/train/defaults.yaml config/train/data/dl-msmarco-passage-dot-rank.yaml config/train/models/colbert.yaml config/train/modes/pseudo_labels.yaml \
+--config-overwrites "bert_pretrained_model: bert-base-uncased"
+
+
+
+CUDA_VISIBLE_DEVICES=5 python matchmaker/train.py --run-name colberter_PL_dim32_uniquesum_sym-stop_lambda5 \
+--config-file config/train/defaults.yaml config/train/data/tr-msmarco-passage-dot-rank.yaml config/train/models/colberter.yaml config/train/modes/pseudo_labels.yaml config/train/modes/sparsity.yaml \
+--config-overwrites "colberter_compression_dim: 32,colberter_aggregate_unique_ids: True,colberter_use_contextualized_stopwords: True,sparsity_loss_lambda_factor: 5,warmstart_model_path: /newstorage5/shofstae/msmarco-passage-experiments/2021-10-27_1659_colberter_PL_dim32_uniquesum/best-model.pytorch-state-dict"
+
+CUDA_VISIBLE_DEVICES=4 python matchmaker/train.py --run-name colberter_PL_dim32_uniquesum_sym-stop_lambda5_exactbias \
+--config-file config/train/defaults.yaml config/train/data/tr-msmarco-passage-dot-rank.yaml config/train/models/colberter.yaml config/train/modes/pseudo_labels.yaml config/train/modes/sparsity.yaml \
+--config-overwrites "colberter_compression_dim: 32,colberter_aggregate_unique_ids: True,colberter_use_contextualized_stopwords: True,sparsity_loss_lambda_factor: 5,warmstart_model_path: /newstorage5/shofstae/msmarco-passage-experiments/2021-10-27_1659_colberter_PL_dim32_uniquesum/best-model.pytorch-state-dict"
+
+
+CUDA_VISIBLE_DEVICES=0 python matchmaker/train.py --run-name colberter_PL_dim16_uniquesum_sym-stop_lambda5_exactbias \
+--config-file config/train/defaults.yaml config/train/data/dl-msmarco-passage-dot-rank.yaml config/train/models/colberter.yaml config/train/modes/pseudo_labels.yaml config/train/modes/sparsity.yaml \
+--config-overwrites "colberter_compression_dim: 16,colberter_aggregate_unique_ids: True,colberter_use_contextualized_stopwords: True,sparsity_loss_lambda_factor: 5,warmstart_model_path: /scratch/hofstaetter/experiments/msmarco-passage-v1/2021-10-29_2133_colberter_PL_dim16_uniquesum/best-model.pytorch-state-dict"
+
+
+CUDA_VISIBLE_DEVICES=1 python matchmaker/train.py --run-name colberter_PL_dim16_uniquesum_sym-stop_lambda5 \
+--config-file config/train/defaults.yaml config/train/data/dl-msmarco-passage-dot-rank.yaml config/train/models/colberter.yaml config/train/modes/pseudo_labels.yaml config/train/modes/sparsity.yaml \
+--config-overwrites "colberter_compression_dim: 16,colberter_aggregate_unique_ids: True,colberter_use_contextualized_stopwords: True,sparsity_loss_lambda_factor: 5,warmstart_model_path: /scratch/hofstaetter/experiments/msmarco-passage-v1/2021-10-29_2133_colberter_PL_dim16_uniquesum/best-model.pytorch-state-dict"
+
+
+CUDA_VISIBLE_DEVICES=4 python matchmaker/train.py --continue-folder /newstorage5/shofstae/msmarco-passage-experiments/2021-11-05_0043_colberter_PL_dim32_uniquesum_stop_lambda5/ \
+--config-overwrites "dataloader_num_workers: 0,validation_end: {},\
+test:\n\
+  tasb256_dev7k_tuples_top1k-sample50k:\n\
+    tsv: /data01/hofstaetter/data/msmarco-passage/tasb256_dev7k_tuples_top1k-sample50k.tsv\n\
+    save_secondary_output: True\n\
+  top1000_6kdev_tasb256_rerank_sanitycheck:\n\
+    tsv: /data01/hofstaetter/data/msmarco-passage/tasb256_dev7k_tuples_top1k.tsv\n\
+    qrels: /data01/hofstaetter/data/msmarco-passage/qrels/qrels.dev.tsv\n\
+    binarization_point: 1\n\
+    save_secondary_output: False\n"
+
+
+
+# hameds export
+
+CUDA_VISIBLE_DEVICES=3 python matchmaker/dense_retrieval.py index+search --run-name tasb256_vector_export --config config/dense_retrieval/tr-msmarco.yaml --config-overwrites "continue_folder: /mnt/nvme-local/hofstaetter/msmarco-retrieval-experiments/2021-06-14_1301_tasb_256_fromhuggingface_onnx_hnsw128"
+
+
+scp /data01/hofstaetter/data/msmarco-passage/collection.tsv /data01/hofstaetter/data/msmarco-passage/queries/queries.dev.judged.subset.tsv /data01/hofstaetter/data/msmarco-passage/qrels/qrels.dev.tsv /data01/hofstaetter/data/msmarco-passage/queries/msmarco-test2019-queries.tsv /data01/hofstaetter/data/msmarco-passage/qrels/trec2019-qrels-pass.txt /data01/hofstaetter/data/msmarco-passage/leaderboard/msmarco-test2020-queries.tsv /data01/hofstaetter/data/msmarco-passage/qrels/2020-qrels-pass-final.txt shofstaetter@sydney2.cs.umass.edu:/mnt/nfs/work2/shofstaetter/zamani/msmarco_tasb_export   
+
+scp  shofstaetter@sydney2.cs.umass.edu:/mnt/nfs/work2/shofstaetter/zamani/msmarco_tasb_export   
+scp  shofstaetter@sydney2.cs.umass.edu:/mnt/nfs/work2/shofstaetter/zamani/msmarco_tasb_export   
+scp  shofstaetter@sydney2.cs.umass.edu:/mnt/nfs/work2/shofstaetter/zamani/msmarco_tasb_export   
+
+
+trec_eval/trec_eval -m all_trec /newstorage5/shofstae/trec-podcast/podcast2021-segments.qrels.QRonly.txt /mnt/nvme-local/msertkan/spotify_podcast_track/experiments/pyserini/runs/2021/run.title-transcript.bm25.txt
+
+
+#
+# tas-b autolabel msmarco
+# 
+
+CUDA_VISIBLE_DEVICES=0,1 python matchmaker/train.py --config-file config/train/defaults.yaml config/train/data/dl-msmarco-passage-dot-rank.yaml config/train/models/bert_dot.yaml config/train/modes/tas_balanced.yaml --run-name bertdot_tas-b_bs240_PL_3bert
+
+CUDA_VISIBLE_DEVICES=0,1 python matchmaker/train.py --config-file config/train/defaults.yaml config/train/data/dl-msmarco-passage-dot-rank.yaml config/train/models/bert_dot.yaml config/train/modes/tas_balanced.yaml --run-name bertdot_tas-b_bs32_PL_teacher_3bert-colberter-dim64-uni
+
+
+CUDA_VISIBLE_DEVICES=1 python matchmaker/dense_retrieval.py encode+index+search --run-name bertdot_margin-mse-pairs_bs400_PL_minpos5_minneg4 --config config/dense_retrieval/dl-msmarco.yaml --config-overwrites "trained_model: /scratch/hofstaetter/experiments/msmarco-passage-v1/2021-11-17_1423_bertdot_margin-mse-pairs_bs400_PL_minpos5_minneg4/"
+
+
+CUDA_VISIBLE_DEVICES=5 python matchmaker/train.py --run-name colberter_PL_dim32_unique-whole-word \
+--config-file config/train/defaults.yaml config/train/data/tr-msmarco-passage-dot-rank.yaml config/train/models/colberter.yaml config/train/modes/pseudo_labels.yaml \
+--config-overwrites "colberter_compression_dim: 32,colberter_aggregate_unique_ids: True,warmstart_model_path: /newstorage5/shofstae/msmarco-passage-experiments/2021-09-21_2244_colbert_compress_dim32_bs32_PL_3bert/best-model.pytorch-state-dict"
+
+
+
+#
+# all vectors, but 2-way compression
+#
+
+
+CUDA_VISIBLE_DEVICES=4 python matchmaker/train.py --run-name colberter-v2_PL_dim128-32 \
+--config-file config/train/defaults.yaml config/train/data/tr-msmarco-passage-dot-rank.yaml config/train/models/colberter.yaml config/train/modes/pseudo_labels.yaml \
+--config-overwrites "batch_size_eval: 256,colberter_retrieval_compression_dim: 128,colberter_compression_dim: 32,colberter_aggregate_unique_ids: False,warmstart_model_path: /newstorage5/shofstae/msmarco-passage-experiments/2021-09-15_1254_colbert_dim768_bs32_PL_3bert/best-model.pytorch-state-dict"
+
+CUDA_VISIBLE_DEVICES=5 python matchmaker/train.py --run-name colberter-v2_PL_dim128-16 \
+--config-file config/train/defaults.yaml config/train/data/tr-msmarco-passage-dot-rank.yaml config/train/models/colberter.yaml config/train/modes/pseudo_labels.yaml \
+--config-overwrites "batch_size_eval: 256,colberter_retrieval_compression_dim: 128,colberter_compression_dim: 16,colberter_aggregate_unique_ids: False,warmstart_model_path: /newstorage5/shofstae/msmarco-passage-experiments/2021-09-15_1254_colbert_dim768_bs32_PL_3bert/best-model.pytorch-state-dict"
+
+CUDA_VISIBLE_DEVICES=0 python matchmaker/train.py --run-name colberter-v2_PL_dim128-64 \
+--config-file config/train/defaults.yaml config/train/data/dl-msmarco-passage-dot-rank.yaml config/train/models/colberter.yaml config/train/modes/pseudo_labels.yaml \
+--config-overwrites "colberter_retrieval_compression_dim: 128,colberter_compression_dim: 64,colberter_aggregate_unique_ids: False,warmstart_model_path: /scratch/hofstaetter/experiments/msmarco-passage-v1/2021-09-15_1254_colbert_dim768_bs32_PL_3bert/best-model.pytorch-state-dict"
+
+CUDA_VISIBLE_DEVICES=1 python matchmaker/train.py --run-name colberter-v2_PL_dim128-8 \
+--config-file config/train/defaults.yaml config/train/data/dl-msmarco-passage-dot-rank.yaml config/train/models/colberter.yaml config/train/modes/pseudo_labels.yaml \
+--config-overwrites "colberter_retrieval_compression_dim: 128,colberter_compression_dim: 8,colberter_aggregate_unique_ids: False,warmstart_model_path: /scratch/hofstaetter/experiments/msmarco-passage-v1/2021-09-15_1254_colbert_dim768_bs32_PL_3bert/best-model.pytorch-state-dict"
+
+#
+# unique whole word comp
+#
+
+CUDA_VISIBLE_DEVICES=0 python matchmaker/train.py --run-name colberter-v2_PL_unique-whole-word_dim128-32 \
+--config-file config/train/defaults.yaml config/train/data/id-msmarco-passage-dot-rank.yaml config/train/models/colberter.yaml config/train/modes/pseudo_labels.yaml \
+--config-overwrites "batch_size_eval: 256,colberter_retrieval_compression_dim: 128,colberter_compression_dim: 32,colberter_aggregate_unique_ids: True,warmstart_model_path: /newstorage5/shofstae/msmarco-passage-experiments/2021-12-27_1432_colberter-v2_PL_dim128-32/best-model.pytorch-state-dict"
+
+
+CUDA_VISIBLE_DEVICES=2,3 python matchmaker/train.py --run-name colberter-v2_PL_unique-whole-word-qd_dim128-32 \
+--config-file config/train/defaults.yaml config/train/data/tr-msmarco-passage-dot-rank.yaml config/train/models/colberter.yaml config/train/modes/pseudo_labels.yaml \
+--config-overwrites "batch_size_eval: 256,colberter_retrieval_compression_dim: 128,colberter_compression_dim: 32,colberter_aggregate_unique_ids: True,warmstart_model_path: /newstorage5/shofstae/msmarco-passage-experiments/2021-12-27_1432_colberter-v2_PL_dim128-32/best-model.pytorch-state-dict"
+
+
+CUDA_VISIBLE_DEVICES=1 python matchmaker/train.py --run-name colberter-v2_PL_unique-whole-word_dim128-16 \
+--config-file config/train/defaults.yaml config/train/data/id-msmarco-passage-dot-rank.yaml config/train/models/colberter.yaml config/train/modes/pseudo_labels.yaml \
+--config-overwrites "batch_size_eval: 256,colberter_retrieval_compression_dim: 128,colberter_compression_dim: 16,colberter_aggregate_unique_ids: True,warmstart_model_path: /newstorage5/shofstae/msmarco-passage-experiments/2021-12-27_1557_colberter-v2_PL_dim128-16/best-model.pytorch-state-dict"
+
+CUDA_VISIBLE_DEVICES=1 python matchmaker/train.py --run-name colberter-v2_PL_unique-whole-word-stemmed_dim128-16 \
+--config-file config/train/defaults.yaml config/train/data/tr-msmarco-passage-dot-rank.yaml config/train/models/colberter.yaml config/train/modes/pseudo_labels.yaml \
+--config-overwrites "batch_size_eval: 256,colberter_retrieval_compression_dim: 128,colberter_compression_dim: 16,colberter_aggregate_unique_ids: True,warmstart_model_path: /newstorage5/shofstae/msmarco-passage-experiments/2021-12-27_1557_colberter-v2_PL_dim128-16/best-model.pytorch-state-dict"
+
+
+
+CUDA_VISIBLE_DEVICES=4 python matchmaker/train.py --run-name colberter-v2_PL_unique-whole-word_dim768 \
+--config-file config/train/defaults.yaml config/train/data/tr-msmarco-passage-dot-rank.yaml config/train/models/colberter.yaml config/train/modes/pseudo_labels.yaml \
+--config-overwrites "batch_size_eval: 256,colberter_retrieval_compression_dim: -1,colberter_compression_dim: -1,colberter_aggregate_unique_ids: True,warmstart_model_path: /newstorage5/shofstae/msmarco-passage-experiments/2021-09-15_1254_colbert_dim768_bs32_PL_3bert/best-model.pytorch-state-dict"
+
+
+CUDA_VISIBLE_DEVICES=0 python matchmaker/train.py --run-name colberter-v2_PL_unique-whole-word_dim128-8 \
+--config-file config/train/defaults.yaml config/train/data/id-msmarco-passage-dot-rank.yaml config/train/models/colberter.yaml config/train/modes/pseudo_labels.yaml \
+--config-overwrites "batch_size_eval: 256,colberter_retrieval_compression_dim: 128,colberter_compression_dim: 32,colberter_aggregate_unique_ids: True,warmstart_model_path: /newstorage5/shofstae/msmarco-passage-experiments/2021-12-27_1432_colberter-v2_PL_dim128-32/best-model.pytorch-state-dict"
+
+CUDA_VISIBLE_DEVICES=1 python matchmaker/train.py --run-name colberter-v2_PL_unique-whole-word_dim128-64 \
+--config-file config/train/defaults.yaml config/train/data/id-msmarco-passage-dot-rank.yaml config/train/models/colberter.yaml config/train/modes/pseudo_labels.yaml \
+--config-overwrites "batch_size_eval: 256,colberter_retrieval_compression_dim: 128,colberter_compression_dim: 32,colberter_aggregate_unique_ids: True,warmstart_model_path: /newstorage5/shofstae/msmarco-passage-experiments/2021-12-27_1432_colberter-v2_PL_dim128-32/best-model.pytorch-state-dict"
+
+
+
+
+CUDA_VISIBLE_DEVICES=1 python matchmaker/train.py --continue-folder /newstorage5/shofstae/msmarco-passage-experiments/2021-12-29_1623_colberter-v2_PL_unique-whole-word_dim128-32 \
+--config-overwrites "validation_end: {},\
+test:\n\
+  trec2019_top1000:\n\
+    tsv: /home/shofstae/msmarco-data/passage-v1/test2019.bm25_plain_top1000.tsv\n\
+    qrels: /home/shofstae/msmarco-data/passage-v1/trec2019-qrels-pass.txt\n\
+    binarization_point: 2\n\
+    save_secondary_output: True\n\
+  trec2020_bm25rerank:\n\
+    tsv: /home/shofstae/msmarco-data/passage-v1/msmarco-passagetest2020-top1000.tsv\n\
+    qrels: /home/shofstae/msmarco-data/passage-v1/2020-qrels-pass-final.txt\n\
+    binarization_point: 2\n\
+    save_secondary_output: True\n"
+
+#
+# unique-word + stopwords
+#
+CUDA_VISIBLE_DEVICES=0 python matchmaker/train.py --run-name colberter-v2_PL_unique-whole-word_stopword4_dim128-32 \
+--config-file config/train/defaults.yaml config/train/data/id-msmarco-passage-dot-rank.yaml config/train/models/colberter.yaml config/train/modes/pseudo_labels.yaml config/train/modes/sparsity.yaml \
+--config-overwrites "colberter_use_contextualized_stopwords: True,sparsity_loss_lambda_factor: 4,colberter_retrieval_compression_dim: 128,colberter_compression_dim: 32,colberter_aggregate_unique_ids: True,warmstart_model_path: /newstorage5/shofstae/msmarco-passage-experiments/2021-12-29_1623_colberter-v2_PL_unique-whole-word_dim128-32/best-model.pytorch-state-dict"
+
+CUDA_VISIBLE_DEVICES=1 python matchmaker/train.py --run-name colberter-v2_PL_unique-whole-word_stopword4_dim128-16 \
+--config-file config/train/defaults.yaml config/train/data/id-msmarco-passage-dot-rank.yaml config/train/models/colberter.yaml config/train/modes/pseudo_labels.yaml config/train/modes/sparsity.yaml \
+--config-overwrites "colberter_use_contextualized_stopwords: True,sparsity_loss_lambda_factor: 4,colberter_retrieval_compression_dim: 128,colberter_compression_dim: 16,colberter_aggregate_unique_ids: True,warmstart_model_path: /newstorage5/shofstae/msmarco-passage-experiments/2021-12-29_1623_colberter-v2_PL_unique-whole-word_dim128-16/best-model.pytorch-state-dict"
+
+
+
+# copy msmarco to idefix
+
+target=shofstae@idefix.isis.tuwien.ac.at:~/msmarco-data/passage-v1/.
+
+scp /mnt/nvme-local/hofstaetter/msmarco-passage/queries.train.tsv \
+/mnt/nvme-local/hofstaetter/msmarco-passage/collection.tsv \
+/data01/hofstaetter/msmarco-passage-experiments/3bert_ensemble_hardnegs/test_tasb_train-ensemble-output.txt \
+/data01/hofstaetter/data/msmarco-passage/validation/T2_smart_earlystopping3kq_top100.tsv \
+/data01/hofstaetter/data/msmarco-passage/qrels/qrels.dev.tsv \
+/data01/hofstaetter/data/msmarco-passage/tasb256_dev7k_tuples_top1k.tsv \
+/data01/hofstaetter/data/msmarco-passage/leaderboard/test2019.bm25_plain_top1000.tsv \
+/data01/hofstaetter/data/msmarco-passage/qrels/trec2019-qrels-pass.txt \
+/data01/hofstaetter/data/msmarco-passage/leaderboard/msmarco-passagetest2020-top1000.tsv \
+/data01/hofstaetter/data/msmarco-passage/qrels/2020-qrels-pass-final.txt $target

@@ -1,0 +1,59 @@
+# config file for active learning to train models with al_pipe.py
+
+# smaller validation steps because of smaller training data
+validate_every_n_batches: 40
+
+#
+# in-batch negatives -> supported by: bert_dot variants
+#
+in_batch_negatives: True
+in_batch_neg_loss: "ranknet" #"KLDivTeacherList" #"margin" #"ranknet"
+in_batch_neg_lambda: 0.2
+in_batch_main_pair_lambda: 1
+
+#
+# training subset
+#
+
+training_step_write: 40
+train_subset: True
+train_data_size: 5000
+
+#
+# active learning strategy
+#
+al_strategy: 'diversity' #'qbc', 'uncertainty'  # Select the AL strategy
+no_iterations_al: 20 # Number of iterations
+no_queries_added_iteration: 5000 # Number of samples added per iteration
+al_selection_annotation: 'first' #'random' # Determines which positive document is selected for a training sample
+continue_final_training: False # Continue with one final training at the end of the iterations
+
+# for qbc
+no_comittee: 2 # Number of committee members
+m_percentage_subset: 0.8 # Share of training set to train one member
+# clustering config for diversity selection
+clustering_config: 'config/dense_retrieval/example-al-diversity-clustering.yaml' #config for creating the clusters for diversity-based sampling
+# decision boundary for uncertainty selection
+uncertainty_cutoff: 0.5 # decision boundary to determine which samples are uncertain, has to be between [0,1], 0.5 per default
+
+#
+# min steps number, disable with -1
+#
+min_steps_training: -1
+
+# if starting from an already trained ranking model
+bert_pretrained_model: "distilbert-base-uncased" #"sebastian-hofstaetter/distilbert-dot-tas_b-b256-msmarco"
+
+#
+# loss settings
+#
+param_group1_names: ["top_k_scoring"]
+
+#
+# train loop settings
+#
+epochs: 15
+epochs_final_train: 200
+
+early_stopping_patience: 30000
+

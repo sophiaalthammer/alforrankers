@@ -1,0 +1,50 @@
+#
+# train.py configuration file
+# ----------------------------
+#
+max_doc_length: 200
+train_qa_spans: False
+
+expirement_base_path: "../al/diversity/bertcat/"
+tqdm_disabled: False
+
+clustering_config: 'config/dense_retrieval/example-al-diversity-clustering.yaml'
+
+#
+# training paths
+#
+train_tsv: "/../train.tsv" # needs to contain triples with query_text \t pos_text \t neg_text \n
+query_tsv: "/../queries.train.tsv" # needs to contain queries with query_id \t query_text \n
+collection_tsv: '/../collection.tsv' # needs to contain the collection with doc_id \t doc_text \n
+qrels_train: "/../qrels.train.tsv" # needs to contain the qrels for the training queries with query_id \t 0 \t doc_id \t rel_grade(0/1) \n
+
+dynamic_sampler: False
+dynamic_sampler_type: independent
+dynamic_workers: 1
+
+#
+# continuous validation path
+#
+
+validation_cont:
+  binarization_point: 1
+  qrels: /../qrels.dev.tsv
+  save_only_best: true
+  tsv: /../reranking.dev.tsv
+
+#
+# test paths (names & datasets must match up with validation end -> for correct use of fixed cs@n)
+#
+test:
+  # IMPORTANT THAT THIS NAME STAYS THE SAME AS IT IS READ INTO IN al_pipe.py FOR READING THE SCORES
+  train_top100_bm25:
+    tsv: "/../queries.train.bm25.reranking.tsv" # needs to contain the BM25 top 100 for reranking with query_id \t doc_id \t query_text \t doc_text \n
+    qrels: "/../qrels.train.tsv" # needs to contain the qrels for the training queries with query_id \t 0 \t doc_id \t rel_grade(0/1) \n
+    binarization_point: 1
+    save_secondary_output: True
+
+  test_top1000_bm25:
+    tsv: "/../queries.test.bm25.reranking.tsv" # same format as above, only for test queries
+    qrels: "/../qrels.test.tsv" # same format as above, only for test queries
+    binarization_point: 1
+    save_secondary_output: True

@@ -1,0 +1,6 @@
+model: bert_dot # for shared bert model weights (q & d = the same)
+
+bert_dot_compress_dim: -1 # 128 or -1 for no compression
+#bert_pretrained_model: "sebastian-hofstaetter/distilbert-dot-tas_b-b256-msmarco"
+
+run_dense_retrieval_eval: True

@@ -1,0 +1,15 @@
+model: "bert_cat" 
+
+bert_pretrained_model: "bert-base-uncased" 
+#warmstart_model_path: "/newstorage5/salthamm/msmarco/models/2019-08-01_2109_bert_base_cont/best-model.pytorch-state-dict"
+#bert_pretrained_model: bert-base-uncased
+#bert_pretrained_model: bert-large-uncased-whole-word-masking
+#bert_pretrained_model: albert-large-v2
+#bert_pretrained_model: google/electra-base-discriminator
+
+#expirement_base_path: "/newstorage5/salthamm/autolabel-experiments/robust04/train/bertcat_fix_subset_50"
+
+in_batch_negatives: False
+
+model_input_type: concatenated # auto or independent or concatenated
+token_embedder_type: bert_cat  #"huggingface_bpe" # embedding,bert_cat (concated q,d sequences),bert_embedding (for only the bert embeddings), bert_dot
